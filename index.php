@@ -46,7 +46,7 @@
                     </p>
                 </div>
                 <div class="six wide right floated column">
-                    <img class="ui large bordered rounded image" src="static/images/templates/semantic-ui/wireframe/white-image.png" />
+                    <img class="ui large bordered rounded image" src="assets/static/images/templates/semantic-ui/wireframe/white-image.png" />
                 </div>
             </div>
             <div class="row">
@@ -72,7 +72,7 @@
                         "I shouldn't have gone with their competitor."
                     </h3>
                     <p>
-                        <img class="ui avatar image" src="static/images/templates/semantic-ui/avatar/nan.jpg" /><b>Nan</b>Chief Fun Officer Acme Toys
+                        <img class="ui avatar image" src="assets/static/images/templates/semantic-ui/avatar/nan.jpg" /><b>Nan</b>Chief Fun Officer Acme Toys
                     </p>
                 </div>
             </div>
@@ -88,7 +88,7 @@
             </p>
             <a class="ui large button">Read More</a>
             <h4 class="ui horizontal header divider">
-                <a href="homepage.html#"> Case Studies</a>
+                <a href="#"> Case Studies</a>
             </h4>
             <h3 class="ui header">
                 Did We Tell You About Our Bananas?
@@ -107,7 +107,7 @@
                         About
                     </h4>
                     <div class="ui inverted link list">
-                        <a class="item" href="homepage.html#"> Sitemap</a><a class="item" href="homepage.html#"> Contact Us</a><a class="item" href="homepage.html#"> Religious Ceremonies</a><a class="item" href="homepage.html#"> Gazebo Plans</a>
+                        <a class="item" href="#"> Sitemap</a><a class="item" href="#"> Contact Us</a><a class="item" href="#"> Religious Ceremonies</a><a class="item" href="#"> Gazebo Plans</a>
                     </div>
                 </div>
                 <div class="three wide column">
@@ -115,7 +115,7 @@
                         Services
                     </h4>
                     <div class="ui inverted link list">
-                        <a class="item" href="homepage.html#"> Banana Pre-Order</a><a class="item" href="homepage.html#"> DNA FAQ</a><a class="item" href="homepage.html#"> How To Access</a><a class="item" href="homepage.html#"> Favorite X-Men</a>
+                        <a class="item" href="#"> Banana Pre-Order</a><a class="item" href="#"> DNA FAQ</a><a class="item" href="#"> How To Access</a><a class="item" href="#"> Favorite X-Men</a>
                     </div>
                 </div>
                 <div class="seven wide column">
@@ -152,4 +152,4 @@
 
 
 
-<?php include'inc/footer.php' ?>
+<?php include'includes/footer.php' ?>

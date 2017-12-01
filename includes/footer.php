@@ -1,4 +1,4 @@
-<script src="static/dist/semantic-ui/semantic.min.js"></script>
+<script src="assets/static/dist/semantic-ui/semantic.min.js"></script>
 <style type="text/css">
     .hidden.menu {
         display: none;

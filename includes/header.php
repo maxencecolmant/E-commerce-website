@@ -10,10 +10,10 @@
     <meta content="PPType" name="author" />
     <meta content="#ffffff" name="theme-color" />
     <title>Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI.</title>
-    <link href="static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css" />
-    <link href="static/stylesheets/default.css" rel="stylesheet" type="text/css" />
-    <link href="static/stylesheets/pandoc-code-highlight.css" rel="stylesheet" type="text/css" />
-    <script src="static/dist/jquery/jquery.min.js"></script>
+    <link href="assets/static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/static/stylesheets/default.css" rel="stylesheet" type="text/css" />
+    <link href="assets/static/stylesheets/pandoc-code-highlight.css" rel="stylesheet" type="text/css" />
+    <script src="assets/static/dist/jquery/jquery.min.js"></script>
   </head>
   <body>
     <div class="ui large top fixed hidden menu">
