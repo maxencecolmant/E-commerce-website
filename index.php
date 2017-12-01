@@ -1,4 +1,4 @@
-<?php include 'inc/header.php' ?>
+<?php include 'includes/header.php' ?>
 
 
 
@@ -153,4 +153,3 @@
 
 
 <?php include'inc/footer.php' ?>
-
