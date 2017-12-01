@@ -69,9 +69,7 @@ if (!empty($_POST)) {
                         <i class="lock icon"></i><input name="password" placeholder="Password" type="password" />
                     </div>
                 </div>
-                <div class="ui fluid large blue submit button">
-                    Login
-                </div>
+                <input type="submit" value="Login" class="ui fluid large blue submit button">
             </div>
             <div class="ui error message"></div>
         </form>
