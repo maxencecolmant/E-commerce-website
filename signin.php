@@ -60,7 +60,7 @@ if (!empty($_POST)) {
 <body>
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <h2 class="ui teal image header">
+        <h2 class="ui blue image header">
             <img class="image" src="assets/icones/full_logo.png" />
             <div class="content">
                 S'inscrire
@@ -98,7 +98,7 @@ if (!empty($_POST)) {
                         <i class="lock icon"></i><input name="password_c" placeholder="Confirm-Password" type="password" />
                     </div>
                 </div>
-                <div class="ui fluid large teal submit button">
+                <div class="ui fluid large blue submit button">
                     Login
                 </div>
             </div>
