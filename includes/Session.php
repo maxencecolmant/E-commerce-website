@@ -61,6 +61,11 @@ class Session
         }
     }
     
+    public function connnect($user_info) {
+        $this->write('connected', $user_info);
+        header("Location: /index.php");
+    }
+    
 }
 
 $session = Session::getInstance();
