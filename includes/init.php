@@ -7,7 +7,7 @@ class Database
     static function getDatabase()
     {
         if (!self::$instance_bdd){
-            self::$instance_bdd = new Database('root', '', 'mini_twitter');
+            self::$instance_bdd = new Database('root', '', 'techdeals_db');
         }
         return self::$instance_bdd;
         
