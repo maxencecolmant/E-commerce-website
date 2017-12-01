@@ -61,8 +61,9 @@ class Session
         }
     }
     
-    public function connnect($user_info) {
+    public function connnect($user_info, $bdd) {
         $this->write('connected', $user_info);
+        $bdd->query('UPDATE users SET last_connection = CURRENT_TIME ');
         header("Location: /index.php");
     }
     

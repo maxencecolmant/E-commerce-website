@@ -4,18 +4,18 @@
 
 if (!empty($_POST)) {
     if (!empty($_POST['name']) && !empty($_POST['password'])) {
-        $email = $bdd->query('SELECT password from users WHERE name = :name', [':name' => htmlspecialchars($_POST['name'])])->fetch();
-        if (!empty($email)) {
-            if (password_verify(htmlspecialchars($_POST['password']), $email['password'])) {
+        $verif = $bdd->query('SELECT password from users WHERE pseudonym = :name OR  email = :name', [':name' => htmlspecialchars($_POST['name'])])->fetch();
+        if (!empty($verif)) {
+            if (password_verify(htmlspecialchars($_POST['password']), $verif['password'])) {
                 
-                $user = $bdd->query('SELECT * from users WHERE name = :name AND password = :password',
+                $user = $bdd->query('SELECT * from users WHERE (pseudonym = :name OR email = :name ) AND password = :password',
                     [
                         ':name' => htmlspecialchars($_POST['name']),
-                        ':password' => $email['password'],
+                        ':password' => $verif['password'],
                     ])->fetch();
                 
                 if (!empty($user)) {
-                    $session->connnect($user);
+                    $session->connnect($user, $bdd);
                 } else {
                     $session->setFlash('error', 'Identifiants Incorrect !');
                 }
