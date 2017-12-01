@@ -52,7 +52,7 @@ if (!empty($_POST)) {
 <div class="ui middle aligned center aligned grid">
     <div class="column">
         <h2 class="ui teal image header">
-            <img class="image" src="assets/static/images/templates/semantic-ui/logo.png" />
+            <img class="image" src="assets/icones/full_logo.png" />
             <div class="content">
                 Log-in to your account
             </div>
