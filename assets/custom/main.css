@@ -1,3 +1,90 @@
 /*
 * Main.css
 */
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto|Poppins');
+
+body {
+	background: #fff;
+}
+
+body, .ui , input {
+	font-family: 'Poppins', sans-serif !important;
+}
+body > .grid {
+	height: 100%;
+}
+
+.custom-font {
+	font-weight: 600;
+}
+.image {
+	margin-top: -100px;
+}
+.column {
+	max-width: 450px;
+}
+
+.ui.icon.input i.custom-icon,
+.ui.form i.custom-icon {
+	cursor: default;
+	position: absolute;
+	line-height: 1;
+	text-align: center;
+	top: 0;
+	right: 0;
+	margin: 0;
+	height: 100%;
+	width: 2.67142857em;
+	opacity: .5;
+	pointer-events: none;
+	right: auto;
+	left: 1px;
+	border-radius: .28571429rem 0 0 .28571429rem;
+	border-radius: 0 .28571429rem .28571429rem 0;
+	-webkit-transition: opacity .3s ease;
+	transition: opacity .3s ease;
+}
+.ui.icon.input i.custom-icon::before,
+.ui.form i.custom-icon::before {
+	left: 0;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	width: 100%;
+	margin-top: -.5em;
+}
+.ui.header>.image, .ui.header>img {
+	width: 200px;
+	display: block;
+}
+.ui.stacked.segment:after, 
+.ui.stacked.segment:before, 
+.ui.stacked.segments:after, 
+.ui.stacked.segments:before {
+	display: none !important;
+}
+
+.ui.segment {
+	box-shadow: none;
+	border: none;
+}
+
+.ui.suggestion {
+	border: none;
+	box-shadow: none;
+	background: none;
+}
+
+.ui.custom-color.header {
+	color : #067fd8 !important;
+}
+.ui.blue.button, .ui.blue.buttons .button {
+	background-color : #067fd8 ;
+}
+
+
+.ui.custom-color .content {
+	color: #2b2b2b;
+}

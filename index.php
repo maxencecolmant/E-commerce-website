@@ -1,11 +1,7 @@
 <?php include 'includes/header.php' ?>
 
-
-
-
-
-
 <!--Page Contents-->
+<?php include 'includes/navbar.php' ?>
 <div class="pusher">
     <div class="ui inverted vertical masthead center aligned segment">
         <div class="ui container">
@@ -130,26 +126,4 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php include'includes/footer.php' ?>
