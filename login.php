@@ -43,21 +43,28 @@ if (!empty($_POST)) {
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
-                     <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="name" placeholder="Nom d'utilisateur ou adresse e-mail" type="text" />
-                 </div>
-             </div>
-             <div class="field">
+                       <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="name" placeholder="Nom d'utilisateur ou adresse e-mail" type="text" />
+                   </div>
+               </div>
+               <div class="field">
                 <div class="ui left icon input">
                     <i class="dfd-socicon-padlock custom-icon"></i><input class="custom-font" name="password" placeholder="Mot de passe" type="password" />
                 </div>
             </div>
-            <input type="submit" value="Se connecter" class="ui fluid large blue submit button">
-            <div class="ui message suggestion">
-                Vous n'avez pas de compte ? <a href="signup.php">Inscription</a>
-            </div>
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Rester connecté</label>
+          </div>
+          <div class="forgot_password">
+              <a href="">Mot de passe oublié ?</a>
+          </div>
+          <input type="submit" value="Se connecter" class="ui fluid large blue submit button">
+          <div class="ui message suggestion">
+            Vous n'avez pas de compte ? <a href="signup.php">Inscription</a>
         </div>
-        <div class="ui error message"></div>
-    </form>
+    </div>
+    <div class="ui error message"></div>
+</form>
 
 </div>
 </div>

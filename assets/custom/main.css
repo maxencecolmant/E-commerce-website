@@ -89,6 +89,24 @@ body > .grid {
 	color: #2b2b2b;
 }
 
+
+
+
+.ui.checkbox {
+	display: block !important;
+	margin: 20px 0 20px 0;
+}
+
+.ui.checkbox label {
+	text-align: initial;
+}
+
+
+.forgot_password {
+	text-align: right;
+	margin-bottom: 20px;
+}
+
 /**Footer**/
 .hidden.menu {
 	display: none;

@@ -52,19 +52,21 @@ if (!empty($_POST)) {
         </h2>
         <form class="ui large form" action="" method="POST">
             <div class="ui stacked segment">
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="first_name" placeholder="Nom" type="nom" />
+                <div class="two fields">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="first_name" placeholder="Nom" type="nom" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="last_name" placeholder="Prénom" type="prenom" />
+                        </div>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
-                        <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="last_name" placeholder="Prénom" type="prenom" />
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="pseudo" placeholder="Pseudo" type="pseudo" />
+                        <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="pseudo" placeholder="Nom d'utilisateur" type="pseudo" />
                     </div>
                 </div>
                 <div class="field">
@@ -82,18 +84,28 @@ if (!empty($_POST)) {
                         <i class="dfd-socicon-check2 custom-icon"></i><input class="custom-font" name="password_c" placeholder="Confirmation" type="password" />
                     </div>
                 </div>
-                <input type="submit" value="S'inscrire" class="ui fluid large blue submit button">
-                <div class="ui message suggestion">
-                    Vous avez déjà un compte ? <a href="login.php">Connexion</a>
-                </div>
+                <div class="ui checkbox">
+                  <input type="checkbox" tabindex="0" class="hidden">
+                  <label>J'ai lu et j'accepte les <a href=""> conditions générales de vente</a>.</label>
+              </div>
+              <input type="submit" value="S'inscrire" class="ui fluid large blue submit button">
+              <div class="ui message suggestion">
+                Vous avez déjà un compte ? <a href="login.php">Connexion</a>
             </div>
-            <div class="ui error message"></div>
-        </form>
-    </div>
+        </div>
+        <div class="ui error message"></div>
+    </form>
 </div>
+</div>
+
 <?php include 'includes/footer.php';
 
-
+?>
+<script type="text/javascript">
+    $('.ui.checkbox')
+    .checkbox()
+    ;
+</script>
 
 
 
