@@ -24,6 +24,7 @@ if (!empty($_POST)) {
                     [
                         ':email' => htmlspecialchars($_POST['email']),
                     ])->fetch();
+		// add true parameter to mkdir recursively
                 mkdir("./users/user-".$user['id_user']);
                 mkdir("./users/user-".$user['id_user']."/data");
                 mkdir("./users/user-".$user['id_user']."/settings");
