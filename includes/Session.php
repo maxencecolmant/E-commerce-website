@@ -64,9 +64,9 @@ class Session
     public function connnect($user_info, $bdd) {
         $this->write('connected', $user_info);
         $bdd->query('UPDATE users SET last_connection = CURRENT_TIME ');
-        header("Location: /index.php");
+        // change to header("Location:/index.php"); if necessary
+        header("Location:index.php");
     }
     
 }
-
 $session = Session::getInstance();

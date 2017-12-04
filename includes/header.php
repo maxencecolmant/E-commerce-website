@@ -15,7 +15,6 @@
   <link href="assets/static/stylesheets/default.css" rel="stylesheet" type="text/css" />
   <link href="assets/static/stylesheets/pandoc-code-highlight.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="assets/custom/dfd_icons/dfd_icon_set.css">
-    <link rel="stylesheet" href="assets/custom/main.css">
-  <script src="assets/static/dist/jquery/jquery.min.js"></script>
+  <link rel="stylesheet" href="assets/custom/main.css">
 </head>
 <body>

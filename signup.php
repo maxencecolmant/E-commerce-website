@@ -49,7 +49,7 @@ if (!empty($_POST)) {
                 Inscription
             </div>
         </h2>
-        <form class="ui large form">
+        <form class="ui large form" action="" method="POST">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
@@ -90,55 +90,7 @@ if (!empty($_POST)) {
         </form>
     </div>
 </div>
-<script>
-    $(document)
-    .ready(function() {
-        $('.ui.form')
-        .form({
-            fields: {
-                email: {
-                    identifier  : 'email',
-                    rules: [
-                    {
-                        type   : 'empty',
-                        prompt : 'Please enter your e-mail'
-                    },
-                    {
-                        type   : 'email',
-                        prompt : 'Please enter a valid e-mail'
-                    }
-                    ]
-                },
-                password: {
-                    identifier  : 'password',
-                    rules: [
-                    {
-                        type   : 'empty',
-                        prompt : 'Please enter your password'
-                    },
-                    {
-                        type   : 'length[6]',
-                        prompt : 'Your password must be at least 6 characters'
-                    }
-                    ]
-                }
-            }
-        })
-        ;
-    })
-    ;
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
+<?php include 'includes/footer.php';
 
 
 
