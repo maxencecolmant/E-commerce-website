@@ -3,17 +3,17 @@ class Database
 {
     static $instance_bdd = null;
     private $bdd;
-    
+
     static function getDatabase()
     {
         if (!self::$instance_bdd){
-            self::$instance_bdd = new Database('db_projet_php', 'password', 'techdeals_db');
+            self::$instance_bdd = new Database('db_projet_php', 'password', 'techdeals_db', '81.57.206.30:3307');
         }
         return self::$instance_bdd;
-        
+
     }
-    
-    public function __construct($login, $password, $database_name, $host = '81.57.206.30:3307')
+
+    public function __construct($login, $password, $database_name, $host = 'localhost')
     {
         try {
             $this->bdd = new PDO("mysql:dbname=$database_name;host=$host", $login, $password);
@@ -21,7 +21,7 @@ class Database
             echo 'Connexion échouée : ' . $e->getMessage();
         }
     }
-    
+
     /**
      * @param $query
      * @param bool|array $params
@@ -37,12 +37,12 @@ class Database
         }
         return $req;
     }
-    
+
     public function lastInsertId()
     {
         return $this->bdd->lastInsertId();
     }
-    
+
     public function setAttribute($attribut, $value) {
         $this->bdd->setAttribute($attribut, $value);
     }
