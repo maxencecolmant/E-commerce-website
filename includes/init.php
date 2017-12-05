@@ -7,13 +7,13 @@ class Database
     static function getDatabase()
     {
         if (!self::$instance_bdd){
-            self::$instance_bdd = new Database('root', '', 'techdeals_db');
+            self::$instance_bdd = new Database('db_projet_php', 'password', 'techdeals_db');
         }
         return self::$instance_bdd;
         
     }
     
-    public function __construct($login, $password, $database_name, $host = 'localhost')
+    public function __construct($login, $password, $database_name, $host = '81.57.206.30:3307')
     {
         try {
             $this->bdd = new PDO("mysql:dbname=$database_name;host=$host", $login, $password);

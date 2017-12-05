@@ -6,7 +6,7 @@
         <a class="ui button">Log in</a>
       </div>
       <div class="item">
-        <a class="ui primary button">Sign Up</a>
+        <a class="ui blue button">Sign Up</a>
       </div>
     </div>
   </div>
