@@ -1,3 +1,7 @@
+<?php
+include_once  "includes\init.php";
+include_once  "includes\Session.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>

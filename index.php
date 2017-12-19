@@ -6,9 +6,24 @@
     <div class="ui inverted vertical masthead center aligned segment">
         <div class="ui container">
             <div class="ui large secondary inverted pointing menu">
-                <a class="toc item"><i class="sidebar icon"></i></a><a class="active item">Home</a><a class="item">Work</a><a class="item">Company</a><a class="item">Careers</a>
+                <a class="toc item"><i class="sidebar icon"></i></a><a class="active item">Home</a><a
+                        class="item">Work</a><a class="item">Company</a><a class="item">Careers</a>
                 <div class="right item">
-                    <a class="ui inverted button">Log in</a><a class="ui inverted button">Sign Up</a>
+					<?php if ( $session->read( 'connected' ) != null ) : ?>
+                        <div class="ui inverted right dropdown item">
+                            Profil
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="header"><?php $session->doubleGet( 'connected', 'pseudonym' ); ?></div>
+                                <div class="item">Me</div>
+                                <div class="item">Orders</div>
+                                <div class="divider"></div>
+                                <a class="item" href="/logout.php">Log Out</a>
+                            </div>
+                        </div>
+					<?php else: ?>
+                        <a class="ui inverted button" href="/login.php">Log in</a><a class="ui inverted button" href="/signup.php">Sign Up</a>
+					<?php endif; ?>
                 </div>
             </div>
         </div>
@@ -32,7 +47,8 @@
                         We Help Companies and Companions
                     </h3>
                     <p>
-                        We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.
+                        We can give your company superpowers to do things that they never thought possible. Let us
+                        delight your customers and empower your needs...through pure data analytics.
                     </p>
                     <h3 class="ui header">
                         We Make Bananas That Can Dance
@@ -42,7 +58,8 @@
                     </p>
                 </div>
                 <div class="six wide right floated column">
-                    <img class="ui large bordered rounded image" src="assets/static/images/templates/semantic-ui/wireframe/white-image.png" />
+                    <img class="ui large bordered rounded image"
+                         src="assets/static/images/templates/semantic-ui/wireframe/white-image.png"/>
                 </div>
             </div>
             <div class="row">
@@ -68,7 +85,9 @@
                         "I shouldn't have gone with their competitor."
                     </h3>
                     <p>
-                        <img class="ui avatar image" src="assets/static/images/templates/semantic-ui/avatar/nan.jpg" /><b>Nan</b>Chief Fun Officer Acme Toys
+                        <img class="ui avatar image"
+                             src="assets/static/images/templates/semantic-ui/avatar/nan.jpg"/><b>Nan</b>Chief Fun
+                        Officer Acme Toys
                     </p>
                 </div>
             </div>
@@ -80,7 +99,9 @@
                 Breaking The Grid, Grabs Your Attention
             </h3>
             <p>
-                Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.
+                Instead of focusing on content creation and hard work, we have learned how to master the art of doing
+                nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic
+                and worth your attention.
             </p>
             <a class="ui large button">Read More</a>
             <h4 class="ui horizontal header divider">
@@ -90,7 +111,8 @@
                 Did We Tell You About Our Bananas?
             </h3>
             <p>
-                Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
+                Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really
+                true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
             </p>
             <a class="ui large button">I'm Still Quite Interested</a>
         </div>
@@ -103,7 +125,9 @@
                         About
                     </h4>
                     <div class="ui inverted link list">
-                        <a class="item" href="#"> Sitemap</a><a class="item" href="#"> Contact Us</a><a class="item" href="#"> Religious Ceremonies</a><a class="item" href="#"> Gazebo Plans</a>
+                        <a class="item" href="#"> Sitemap</a><a class="item" href="#"> Contact Us</a><a class="item"
+                                                                                                        href="#">
+                            Religious Ceremonies</a><a class="item" href="#"> Gazebo Plans</a>
                     </div>
                 </div>
                 <div class="three wide column">
@@ -111,7 +135,8 @@
                         Services
                     </h4>
                     <div class="ui inverted link list">
-                        <a class="item" href="#"> Banana Pre-Order</a><a class="item" href="#"> DNA FAQ</a><a class="item" href="#"> How To Access</a><a class="item" href="#"> Favorite X-Men</a>
+                        <a class="item" href="#"> Banana Pre-Order</a><a class="item" href="#"> DNA FAQ</a><a
+                                class="item" href="#"> How To Access</a><a class="item" href="#"> Favorite X-Men</a>
                     </div>
                 </div>
                 <div class="seven wide column">
@@ -126,4 +151,4 @@
         </div>
     </div>
 </div>
-<?php include'includes/footer.php' ?>
+<?php include 'includes/footer.php' ?>

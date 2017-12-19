@@ -36,25 +36,33 @@ class Session
     public function write($key, $value){
         $_SESSION[$key] = $value;
     }
-    
-    public function doubleWrite($key1, $key2, $value){
-        $_SESSION[$key1][$key2] = $value;
-    }
-    
-    public function read($key){
+
+	public function read($key){
         return isset($_SESSION[$key]) ? $_SESSION[$key] : null;
     }
-    
-    public function doubleRead($key1, $key2) {
+
+	public function get($key){
+		echo $this->read($key);
+	}
+
+	public function delete($key){
+		if (isset($_SESSION[$key])) {
+			unset($_SESSION[$key]);
+		}
+	}
+
+	public function doubleWrite($key1, $key2, $value){
+		$_SESSION[$key1][$key2] = $value;
+	}
+
+	public function doubleRead($key1, $key2) {
         return isset($_SESSION[$key1][$key2]) ? $_SESSION[$key1][$key2] : null;
     }
-    
-    public function delete($key){
-        if (isset($_SESSION[$key])) {
-            unset($_SESSION[$key]);
-        }
-    }
-    
+
+	public function doubleGet($key1, $key2){
+		echo $this->doubleRead($key1, $key2);
+	}
+
     public function doubleDelete($keyAccess, $key){
         if (isset($_SESSION[$keyAccess][$key])) {
             unset($_SESSION[$keyAccess][$key]);
@@ -65,7 +73,7 @@ class Session
         $this->write('connected', $user_info);
         $bdd->query('UPDATE users SET last_connection = CURRENT_TIME ');
         // change to header("Location:/index.php"); if necessary
-        header("Location:index.php");
+        header("Location:/index.php");
     }
     
 }
