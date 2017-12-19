@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Ven 01 Décembre 2017 à 16:10
--- Version du serveur :  5.7.14
--- Version de PHP :  7.0.10
+-- Client :  localhost
+-- Généré le :  Mar 19 Décembre 2017 à 15:46
+-- Version du serveur :  10.0.32-MariaDB
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -97,9 +97,19 @@ CREATE TABLE `users` (
   `img_user_profile` varchar(250) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `last_connection` datetime DEFAULT NULL,
-  `is_partner` tinyint(1) DEFAULT NULL,
-  `is_admin` tinyint(1) DEFAULT NULL
+  `status` varchar(50) NOT NULL DEFAULT 'USER'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`id_user`, `last_name`, `first_name`, `pseudonym`, `email`, `password`, `img_user_profile`, `created_at`, `last_connection`, `status`) VALUES
+(2, 'test', 'Test', 'test123', 'test@b.fr', '$2y$10$G2ogXQPddAi9UE/Z1fBkF.t4Rwn8LimkCJUhAp9NJYMB.Uedgb4bK', NULL, '2017-12-05 23:53:53', '2017-12-19 15:41:02', 'USER'),
+(3, 'Test', 'Test', 'tester', 'tester@test.test', '$2y$10$Egc/WtnNt8owlpZDL03SnOkpct8ldB76OYR/JXSpKyh4rw0d45zFO', NULL, '2017-12-06 08:18:12', '2017-12-19 15:41:02', 'USER'),
+(4, 'ATest', 'ATest', 'Atester', 'atester@test.test', '$2y$10$XM0LLmy1vYqRz7XbaevVk.X2ymqSdzSNk6NCee0i6/GRpAGVxjFJi', NULL, '2017-12-06 08:21:43', '2017-12-19 15:41:02', 'USER'),
+(5, 'Root', 'Admin', 'Root', 'admin@techdeals.com', '$2y$10$CzouLEfgrL/k7ySzJ8j/xOT6icnJUlGM0UNX4WNvDrwHQFmZ9IuOe', NULL, '2017-12-19 14:54:55', '2017-12-19 15:41:02', 'USER'),
+(6, 'to', 'To', 'toto', 'toto@too.com', '$2y$10$K.A4KnTi4t9fNmzm22m6jujjmOPkHPv4flJYqkTeF4LnXzBOmR0Ty', NULL, '2017-12-19 15:41:02', '2017-12-19 15:41:02', 'USER');
 
 --
 -- Index pour les tables exportées
@@ -162,7 +172,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

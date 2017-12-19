@@ -71,7 +71,7 @@ class Session
     
     public function connnect($user_info, $bdd) {
         $this->write('connected', $user_info);
-        $bdd->query('UPDATE users SET last_connection = CURRENT_TIME ');
+        $bdd->query('UPDATE users SET last_connection = CURRENT_TIME WHERE id_user=:id', [':id' => $this->doubleRead('connected', 'id_user')]);
         // change to header("Location:/index.php"); if necessary
         header("Location:/index.php");
     }
