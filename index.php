@@ -17,12 +17,17 @@
                                 <div class="header"><?php $session->doubleGet( 'connected', 'pseudonym' ); ?></div>
                                 <div class="item">Me</div>
                                 <div class="item">Orders</div>
+								<?php if ( in_array( $session->doubleRead( 'connected', 'status' ), array('SUPER_ADMIN', 'ADMIN' ) ) ): ?>
+                                    <div class="divider"></div>
+                                    <a href="/panel-admin/" class="item">Panel Admin</a>
+								<?php endif; ?>
                                 <div class="divider"></div>
                                 <a class="item" href="/logout.php">Log Out</a>
                             </div>
                         </div>
 					<?php else: ?>
-                        <a class="ui inverted button" href="/login.php">Log in</a><a class="ui inverted button" href="/signup.php">Sign Up</a>
+                        <a class="ui inverted button" href="/login.php">Log in</a><a class="ui inverted button"
+                                                                                     href="/signup.php">Sign Up</a>
 					<?php endif; ?>
                 </div>
             </div>
