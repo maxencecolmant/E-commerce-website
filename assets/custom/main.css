@@ -3,31 +3,56 @@
 */
 
 
-@import url('https://fonts.googleapis.com/css?family=Roboto|Poppins');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Poppins|Open+Sans');
 
 body {
 	background: #fff;
+	font-family: 'Open Sans', sans-serif !important;
 }
 
-body, .ui , input {
-	font-family: 'Poppins', sans-serif !important;
-}
-body > .grid {
-	height: 100%;
+body.colored {
+	background: #f4f7f8;
 }
 
-.custom-font {
+
+.navbar-custom {
+	background: #fff;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+	padding: 10px 0;
+}
+.navbar-custom li, .navbar-custom a  {
 	font-weight: 600;
 }
-.image {
-	margin-top: -100px;
-}
-.column {
-	max-width: 450px;
+
+.navbar-custom a.navbar-brand {
+	padding: 0 8px 0 8px;
 }
 
-.ui.icon.input i.custom-icon,
-.ui.form i.custom-icon {
+
+.form-group, .input-group {
+	margin-bottom: 15px;
+	width: 100%;
+
+}
+
+.form input.form-control {
+	border-top-left-radius: 4px !important;
+	border-bottom-left-radius: 4px!important;
+	padding: 0 10px 0 40px;
+	width: 100%;
+}
+
+h2.img-header {
+	font-size: 30px;
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+
+
+.form .input-group i.custom-icon,
+.form .form-group  i.custom-icon {
 	cursor: default;
 	position: absolute;
 	line-height: 1;
@@ -45,9 +70,10 @@ body > .grid {
 	border-radius: 0 .28571429rem .28571429rem 0;
 	-webkit-transition: opacity .3s ease;
 	transition: opacity .3s ease;
+	z-index: 10;
 }
-.ui.icon.input i.custom-icon::before,
-.ui.form i.custom-icon::before {
+.form .input-group i.custom-icon::before,
+.form .form-group i.custom-icon::before {
 	left: 0;
 	position: absolute;
 	text-align: center;
@@ -55,6 +81,26 @@ body > .grid {
 	width: 100%;
 	margin-top: -.5em;
 }
+
+
+/* body, .ui , input {
+	font-family: 'Poppins', sans-serif !important;
+}
+body > .grid {
+	height: 100%;
+}
+
+.custom-font {
+	font-weight: 600;
+}
+.image {
+	margin-top: -100px;
+}
+.column {
+	max-width: 450px;
+}
+
+
 .ui.header>.image, .ui.header>img {
 	width: 200px;
 	display: block;
@@ -107,7 +153,7 @@ body > .grid {
 	margin-bottom: 20px;
 }
 
-/**Footer**/
+*Footer*
 .hidden.menu {
 	display: none;
 }
@@ -191,4 +237,4 @@ body > .grid {
 		margin-top: 0.5em;
 		font-size: 1.5em;
 	}
-}
+} */

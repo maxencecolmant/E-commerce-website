@@ -1,6 +1,5 @@
 <?php include 'includes/header.php' ?>
 
-<!--Page Contents-->
 <?php include 'includes/navbar.php' ?>
 
 

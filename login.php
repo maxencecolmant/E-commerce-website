@@ -29,6 +29,7 @@ if (!empty($_POST)) {
 }
 ?>
 <?php include 'includes/header.php'; ?>
+<?php include 'includes/navbar.php' ?>
 <div class="container form">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 form-custom">
@@ -38,21 +39,23 @@ if (!empty($_POST)) {
           Connexion
         </div>
       </h2>
-      <form action="" method="POST">
-        <div class="form-group">
-         <i class="socicon-users custom-icon"></i><input class="custom-font" name="name" placeholder="Nom d'utilisateur ou adresse e-mail" type="text" />
+      <form class="form" action="" method="POST">
+        <div class="input-group">
+    <i class="socicon-users custom-icon"></i>
+         <input class="custom-font form-control" name="name" placeholder="Nom d'utilisateur ou adresse e-mail" type="text" />
        </div>
-       <div class="form-group">
-        <i class="socicon-padlock custom-icon"></i><input class="custom-font" name="password" placeholder="Mot de passe" type="password" />
+       <div class="input-group">
+      <i class="socicon-padlock custom-icon"></i>
+        <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
       </div>
-      <div class="form-group">
+      <div class="input-group">
         <input type="checkbox">
         <label>Rester connecté</label>
       </div>
       <div class="forgot_password">
        <a href="">Mot de passe oublié ?</a>
      </div>
-     <input type="submit" value="Se connecter" class="ui fluid large blue submit button">
+     <input type="submit" value="Se connecter" class="submit button">
      <div class="message suggestion">
        Vous n'avez pas de compte ? <a href="signup.php">Inscription</a>
      </div>

@@ -42,7 +42,7 @@ if (!empty($_POST)) {
 }
 ?>
 <?php include 'includes/header.php'; ?>
-
+<?php include 'includes/navbar.php' ?>
 
 <div class="container form">
   <div class="row">
@@ -54,27 +54,35 @@ if (!empty($_POST)) {
       </div>
   </h2>
   <form action="" method="POST">
-    <div class="form-group">
-        <i class="socicon-users custom-icon"></i><input class="custom-font" name="first_name" placeholder="Nom" type="nom"/>
+    <div class="input-group">
+        <i class="socicon-users custom-icon"></i>
+        <input class="custom-font form-control" name="first_name" placeholder="Nom" type="nom"/>
     </div>
-    <div class="form-group">   <i class="socicon-users custom-icon"></i><input class="custom-font" name="last_name" placeholder="Prénom" type="prenom" />
+    <div class="input-group">
+        <i class="socicon-users custom-icon"></i>
+        <input class="custom-font form-control" name="last_name" placeholder="Prénom" type="prenom" />
     </div>
-    <div class="form-group">
-        <i class="socicon-users custom-icon"></i><input class="custom-font" name="pseudo" placeholder="Nom d'utilisateur" type="pseudo" />
-    </div>
-
-    <div class="form-group">
-        <i class="socicon-envelope custom-icon"></i><input class="custom-font" name="email" placeholder="Email" type="text" />
-    </div>
-    <div>
-       <i class="socicon-padlock custom-icon"></i><input class="custom-font" name="password" placeholder="Mot de passe" type="password" />
-   </div>
-   <div>
-       <i class="socicon-padlock custom-icon"></i><input class="custom-font" name="password" placeholder="Mot de passe" type="password" />
+    <div class="input-group">
+       <i class="socicon-users custom-icon"></i>
+       <input class="custom-font form-control" name="pseudo" placeholder="Nom d'utilisateur" type="pseudo" />
    </div>
 
-   <div>
-    <i class="socicon-check2 custom-icon"></i><input class="custom-font" name="password_c" placeholder="Confirmation" type="password" />
+   <div class="input-group">
+    <i class="socicon-envelope custom-icon"></i>
+    <input class="custom-font form-control" name="email" placeholder="Email" type="text" />
+</div>
+<div class="input-group">
+    <i class="socicon-padlock custom-icon"></i>
+    <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
+</div>
+<div class="input-group">
+   <i class="socicon-padlock custom-icon"></i>
+   <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
+</div>
+
+<div class="input-group">
+    <i class="socicon-check2 custom-icon"></i>
+    <input class="custom-font form-control" name="password_c" placeholder="Confirmation" type="password" />
 </div>
 
 <div>
@@ -82,13 +90,11 @@ if (!empty($_POST)) {
     <label>J'ai lu et j'accepte les <a href=""> conditions générales de vente</a>.</label>
 </div>
 
-<input type="submit" value="Se connecter" class="ui fluid large blue submit button">
+<input type="submit" value="Se connecter" class="submit button">
 <div class="message suggestion">
     Vous avez déjà un compte ? <a href="login.php">Connexion</a>
 </div>
 <div class="error message"></div>
-
-<div class="ui error message"></div>
 </form>
 </div>
 </div>
