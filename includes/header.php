@@ -11,6 +11,7 @@ include_once  "includes\Session.php";
   <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
   <meta content="TechDeals team" name="author" />
   <title>TechDeals</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/custom/bootstrap/bootstrap.css">
   <link rel="stylesheet" href="assets/custom/font_icons/icon_sets.css">
   <link rel="stylesheet" href="assets/custom/main.css">
