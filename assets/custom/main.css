@@ -3,7 +3,7 @@
 */
 
 
-@import url('https://fonts.googleapis.com/css?family=Roboto|Poppins|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Poppins|Raleway|Open+Sans');
 
 body {
 	background: #fff;
@@ -43,6 +43,7 @@ body.colored {
 }
 
 h2.img-header {
+	font-family: 'Raleway', sans-serif;
 	font-size: 30px;
 	font-weight: 600;
 	text-align: center;
