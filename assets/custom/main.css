@@ -95,6 +95,18 @@ h2.img-header {
 	border-radius: 4px !important;
 	font-size: 14px !important;
 }
+
+.form-control.search-form {
+	height: 30px !important;
+	padding: 6px 12px;
+	border-radius: 4px !important;
+	font-size: 14px !important;
+}
+li.search-nav{
+    padding: 5px 0!important;
+}
+
+
 .container.form {
 	margin-top: 150px;
 	margin-bottom: 150px;
@@ -277,6 +289,28 @@ h2.img-header {
 	margin-bottom: 15px;
 	margin-top: 20px;
 }
+.navbar-right.extra-links li {
+	padding: 8px !important;
+}
+.navbar-right.extra-links li a {
+	padding: 10px 30px !important;
+}
+
+.btn-like-link-signin {
+	background: #067fd8 !important;
+	color: #fff !important;
+	border-radius: 50px;
+	padding-right: 30px !important;
+	padding-left: 30px !important;
+}
+.btn-like-link-signup {
+	background: #119cd6 !important;
+	color: #fff !important;
+	border-radius: 50px;
+	padding-right: 30px !important;
+	padding-left: 30px !important;
+}
+
 
 .nav-custom li a i {
 	margin-right: 8px;

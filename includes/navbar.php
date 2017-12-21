@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-custom navbar-static-top">   
   <div class="container">
-    <a class="navbar-brand" href="index.php"><img src="assets/icones/logo.png" width="140px"></a> 
+    <a class="navbar-brand" href="index.php"><img src="assets/icones/logo.png" width="130px"></a> 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -52,8 +52,8 @@
 </div>
 <?php else: ?>
  <ul class="nav navbar-nav navbar-right extra-links">
-    <li><a href="/signup.php" class="btn-like-link">Inscription</a></li>
-    <li><a href="/login.php" class="btn-like-link">Connexion</a></li>
+    <li><a href="/signup.php" class="btn-like-link-signin">Inscription</a></li>
+    <li><a href="/login.php" class="btn-like-link-signup">Connexion</a></li>
 </ul>
 <?php endif; ?>
 </div>  
