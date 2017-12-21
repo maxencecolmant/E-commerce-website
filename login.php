@@ -42,7 +42,7 @@ if (!empty($_POST)) {
       <form class="form" action="" method="POST">
         <div class="input-group">
           <i class="socicon-users custom-icon"></i>
-          <input class="custom-font form-control" name="name" placeholder="Nom d'utilisateur ou adresse e-mail" type="text" />
+          <input class="custom-font form-control" name="name" placeholder="Nom d'utilisateur ou E-mail" type="text" />
         </div>
         <div class="input-group">
           <i class="socicon-padlock custom-icon"></i>
