@@ -84,14 +84,13 @@ if (!empty($_POST)) {
     <i class="socicon-check2 custom-icon"></i>
     <input class="custom-font form-control" name="password_c" placeholder="Confirmation" type="password" />
 </div>
-
-<div>
-    <input type="checkbox">
-    <label>J'ai lu et j'accepte les <a href=""> conditions générales de vente</a>.</label>
+<small class="message-user">
+    En cliquant sur S'inscrire, vous acceptez les  <a href="">Conditions d'utilisation</a> et <a href="">la Politique de confidentialité</a> de TechDeals
+</small>
+<div class="text-center submit-button">
+    <input type="submit" value="S'inscrire" class="btn-custom bttn-jelly bttn-md">
 </div>
-
-<input type="submit" value="Se connecter" class="submit button">
-<div class="message suggestion">
+<div class="message suggestion text-center">
     Vous avez déjà un compte ? <a href="login.php">Connexion</a>
 </div>
 <div class="error message"></div>

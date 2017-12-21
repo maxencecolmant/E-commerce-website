@@ -41,27 +41,29 @@ if (!empty($_POST)) {
       </h2>
       <form class="form" action="" method="POST">
         <div class="input-group">
-    <i class="socicon-users custom-icon"></i>
-         <input class="custom-font form-control" name="name" placeholder="Nom d'utilisateur ou adresse e-mail" type="text" />
+          <i class="socicon-users custom-icon"></i>
+          <input class="custom-font form-control" name="name" placeholder="Nom d'utilisateur ou adresse e-mail" type="text" />
+        </div>
+        <div class="input-group">
+          <i class="socicon-padlock custom-icon"></i>
+          <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
+        </div>
+        <div class="input-group">
+          <input type="checkbox">
+          <label>Rester connecté</label>
+        </div>
+        <div class="forgot_password">
+         <a href="">Mot de passe oublié ?</a>
        </div>
-       <div class="input-group">
-      <i class="socicon-padlock custom-icon"></i>
-        <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
-      </div>
-      <div class="input-group">
-        <input type="checkbox">
-        <label>Rester connecté</label>
-      </div>
-      <div class="forgot_password">
-       <a href="">Mot de passe oublié ?</a>
-     </div>
-     <input type="submit" value="Se connecter" class="submit button">
-     <div class="message suggestion">
-       Vous n'avez pas de compte ? <a href="signup.php">Inscription</a>
-     </div>
-     <div class="error message"></div>
-   </form>
+       <div class="text-center submit-button">
+         <input type="submit" value="Se connecter" class="btn-custom bttn-jelly bttn-md">
+       </div>
+       <div class="message suggestion text-center">
+         Vous n'avez pas de compte ? <a href="signup.php">Inscription</a>
+       </div>
+       <div class="error message"></div>
+     </form>
+   </div>
  </div>
-</div>
 </div>
 <?php include 'includes/footer.php'; ?>

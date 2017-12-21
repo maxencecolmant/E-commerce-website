@@ -15,4 +15,4 @@ include_once  "includes\Session.php";
   <link rel="stylesheet" href="assets/custom/font_icons/icon_sets.css">
   <link rel="stylesheet" href="assets/custom/main.css">
 </head>
-<body>
+<body class="colored">
