@@ -474,11 +474,11 @@ input:focus{
 	padding: 20px 0;
 }
 
-@media (min-width: 768px)
-.navbar-nav > li > a {
-    padding-top: 18px!important;
+@media (min-width: 768px) {
+	.navbar-nav > li > a {
+		padding-top: 18px!important;
+	}
 }
-
 /* body, .ui , input {
 	font-family: 'Poppins', sans-serif !important;
 }
