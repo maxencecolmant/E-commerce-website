@@ -7,7 +7,7 @@
 
 body {
 	background: #fff;
-	font-family: 'Open Sans', sans-serif !important;
+	font-family: 'Raleway', sans-serif !important;
 }
 
 body.colored {
@@ -286,6 +286,18 @@ h2.img-header {
 	font-size: 14px;
 }
 
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: #067fd8;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+	background: none;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+	color: #067fd8 !important;
+	text-decoration: none;
+	background: none !important;
+}
 /* body, .ui , input {
 	font-family: 'Poppins', sans-serif !important;
 }
