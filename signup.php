@@ -54,26 +54,32 @@ if (!empty($_POST)) {
       </div>
   </h2>
   <form action="" method="POST">
-    <div class="input-group">
-        <i class="socicon-users custom-icon"></i>
-        <input class="custom-font form-control" name="first_name" placeholder="Nom" type="nom"/>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <i class="socicon-users custom-icon"></i>
+                <input class="custom-font form-control" name="first_name" placeholder="Nom" type="nom"/>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="input-group">
+                <i class="socicon-users custom-icon"></i>
+                <input class="custom-font form-control" name="last_name" placeholder="Prénom" type="prenom" />
+            </div>
+        </div>
     </div>
     <div class="input-group">
-        <i class="socicon-users custom-icon"></i>
-        <input class="custom-font form-control" name="last_name" placeholder="Prénom" type="prenom" />
-    </div>
-    <div class="input-group">
-       <i class="socicon-users custom-icon"></i>
-       <input class="custom-font form-control" name="pseudo" placeholder="Nom d'utilisateur" type="pseudo" />
-   </div>
+     <i class="socicon-users custom-icon"></i>
+     <input class="custom-font form-control" name="pseudo" placeholder="Nom d'utilisateur" type="pseudo" />
+ </div>
 
-   <div class="input-group">
+ <div class="input-group">
     <i class="socicon-envelope custom-icon"></i>
     <input class="custom-font form-control" name="email" placeholder="Email" type="text" />
 </div>
 <div class="input-group">
-   <i class="socicon-padlock custom-icon"></i>
-   <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
+ <i class="socicon-padlock custom-icon"></i>
+ <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
 </div>
 
 <div class="input-group">
