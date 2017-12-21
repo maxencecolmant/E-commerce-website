@@ -1,6 +1,8 @@
 <?php
 include_once "includes/Session.php";
 include_once "includes/init.php";
+include_once "includes/Util.php";
+include_once "includes/User.php";
 
 
 if (!empty($_POST)) {
@@ -28,7 +30,7 @@ if (!empty($_POST)) {
                 mkdir("./users/user-".$user['id_user']);
                 mkdir("./users/user-".$user['id_user']."/data");
                 mkdir("./users/user-".$user['id_user']."/settings");
-                $session->connnect($user, $bdd);
+                $fct_user->connnect($user, $bdd);
             } else {
                 $session->setFlash('error', 'Cet email est déjà utilisé !');
             }
