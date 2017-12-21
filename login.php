@@ -48,12 +48,16 @@ if (!empty($_POST)) {
           <i class="socicon-padlock custom-icon"></i>
           <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
         </div>
-        <div class="input-group">
-          <input type="checkbox">
-          <label>Rester connecté</label>
-        </div>
-        <div class="forgot_password">
-         <a href="">Mot de passe oublié ?</a>
+        <div class="user-actions">
+          <div class="checkbox checkbox-circle keep-connected">
+            <input id="check-box" type="checkbox">
+            <label for="check-box">
+              Rester connecté
+            </label>
+          </div>
+          <div class="forgot_password">
+           <a href="">Mot de passe oublié ?</a>
+         </div>
        </div>
        <div class="text-center submit-button">
          <input type="submit" value="Se connecter" class="btn-custom bttn-jelly bttn-md">

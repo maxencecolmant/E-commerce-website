@@ -111,6 +111,93 @@ li.search-nav{
 	padding: 5px 0!important;
 }
 
+.forgot_password {
+	float: right;
+	text-align: right;
+}
+.keep-connected {
+	float: left;
+	width: auto;
+}
+
+.checkbox {
+	padding-left: 20px; 
+}
+.checkbox label {
+	display: inline-block;
+	position: relative;
+	padding-left: 5px; 
+}
+.checkbox label::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	left: 0;
+	margin-left: -20px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	background-color: #fff;
+	-webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+	-o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+	transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+.checkbox label::after {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	left: 0;
+	top: 0;
+	margin-left: -20px;
+	padding-left: 3px;
+	padding-top: 1px;
+	font-size: 11px;
+	color: #555555;
+}
+.checkbox input[type="checkbox"] {
+	opacity: 0;
+	z-index: 1; 
+}
+.checkbox input[type="checkbox"]:focus + label::before {
+	outline: 0;
+}
+.checkbox input[type="checkbox"]:checked + label::after {
+	font-family: 'FontAwesome';
+	content: "\f00c"; 
+	outline: 0;
+}
+.checkbox input[type="checkbox"]:disabled + label {
+	opacity: 0.65; 
+	outline: 0;
+}
+.checkbox input[type="checkbox"]:disabled + label::before {
+	background-color: #eeeeee;
+	cursor: not-allowed; 
+	outline: 0;
+}
+.checkbox.checkbox-circle label::before {
+	border-radius: 50%; 
+}
+.checkbox.checkbox-inline {
+	margin-top: 0; 
+}
+.checkbox.checkbox-single label {
+	height: 17px; 
+}
+input:focus{
+	outline:0;
+}
+.radio, .checkbox {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.user-actions {
+	position: relative;
+	display: block;
+	margin-bottom: 60px;
+}
 
 .container.form {
 	margin-top: 150px;

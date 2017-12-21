@@ -72,10 +72,6 @@ if (!empty($_POST)) {
     <input class="custom-font form-control" name="email" placeholder="Email" type="text" />
 </div>
 <div class="input-group">
-    <i class="socicon-padlock custom-icon"></i>
-    <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
-</div>
-<div class="input-group">
    <i class="socicon-padlock custom-icon"></i>
    <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password" />
 </div>
