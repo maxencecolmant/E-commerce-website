@@ -1,0 +1,1951 @@
+@font-face {
+    font-family:socicons-font;
+    src: url(icon_set.eot?4be24p);
+    src: url(icon_set.eot?4be24p#iefix) format('embedded-opentype'), url(icon_set.ttf?4be24p) format('truetype'), url(icon_set.woff?4be24p) format('woff'), url(icon_set.svg?4be24p#icon_set) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family:socicons-font;
+        src: url(icon_set.svg?4be24p#icon_set) format('svg')
+    }
+}
+
+[class*="socicon-"],
+[class^=socicon-] {
+    font-family:socicons-font!important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.socicon-vkontakte:before {
+    content: "\eadd"
+}
+
+.socicon-ok:before {
+    content: "\eade"
+}
+
+.socicon-px-icon:before {
+    content: "\e600"
+}
+
+.socicon-vb:before {
+    content: "\e601"
+}
+
+.socicon-forrst:before {
+    content: "\e962"
+}
+
+.socicon-dribbble:before {
+    content: "\e963"
+}
+
+.socicon-b_Xing-icon_bl:before {
+    content: "\e964"
+}
+
+.socicon-twitter:before {
+    content: "\e965"
+}
+
+.socicon-bandcamp-logo:before {
+    content: "\e966"
+}
+
+.socicon-flickr:before {
+    content: "\e967"
+}
+
+.socicon-c_spotify-512-black:before {
+    content: "\e968"
+}
+
+.socicon-twitter2:before {
+    content: "\e969"
+}
+
+.socicon-houzz-dark-icon:before {
+    content: "\e96a"
+}
+
+.socicon-facebook:before {
+    content: "\e96b"
+}
+
+.socicon-Meerkat-color:before {
+    content: "\e96c"
+}
+
+.socicon-skype:before {
+    content: "\e96d"
+}
+
+.socicon-periscope-logo:before {
+    content: "\e96e"
+}
+
+.socicon-digg:before {
+    content: "\e96f"
+}
+
+.socicon-skype2:before {
+    content: "\e970"
+}
+
+.socicon-google:before {
+    content: "\e971"
+}
+
+.socicon-slideshare:before {
+    content: "\e972"
+}
+
+.socicon-html5:before {
+    content: "\e973"
+}
+
+.socicon-Snapchat-logo:before {
+    content: "\e974"
+}
+
+.socicon-linkedin:before {
+    content: "\e975"
+}
+
+.socicon-soundcloud-logo:before {
+    content: "\e976"
+}
+
+.socicon-konus:before {
+    content: "\e977"
+}
+
+.socicon-lastfm:before {
+    content: "\e978"
+}
+
+.socicon-the-city:before {
+    content: "\e979"
+}
+
+.socicon-vimeo:before {
+    content: "\e97a"
+}
+
+.socicon-yahoo:before {
+    content: "\e97b"
+}
+
+.socicon-tumblr:before {
+    content: "\e97c"
+}
+
+.socicon-apple:before {
+    content: "\e97d"
+}
+
+.socicon-pinpoint:before {
+    content: "\e97e"
+}
+
+.socicon-viadeo:before {
+    content: "\e97f"
+}
+
+.socicon-windows:before {
+    content: "\e980"
+}
+
+.socicon-tripadvisor:before {
+    content: "\e981"
+}
+
+.socicon-youtube:before {
+    content: "\e982"
+}
+
+.socicon-delicious:before {
+    content: "\e983"
+}
+
+.socicon-rss:before {
+    content: "\e984"
+}
+
+.socicon-picasa:before {
+    content: "\e985"
+}
+
+.socicon-deviantart:before {
+    content: "\e986"
+}
+
+.socicon-whatsapp:before {
+    content: "\e987"
+}
+
+.socicon-snapchat:before {
+    content: "\e988"
+}
+
+.socicon-blogger:before {
+    content: "\e989"
+}
+
+.socicon-wordpress:before {
+    content: "\e98a"
+}
+
+.socicon-amazon:before {
+    content: "\e98b"
+}
+
+.socicon-appstore:before {
+    content: "\e98c"
+}
+
+.socicon-paypal:before {
+    content: "\e98d"
+}
+
+.socicon-myspace:before {
+    content: "\e98e"
+}
+
+.socicon-dropbox:before {
+    content: "\e98f"
+}
+
+.socicon-windows8:before {
+    content: "\e990"
+}
+
+.socicon-pinterest:before {
+    content: "\e991"
+}
+
+.socicon-soundcloud:before {
+    content: "\e992"
+}
+
+.socicon-google-drive:before {
+    content: "\e993"
+}
+
+.socicon-android:before {
+    content: "\e994"
+}
+
+.socicon-behance:before {
+    content: "\e995"
+}
+
+.socicon-instagram:before {
+    content: "\e996"
+}
+
+.socicon-ebay:before {
+    content: "\e997"
+}
+
+.socicon-google-plus:before {
+    content: "\e998"
+}
+
+.socicon-github:before {
+    content: "\e999"
+}
+
+.socicon-stackoverflow:before {
+    content: "\e99a"
+}
+
+.socicon-spotify:before {
+    content: "\e99b"
+}
+
+.socicon-stumbleupon:before {
+    content: "\e99c"
+}
+
+.socicon-visa:before {
+    content: "\e99d"
+}
+
+.socicon-mastercard:before {
+    content: "\e99e"
+}
+
+.socicon-amex:before {
+    content: "\e99f"
+}
+
+.socicon-ios:before {
+    content: "\e9a0"
+}
+
+.socicon-osx:before {
+    content: "\e9a1"
+}
+
+.socicon-evernote:before {
+    content: "\e9a2"
+}
+
+.socicon-yelp:before {
+    content: "\e9a3"
+}
+
+.socicon-yelp2:before {
+    content: "\e9a4"
+}
+
+.socicon-medium:before {
+    content: "\e9a5"
+}
+
+.socicon-slack:before {
+    content: "\e9a6"
+}
+
+.socicon-vine:before {
+    content: "\e9a7"
+}
+
+.socicon-edge:before {
+    content: "\e9a8"
+}
+
+.socicon-outlook:before {
+    content: "\e9a9"
+}
+
+.socicon-pencilcase:before {
+    content: "\e9aa"
+}
+
+.socicon-play:before {
+    content: "\e9ab"
+}
+
+.socicon-icloud:before {
+    content: "\e9ac"
+}
+
+.socicon-google-inbox:before {
+    content: "\e9ad"
+}
+
+.socicon-periscope:before {
+    content: "\e9ae"
+}
+
+.socicon-blackberry:before {
+    content: "\e9af"
+}
+
+.socicon-viber:before {
+    content: "\e9b0"
+}
+
+.socicon-fb_messenger:before {
+    content: "\e9b1"
+}
+
+.socicon-wechat:before {
+    content: "\e9b2"
+}
+
+.socicon-gmail:before {
+    content: "\e9b3"
+}
+
+.socicon-airbnb:before {
+    content: "\e9b4"
+}
+
+.socicon-angellist:before {
+    content: "\e9b5"
+}
+
+.socicon-uber:before {
+    content: "\e9b6"
+}
+
+.socicon-safari:before {
+    content: "\e9b7"
+}
+
+.socicon-firefox:before {
+    content: "\e9b8"
+}
+
+.socicon-opera:before {
+    content: "\e9b9"
+}
+
+.socicon-bing:before {
+    content: "\e9ba"
+}
+
+.socicon-reddit:before {
+    content: "\e9bb"
+}
+
+.socicon-producthunt:before {
+    content: "\e9bc"
+}
+
+.socicon-icon-share:before {
+    content: "\e9bd"
+}
+
+.socicon-cloud:before {
+    content: "\e900"
+}
+
+.socicon-cloud-download:before {
+    content: "\e901"
+}
+
+.socicon-cloud-upload:before {
+    content: "\e902"
+}
+
+.socicon-signal:before {
+    content: "\e903"
+}
+
+.socicon-command:before {
+    content: "\e904"
+}
+
+.socicon-share:before {
+    content: "\e905"
+}
+
+.socicon-map:before {
+    content: "\e906"
+}
+
+.socicon-earth-globe:before {
+    content: "\e9be"
+}
+
+.socicon-globe:before {
+    content: "\e907"
+}
+
+.socicon-map-marker:before {
+    content: "\e9bf"
+}
+
+.socicon-compass-circular-variant:before {
+    content: "\e9c0"
+}
+
+.socicon-cursor:before {
+    content: "\e9c1"
+}
+
+.socicon-location:before {
+    content: "\e908"
+}
+
+.socicon-icon-social-buffer:before {
+    content: "\e9c2"
+}
+
+.socicon-layers:before {
+    content: "\e909"
+}
+
+.socicon-icon-play:before {
+    content: "\e9c3"
+}
+
+.socicon-arrow-up:before {
+    content: "\e90a"
+}
+
+.socicon-arrow-down:before {
+    content: "\e90b"
+}
+
+.socicon-arrow-left:before {
+    content: "\e90c"
+}
+
+.socicon-arrow-right:before {
+    content: "\e90d"
+}
+
+.socicon-chevron-arrow-up:before {
+    content: "\e9c4"
+}
+
+.socicon-chevron-arrow-down:before {
+    content: "\e9c5"
+}
+
+.socicon-arrow-left-01:before {
+    content: "\e9c6"
+}
+
+.socicon-arrow-right-01:before {
+    content: "\e9c7"
+}
+
+.socicon-up-arrow:before {
+    content: "\e9c8"
+}
+
+.socicon-angle-arrow-down:before {
+    content: "\e9c9"
+}
+
+.socicon-angle-pointing-to-left:before {
+    content: "\e9ca"
+}
+
+.socicon-angle-arrow-pointing-to-right:before {
+    content: "\e9cb"
+}
+
+.socicon-caret-arrow-up:before {
+    content: "\e9cc"
+}
+
+.socicon-caret-down:before {
+    content: "\e9cd"
+}
+
+.socicon-left-arrow:before {
+    content: "\e9ce"
+}
+
+.socicon-arrowhead-pointing-to-the-right:before {
+    content: "\e9cf"
+}
+
+.socicon-sort-arrows-couple-pointing-up-and-down:before {
+    content: "\e9d0"
+}
+
+.socicon-thin-arrowheads-pointing-down:before {
+    content: "\e9d1"
+}
+
+.socicon-chevron-up:before {
+    content: "\e9d2"
+}
+
+.socicon-double-left-chevron:before {
+    content: "\e9d3"
+}
+
+.socicon-double-angle-pointing-to-right:before {
+    content: "\e9d4"
+}
+
+.socicon-long-arrow-pointing-up:before {
+    content: "\e9d5"
+}
+
+.socicon-down-arrow:before {
+    content: "\e9d6"
+}
+
+.socicon-long-arrow-pointing-to-left:before {
+    content: "\e9d7"
+}
+
+.socicon-long-arrow-pointing-to-the-right:before {
+    content: "\e9d8"
+}
+
+.socicon-horizontal-resize-option:before {
+    content: "\e9d9"
+}
+
+.socicon-exchange-arrows:before {
+    content: "\e9da"
+}
+
+.socicon-arrow-up2:before {
+    content: "\e9db"
+}
+
+.socicon-arrow-pointing-down:before {
+    content: "\e9dc"
+}
+
+.socicon-arrow-pointing-to-left:before {
+    content: "\e9dd"
+}
+
+.socicon-arrow-pointing-to-right:before {
+    content: "\e9de"
+}
+
+.socicon-up-chevron-button:before {
+    content: "\e9df"
+}
+
+.socicon-chevron-sign-down:before {
+    content: "\e9e0"
+}
+
+.socicon-chevron-sign-left:before {
+    content: "\e9e1"
+}
+
+.socicon-chevron-sign-to-right:before {
+    content: "\e9e2"
+}
+
+.socicon-arrow-up-on-a-black-circle-background:before {
+    content: "\e9e3"
+}
+
+.socicon-arrow-down-on-black-circular-background:before {
+    content: "\e9e4"
+}
+
+.socicon-circle-with-an-arrow-pointing-to-left:before {
+    content: "\e9e5"
+}
+
+.socicon-arrow-pointing-right-in-a-circle:before {
+    content: "\e9e6"
+}
+
+.socicon-upload-button:before {
+    content: "\e9e7"
+}
+
+.socicon-download-symbol:before {
+    content: "\e9e8"
+}
+
+.socicon-left-arrow-1:before {
+    content: "\e9e9"
+}
+
+.socicon-right-arrow-in-a-circle:before {
+    content: "\e9ea"
+}
+
+.socicon-play-circle:before {
+    content: "\e9eb"
+}
+
+.socicon-play-sign:before {
+    content: "\e9ec"
+}
+
+.socicon-refresh-page-option:before {
+    content: "\e9ed"
+}
+
+.socicon-repeat:before {
+    content: "\e90e"
+}
+
+.socicon-refresh-arrow:before {
+    content: "\e9ee"
+}
+
+.socicon-undo-arrow:before {
+    content: "\e9ef"
+}
+
+.socicon-refresh:before {
+    content: "\e9f0"
+}
+
+.socicon-reload:before {
+    content: "\e90f"
+}
+
+.socicon-reply-arrow:before {
+    content: "\e9f1"
+}
+
+.socicon-icon-reply-all:before {
+    content: "\e9f2"
+}
+
+.socicon-reply:before {
+    content: "\e9f3"
+}
+
+.socicon-reply2:before {
+    content: "\e910"
+}
+
+.socicon-share-option:before {
+    content: "\e9f4"
+}
+
+.socicon-shuffle:before {
+    content: "\e911"
+}
+
+.socicon-esc:before {
+    content: "\e912"
+}
+
+.socicon-share-post-symbol:before {
+    content: "\e9f5"
+}
+
+.socicon-share-symbol:before {
+    content: "\e9f6"
+}
+
+.socicon-login:before {
+    content: "\e9f7"
+}
+
+.socicon-logout:before {
+    content: "\e9f8"
+}
+
+.socicon-sign-in:before {
+    content: "\e9f9"
+}
+
+.socicon-sign-out-option:before {
+    content: "\e9fa"
+}
+
+.socicon-04_In_alt:before {
+    content: "\e9fb"
+}
+
+.socicon-external-link-square-with-an-arrow-in-right-diagonal:before {
+    content: "\e9fc"
+}
+
+.socicon-open:before {
+    content: "\e913"
+}
+
+.socicon-external-link-symbol:before {
+    content: "\e9fd"
+}
+
+.socicon-upload:before {
+    content: "\e914"
+}
+
+.socicon-download:before {
+    content: "\e915"
+}
+
+.socicon-outbox:before {
+    content: "\e916"
+}
+
+.socicon-inbox:before {
+    content: "\e917"
+}
+
+.socicon-hand-pointing-upward:before {
+    content: "\e9fe"
+}
+
+.socicon-hand-finger-pointing-down:before {
+    content: "\e9ff"
+}
+
+.socicon-hand-pointing-to-left-direction:before {
+    content: "\ea00"
+}
+
+.socicon-finger-of-a-hand-pointing-to-right-direction:before {
+    content: "\ea01"
+}
+
+.socicon-thumbs-up-hand-symbol:before {
+    content: "\ea02"
+}
+
+.socicon-thumbs-up:before {
+    content: "\ea03"
+}
+
+.socicon-thumbs-down-silhouette:before {
+    content: "\ea04"
+}
+
+.socicon-thumb-down:before {
+    content: "\ea05"
+}
+
+.socicon-gamepad-console:before {
+    content: "\ea06"
+}
+
+.socicon-keyboard:before {
+    content: "\ea07"
+}
+
+.socicon-telephone-symbol-button:before {
+    content: "\ea08"
+}
+
+.socicon-telephone-handle-silhouette:before {
+    content: "\ea09"
+}
+
+.socicon-mobile-phone:before {
+    content: "\ea0a"
+}
+
+.socicon-computer-tablet:before {
+    content: "\ea0b"
+}
+
+.socicon-open-laptop-computer:before {
+    content: "\ea0c"
+}
+
+.socicon-desktop-monitor:before {
+    content: "\ea0d"
+}
+
+.socicon-monitor:before {
+    content: "\e918"
+}
+
+.socicon-inbox2:before {
+    content: "\ea0e"
+}
+
+.socicon-upload2:before {
+    content: "\ea0f"
+}
+
+.socicon-download-to-storage-drive:before {
+    content: "\ea10"
+}
+
+.socicon-hard-drive:before {
+    content: "\ea11"
+}
+
+.socicon-sitemap:before {
+    content: "\ea12"
+}
+
+.socicon-code-fork-symbol:before {
+    content: "\ea13"
+}
+
+.socicon-code:before {
+    content: "\ea14"
+}
+
+.socicon-server:before {
+    content: "\e919"
+}
+
+.socicon-filter-tool-black-shape:before {
+    content: "\ea15"
+}
+
+.socicon-power:before {
+    content: "\e91a"
+}
+
+.socicon-pause:before {
+    content: "\e91b"
+}
+
+.socicon-play2:before {
+    content: "\e91c"
+}
+
+.socicon-pause-symbol:before {
+    content: "\ea16"
+}
+
+.socicon-ic_pause_48px:before {
+    content: "\ea17"
+}
+
+.socicon-play-button:before {
+    content: "\ea18"
+}
+
+.socicon-rewind-button:before {
+    content: "\ea19"
+}
+
+.socicon-step-backward:before {
+    content: "\ea1a"
+}
+
+.socicon-arrowheads-pointing-to-the-left:before {
+    content: "\ea1b"
+}
+
+.socicon-forward-button:before {
+    content: "\ea1c"
+}
+
+.socicon-step-forward:before {
+    content: "\ea1d"
+}
+
+.socicon-fast-forward-arrows:before {
+    content: "\ea1e"
+}
+
+.socicon-eject-symbol:before {
+    content: "\ea1f"
+}
+
+.socicon-mute:before {
+    content: "\ea20"
+}
+
+.socicon-volume-off:before {
+    content: "\ea21"
+}
+
+.socicon-reduced-volume:before {
+    content: "\ea22"
+}
+
+.socicon-unmute:before {
+    content: "\ea23"
+}
+
+.socicon-volume-up-interface-symbol:before {
+    content: "\ea24"
+}
+
+.socicon-volume:before {
+    content: "\e91d"
+}
+
+.socicon-Microphone:before {
+    content: "\ea25"
+}
+
+.socicon-microphone-black-shape:before {
+    content: "\ea26"
+}
+
+.socicon-microphone:before {
+    content: "\e91e"
+}
+
+.socicon-microphone-off:before {
+    content: "\ea27"
+}
+
+.socicon-bell-musical-tool:before {
+    content: "\ea28"
+}
+
+.socicon-musical-bell-outline:before {
+    content: "\ea29"
+}
+
+.socicon-bell:before {
+    content: "\e91f"
+}
+
+.socicon-bull-horn-announcer:before {
+    content: "\ea2a"
+}
+
+.socicon-music-note-black-symbol:before {
+    content: "\ea2b"
+}
+
+.socicon-music-headphones:before {
+    content: "\ea2c"
+}
+
+.socicon-icon-search:before {
+    content: "\ea2d"
+}
+
+.socicon-plus-black-symbol:before {
+    content: "\ea2e"
+}
+
+.socicon-plus:before {
+    content: "\e920"
+}
+
+.socicon-plus-symbol-in-a-rounded-black-square:before {
+    content: "\ea2f"
+}
+
+.socicon-add-square-button:before {
+    content: "\ea30"
+}
+
+.socicon-plus-sign-in-a-black-circle:before {
+    content: "\ea31"
+}
+
+.socicon-circle-add:before {
+    content: "\e921"
+}
+
+.socicon-minus-symbol:before {
+    content: "\ea32"
+}
+
+.socicon-minus-sign-inside-a-black-rounded-square-shape:before {
+    content: "\ea33"
+}
+
+.socicon-minus-sign-on-a-square-outline:before {
+    content: "\ea34"
+}
+
+.socicon-minus-button:before {
+    content: "\ea35"
+}
+
+.socicon-minus-sign-inside-a-black-circle:before {
+    content: "\ea36"
+}
+
+.socicon-circle-minus:before {
+    content: "\e922"
+}
+
+.socicon-remove-symbol:before {
+    content: "\ea37"
+}
+
+.socicon-cross-24:before {
+    content: "\ea38"
+}
+
+.socicon-icon-close-round:before {
+    content: "\ea39"
+}
+
+.socicon-cross:before {
+    content: "\e923"
+}
+
+.socicon-cross-mark-on-a-black-circle-background:before {
+    content: "\ea3a"
+}
+
+.socicon-remove-button:before {
+    content: "\ea3b"
+}
+
+.socicon-circle-cross:before {
+    content: "\e924"
+}
+
+.socicon-correct-symbol:before {
+    content: "\ea3c"
+}
+
+.socicon-icon-checkmark:before {
+    content: "\ea3d"
+}
+
+.socicon-check:before {
+    content: "\e925"
+}
+
+.socicon-check-sign-in-a-rounded-black-square:before {
+    content: "\ea3e"
+}
+
+.socicon-check2:before {
+    content: "\ea3f"
+}
+
+.socicon-foursquare-button:before {
+    content: "\ea40"
+}
+
+.socicon-checked-symbol:before {
+    content: "\ea41"
+}
+
+.socicon-check-mark:before {
+    content: "\ea42"
+}
+
+.socicon-circle-check:before {
+    content: "\e926"
+}
+
+.socicon-square-shape-shadow:before {
+    content: "\ea43"
+}
+
+.socicon-rounded-black-square-shape:before {
+    content: "\ea44"
+}
+
+.socicon-check-box-empty:before {
+    content: "\ea45"
+}
+
+.socicon-circular-shape-silhouette:before {
+    content: "\ea46"
+}
+
+.socicon-bullseye:before {
+    content: "\ea47"
+}
+
+.socicon-adjust-contrast:before {
+    content: "\ea48"
+}
+
+.socicon-ban-circle-symbol:before {
+    content: "\ea49"
+}
+
+.socicon-dot-and-circle:before {
+    content: "\ea4a"
+}
+
+.socicon-circle-shape-outline:before {
+    content: "\ea4b"
+}
+
+.socicon-record:before {
+    content: "\e927"
+}
+
+.socicon-Search:before {
+    content: "\ea4c"
+}
+
+.socicon-magnifying-glass:before {
+    content: "\ea4d"
+}
+
+.socicon-search:before {
+    content: "\e928"
+}
+
+.socicon-12_Zoom_in:before {
+    content: "\ea4e"
+}
+
+.socicon-zoom-in:before {
+    content: "\ea4f"
+}
+
+.socicon-zoom-out:before {
+    content: "\ea50"
+}
+
+.socicon-zoom-in2:before {
+    content: "\e929"
+}
+
+.socicon-zoom-out2:before {
+    content: "\e92a"
+}
+
+.socicon-quote-left:before {
+    content: "\ea51"
+}
+
+.socicon-right-quotation-mark:before {
+    content: "\ea52"
+}
+
+.socicon-75:before {
+    content: "\ea53"
+}
+
+.socicon-link-symbol:before {
+    content: "\ea54"
+}
+
+.socicon-link5:before {
+    content: "\ea55"
+}
+
+.socicon-link:before {
+    content: "\ea56"
+}
+
+.socicon-link2:before {
+    content: "\ea57"
+}
+
+.socicon-unlink-symbol:before {
+    content: "\ea58"
+}
+
+.socicon-paper-clip-outline:before {
+    content: "\ea59"
+}
+
+.socicon-paper-clip:before {
+    content: "\e92b"
+}
+
+.socicon-paper-push-pin:before {
+    content: "\ea5a"
+}
+
+.socicon-tags:before {
+    content: "\ea5b"
+}
+
+.socicon-tag-black-shape:before {
+    content: "\ea5c"
+}
+
+.socicon-tag:before {
+    content: "\e92c"
+}
+
+.socicon-fluffy-cloud-silhouette:before {
+    content: "\ea5d"
+}
+
+.socicon-qr-code:before {
+    content: "\ea5e"
+}
+
+.socicon-bookmark-black-shape:before {
+    content: "\ea5f"
+}
+
+.socicon-bookmark-white:before {
+    content: "\ea60"
+}
+
+.socicon-ribbon:before {
+    content: "\e92d"
+}
+
+.socicon-editor-images-pictures-photos-collection-glyph:before {
+    content: "\ea61"
+}
+
+.socicon-icon-image:before {
+    content: "\ea62"
+}
+
+.socicon-picture:before {
+    content: "\ea63"
+}
+
+.socicon-image:before {
+    content: "\ea64"
+}
+
+.socicon-photo-camera:before {
+    content: "\ea65"
+}
+
+.socicon-camera-retro:before {
+    content: "\ea66"
+}
+
+.socicon-camera:before {
+    content: "\e92e"
+}
+
+.socicon-toggle:before {
+    content: "\e92f"
+}
+
+.socicon-film-strip-with-two-photograms:before {
+    content: "\ea67"
+}
+
+.socicon-video:before {
+    content: "\e930"
+}
+
+.socicon-battery:before {
+    content: "\e931"
+}
+
+.socicon-envelope:before {
+    content: "\ea68"
+}
+
+.socicon-envelope-of-white-paper:before {
+    content: "\ea69"
+}
+
+.socicon-mail:before {
+    content: "\e932"
+}
+
+.socicon-settings:before {
+    content: "\ea6a"
+}
+
+.socicon-cog-wheel-silhouette:before {
+    content: "\ea6b"
+}
+
+.socicon-cog:before {
+    content: "\e933"
+}
+
+.socicon-screenshot:before {
+    content: "\ea6c"
+}
+
+.socicon-location-2:before {
+    content: "\e934"
+}
+
+.socicon-comments:before {
+    content: "\ea6d"
+}
+
+.socicon-speech-bubbles-comment-option:before {
+    content: "\ea6e"
+}
+
+.socicon-Untitled-2-37:before {
+    content: "\ead9"
+}
+
+.socicon-comment-black-oval-bubble-shape:before {
+    content: "\ea6f"
+}
+
+.socicon-comment-white-oval-bubble:before {
+    content: "\ea70"
+}
+
+.socicon-stack-exchange-logo:before {
+    content: "\ea71"
+}
+
+.socicon-speech-bubble:before {
+    content: "\e935"
+}
+
+.socicon-icon-ios7-heart:before {
+    content: "\eada"
+}
+
+.socicon-heart-shape-silhouette:before {
+    content: "\ea72"
+}
+
+.socicon-heart-shape-outline:before {
+    content: "\ea73"
+}
+
+.socicon-heart:before {
+    content: "\e936"
+}
+
+.socicon-star:before {
+    content: "\ea74"
+}
+
+.socicon-star-half-empty:before {
+    content: "\ea75"
+}
+
+.socicon-half-star-shape:before {
+    content: "\ea76"
+}
+
+.socicon-star-1:before {
+    content: "\ea77"
+}
+
+.socicon-star2:before {
+    content: "\e937"
+}
+
+.socicon-padlock:before {
+    content: "\ea78"
+}
+
+.socicon-padlock-unlock:before {
+    content: "\ea79"
+}
+
+.socicon-open-padlock-silhouette:before {
+    content: "\ea7a"
+}
+
+.socicon-lock:before {
+    content: "\e938"
+}
+
+.socicon-unlock:before {
+    content: "\e939"
+}
+
+.socicon-credit-card:before {
+    content: "\ea7b"
+}
+
+.socicon-paper-bill:before {
+    content: "\ea7c"
+}
+
+.socicon-great-britain-pound:before {
+    content: "\ea7d"
+}
+
+.socicon-euro-currency-symbol:before {
+    content: "\ea7e"
+}
+
+.socicon-dollar-symbol:before {
+    content: "\ea7f"
+}
+
+.socicon-double-strikethrough-option:before {
+    content: "\ea80"
+}
+
+.socicon-yen-symbol:before {
+    content: "\ea81"
+}
+
+.socicon-turkish-lire-symbol:before {
+    content: "\ea82"
+}
+
+.socicon-rupee-indian:before {
+    content: "\ea83"
+}
+
+.socicon-letter-p-symbol:before {
+    content: "\ea84"
+}
+
+.socicon-edit-interface-sign:before {
+    content: "\ea85"
+}
+
+.socicon-icon-compose:before {
+    content: "\ea86"
+}
+
+.socicon-calendar-page-empty:before {
+    content: "\ea87"
+}
+
+.socicon-calendar-with-spring-binder-and-date-blocks:before {
+    content: "\ea88"
+}
+
+.socicon-time:before {
+    content: "\ea89"
+}
+
+.socicon-clock:before {
+    content: "\ea8a"
+}
+
+.socicon-clock2:before {
+    content: "\e93a"
+}
+
+.socicon-pie-graph:before {
+    content: "\e93b"
+}
+
+.socicon-watch:before {
+    content: "\e93c"
+}
+
+.socicon-filter:before {
+    content: "\ea8b"
+}
+
+.socicon-double-sided-eraser:before {
+    content: "\ea8c"
+}
+
+.socicon-minus:before {
+    content: "\e93d"
+}
+
+.socicon-menu:before {
+    content: "\e93e"
+}
+
+.socicon-blank-file:before {
+    content: "\ea8d"
+}
+
+.socicon-file:before {
+    content: "\e93f"
+}
+
+.socicon-file-add:before {
+    content: "\e940"
+}
+
+.socicon-file-subtract:before {
+    content: "\e941"
+}
+
+.socicon-paper:before {
+    content: "\e942"
+}
+
+.socicon-stack-2:before {
+    content: "\e943"
+}
+
+.socicon-stack:before {
+    content: "\e944"
+}
+
+.socicon-columns:before {
+    content: "\e945"
+}
+
+.socicon-grid-2:before {
+    content: "\e946"
+}
+
+.socicon-layout:before {
+    content: "\e947"
+}
+
+.socicon-grid:before {
+    content: "\e948"
+}
+
+.socicon-stop:before {
+    content: "\e949"
+}
+
+.socicon-content-right:before {
+    content: "\e94a"
+}
+
+.socicon-content-left:before {
+    content: "\e94b"
+}
+
+.socicon-paper-stack:before {
+    content: "\e94c"
+}
+
+.socicon-clipboard:before {
+    content: "\e94d"
+}
+
+.socicon-book:before {
+    content: "\e94e"
+}
+
+.socicon-folder:before {
+    content: "\e94f"
+}
+
+.socicon-box:before {
+    content: "\e950"
+}
+
+.socicon-moon:before {
+    content: "\e951"
+}
+
+.socicon-sun:before {
+    content: "\e952"
+}
+
+.socicon-loader:before {
+    content: "\e953"
+}
+
+.socicon-spinner-of-dots:before {
+    content: "\ea8e"
+}
+
+.socicon-ellipsis:before {
+    content: "\e954"
+}
+
+.socicon-align-justify:before {
+    content: "\ea8f"
+}
+
+.socicon-align-to-left:before {
+    content: "\ea90"
+}
+
+.socicon-align-to-right:before {
+    content: "\ea91"
+}
+
+.socicon-road-perspective:before {
+    content: "\ea92"
+}
+
+.socicon-bar-graph-on-a-rectangle:before {
+    content: "\ea93"
+}
+
+.socicon-book2:before {
+    content: "\ea94"
+}
+
+.socicon-briefcase:before {
+    content: "\ea95"
+}
+
+.socicon-briefcase2:before {
+    content: "\e955"
+}
+
+.socicon-bag:before {
+    content: "\e956"
+}
+
+.socicon-archive-black-box:before {
+    content: "\ea96"
+}
+
+.socicon-small-rocket-ship-silhouette:before {
+    content: "\ea97"
+}
+
+.socicon-plane:before {
+    content: "\ea98"
+}
+
+.socicon-fighter-jet-silhouette:before {
+    content: "\ea99"
+}
+
+.socicon-dashboard:before {
+    content: "\ea9a"
+}
+
+.socicon-delivery-truck-silhouette:before {
+    content: "\ea9b"
+}
+
+.socicon-building-front:before {
+    content: "\ea9c"
+}
+
+.socicon-home:before {
+    content: "\ea9d"
+}
+
+.socicon-hostpital-building:before {
+    content: "\ea9e"
+}
+
+.socicon-hotel-letter-h-sign-inside-a-black-rounded-square:before {
+    content: "\ea9f"
+}
+
+.socicon-medical-kit:before {
+    content: "\eaa0"
+}
+
+.socicon-ambulance:before {
+    content: "\eaa1"
+}
+
+.socicon-stethoscope:before {
+    content: "\eaa2"
+}
+
+.socicon-eye-open:before {
+    content: "\eaa3"
+}
+
+.socicon-eye-with-a-diagonal-line-interface-symbol-for-invisibility:before {
+    content: "\eaa4"
+}
+
+.socicon-eye:before {
+    content: "\e957"
+}
+
+.socicon-smile:before {
+    content: "\eaa5"
+}
+
+.socicon-meh-face-emoticon:before {
+    content: "\eaa6"
+}
+
+.socicon-frown:before {
+    content: "\eaa7"
+}
+
+.socicon-group-profile-users:before {
+    content: "\eaa8"
+}
+
+.socicon-man:before {
+    content: "\eaa9"
+}
+
+.socicon-female-silhouette:before {
+    content: "\eaaa"
+}
+
+.socicon-user-shape:before {
+    content: "\eaab"
+}
+
+.socicon-users:before {
+    content: "\eaac"
+}
+
+.socicon-head:before {
+    content: "\e958"
+}
+
+.socicon-user-md-symbol:before {
+    content: "\eaad"
+}
+
+.socicon-asterisk:before {
+    content: "\eaae"
+}
+
+.socicon-beaker:before {
+    content: "\eaaf"
+}
+
+.socicon-beer-jar-black-silhouette:before {
+    content: "\eab0"
+}
+
+.socicon-coffee-cup-on-a-plate-black-silhouettes:before {
+    content: "\eab1"
+}
+
+.socicon-cocktail-glass:before {
+    content: "\eab2"
+}
+
+.socicon-shopping-cart-black-shape:before {
+    content: "\eab3"
+}
+
+.socicon-icon-ios7-cart:before {
+    content: "\e959"
+}
+
+.socicon-bag-new:before {
+    content: "\e95a"
+}
+
+.socicon-trash:before {
+    content: "\eab4"
+}
+
+.socicon-trash2:before {
+    content: "\e95b"
+}
+
+.socicon-suitcase-with-white-details:before {
+    content: "\eab5"
+}
+
+.socicon-gift-box:before {
+    content: "\eab6"
+}
+
+.socicon-trophy:before {
+    content: "\eab7"
+}
+
+.socicon-shield:before {
+    content: "\eab8"
+}
+
+.socicon-umbrella-black-silhouette:before {
+    content: "\eab9"
+}
+
+.socicon-umbrella:before {
+    content: "\e95c"
+}
+
+.socicon-legal-hammer:before {
+    content: "\eaba"
+}
+
+.socicon-open-wrench-tool-silhouette:before {
+    content: "\eabb"
+}
+
+.socicon-vintage-key-outline:before {
+    content: "\eabc"
+}
+
+.socicon-fire-extinguisher:before {
+    content: "\eabd"
+}
+
+.socicon-fire-symbol:before {
+    content: "\eabe"
+}
+
+.socicon-anchor-shape:before {
+    content: "\eabf"
+}
+
+.socicon-anchor:before {
+    content: "\e95d"
+}
+
+.socicon-fork-and-knife-silhouette:before {
+    content: "\eac0"
+}
+
+.socicon-light-bulb:before {
+    content: "\eac1"
+}
+
+.socicon-cut:before {
+    content: "\eac2"
+}
+
+.socicon-drop:before {
+    content: "\e95e"
+}
+
+.socicon-lemon:before {
+    content: "\eac3"
+}
+
+.socicon-branch-with-leaves-black-shape:before {
+    content: "\eac4"
+}
+
+.socicon-plant-leaf-with-white-details:before {
+    content: "\eac5"
+}
+
+.socicon-printing-tool:before {
+    content: "\eac6"
+}
+
+.socicon-printer:before {
+    content: "\e95f"
+}
+
+.socicon-help:before {
+    content: "\e960"
+}
+
+.socicon-lightning-bolt-shadow:before {
+    content: "\eac7"
+}
+
+.socicon-signal-bars:before {
+    content: "\eac8"
+}
+
+.socicon-bar-graph:before {
+    content: "\e961"
+}
+
+.socicon-bar-graph-2:before {
+    content: "\eac9"
+}
+
+.socicon-moon-phase-outline:before {
+    content: "\eaca"
+}
+
+.socicon-tint-drop:before {
+    content: "\eacb"
+}
+
+.socicon-ticket:before {
+    content: "\eacc"
+}
+
+.socicon-flag-black-shape:before {
+    content: "\eacd"
+}
+
+.socicon-checkered-raised-flag:before {
+    content: "\eace"
+}
+
+.socicon-white-flag-symbol:before {
+    content: "\eacf"
+}
+
+.socicon-flag:before {
+    content: "\ead0"
+}
+
+.socicon-puzzle-piece-silhouette:before {
+    content: "\ead1"
+}
+
+.socicon-wheelchair:before {
+    content: "\ead2"
+}
+
+.socicon-warning-sign-on-a-triangular-background:before {
+    content: "\ead3"
+}
+
+.socicon-exclamation-sign:before {
+    content: "\ead4"
+}
+
+.socicon-exclamation:before {
+    content: "\ead5"
+}
+
+.socicon-information-button:before {
+    content: "\ead6"
+}
+
+.socicon-information-symbol:before {
+    content: "\ead7"
+}
+
+.socicon-question-mark-on-a-circular-black-background:before {
+    content: "\ead8"
+}
+
+.socicon-question-sign:before {
+    content: "\eadb"
+}
+
+.socicon-barcode:before {
+    content: "\eadc"
+}

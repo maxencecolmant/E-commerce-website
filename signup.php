@@ -42,71 +42,58 @@ if (!empty($_POST)) {
 }
 ?>
 <?php include 'includes/header.php'; ?>
-<div class="ui middle aligned center aligned grid custom-font">
-    <div class="column">
-        <h2 class="ui custom-color image header">
-            <img class="image logo-pages" src="assets/icones/logo.png" />
-            <div class="content">
-                Inscription
-            </div>
-        </h2>
-        <form class="ui large form" action="" method="POST">
-            <div class="ui stacked segment">
-                <div class="two fields">
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="first_name" placeholder="Nom" type="nom" />
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="last_name" placeholder="Prénom" type="prenom" />
-                        </div>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="dfd-socicon-users custom-icon"></i><input class="custom-font" name="pseudo" placeholder="Nom d'utilisateur" type="pseudo" />
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="dfd-socicon-envelope custom-icon"></i><input class="custom-font" name="email" placeholder="Email" type="text" />
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="dfd-socicon-padlock custom-icon"></i><input class="custom-font" name="password" placeholder="Mot de passe" type="password" />
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="dfd-socicon-check2 custom-icon"></i><input class="custom-font" name="password_c" placeholder="Confirmation" type="password" />
-                    </div>
-                </div>
-                <div class="ui checkbox">
-                  <input type="checkbox" tabindex="0" class="hidden">
-                  <label>J'ai lu et j'accepte les <a href=""> conditions générales de vente</a>.</label>
-              </div>
-              <input type="submit" value="S'inscrire" class="ui fluid large blue submit button">
-              <div class="ui message suggestion">
-                Vous avez déjà un compte ? <a href="login.php">Connexion</a>
-            </div>
-        </div>
-        <div class="ui error message"></div>
-    </form>
+
+
+<div class="container form">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 form-custom">
+      <h2 class="img-header">
+        <img class="img-logo" src="assets/icones/logo.png" />
+        <div class="content">
+          Inscription
+      </div>
+  </h2>
+  <form action="" method="POST">
+    <div class="form-group">
+        <i class="socicon-users custom-icon"></i><input class="custom-font" name="first_name" placeholder="Nom" type="nom"/>
+    </div>
+    <div class="form-group">   <i class="socicon-users custom-icon"></i><input class="custom-font" name="last_name" placeholder="Prénom" type="prenom" />
+    </div>
+    <div class="form-group">
+        <i class="socicon-users custom-icon"></i><input class="custom-font" name="pseudo" placeholder="Nom d'utilisateur" type="pseudo" />
+    </div>
+
+    <div class="form-group">
+        <i class="socicon-envelope custom-icon"></i><input class="custom-font" name="email" placeholder="Email" type="text" />
+    </div>
+    <div>
+       <i class="socicon-padlock custom-icon"></i><input class="custom-font" name="password" placeholder="Mot de passe" type="password" />
+   </div>
+   <div>
+       <i class="socicon-padlock custom-icon"></i><input class="custom-font" name="password" placeholder="Mot de passe" type="password" />
+   </div>
+
+   <div>
+    <i class="socicon-check2 custom-icon"></i><input class="custom-font" name="password_c" placeholder="Confirmation" type="password" />
+</div>
+
+<div>
+    <input type="checkbox">
+    <label>J'ai lu et j'accepte les <a href=""> conditions générales de vente</a>.</label>
+</div>
+
+<input type="submit" value="Se connecter" class="ui fluid large blue submit button">
+<div class="message suggestion">
+    Vous avez déjà un compte ? <a href="login.php">Connexion</a>
+</div>
+<div class="error message"></div>
+
+<div class="ui error message"></div>
+</form>
+</div>
 </div>
 </div>
 
-<?php include 'includes/footer.php';
-
-?>
-<script type="text/javascript">
-    $('.ui.checkbox')
-    .checkbox()
-    ;
-</script>
-
-
+<?php include 'includes/footer.php'; ?>
 
 
