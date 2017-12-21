@@ -23,7 +23,7 @@ body.colored {
 .navbar-custom {
 	background: #fff;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
-	padding: 10px 0;
+	padding: 3px 0;
 }
 .navbar-custom li, .navbar-custom a  {
 	font-weight: 600;
