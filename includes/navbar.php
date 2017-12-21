@@ -31,28 +31,27 @@
 </li>
 </ul>
 <?php if ( $session->read( 'connected' ) != null) : ?>
-  <ul class="nav navbar-nav navbar-right">
+  <ul class="nav navbar-nav navbar-right nav-custom">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Profil
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li class="dropdown-header"><?php $session->doubleGet( 'connected', 'pseudonym' ); ?>
-                </li>
-                <li>Me</li>
-                <li>Orders</li>
-                <?php if ( in_array( $session->doubleRead( 'connected', 'status' ), array('SUPER_ADMIN', 'ADMIN' ) ) ): ?>
-                    <div class="divider"></div>
-                    <a href="/panel-admin/" class="item">Panel Admin</a>
-                <?php endif; ?>
-                <li role="separator" class="divider"></li>
-                <li><a href="/logout.php">Déconnexion</a></li>
-            </ul>
-        </li>
-    </ul>
+           <i class="socicon-users custom-icon"></i>Mon compte
+           <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+            <li class="dropdown-header"><?php $session->doubleGet( 'connected', 'pseudonym' ); ?></li>
+            <li><a href=""><i class="socicon-users"></i>Profil</a></li>
+            <li><a href=""><i class="socicon-shopping-cart-black-shape"></i>Commandes</a></li>
+            <?php if ( in_array( $session->doubleRead( 'connected', 'status' ), array('SUPER_ADMIN', 'ADMIN' ) ) ): ?>
+                <div class="divider"></div>
+                <li><a href="/panel-admin/" class="item"><i class="socicon-dashboard"></i>Panel Admin</a></li>
+            <?php endif; ?>
+            <li role="separator" class="divider"></li>
+            <li><a href="/logout.php"><i class="socicon-logout"></i>Déconnexion</a></li>
+        </ul>
+    </li>
+</ul>
 </div>
 <?php else: ?>
-   <ul class="nav navbar-nav navbar-right extra-links">
+ <ul class="nav navbar-nav navbar-right extra-links">
     <li><a href="/signup.php" class="btn-like-link">Inscription</a></li>
     <li><a href="/login.php" class="btn-like-link">Connexion</a></li>
 </ul>

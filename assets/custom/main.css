@@ -278,6 +278,14 @@ h2.img-header {
 	margin-top: 20px;
 }
 
+.nav-custom li a i {
+	margin-right: 8px;
+}
+
+.dropdown-header {
+	font-size: 14px;
+}
+
 /* body, .ui , input {
 	font-family: 'Poppins', sans-serif !important;
 }
@@ -432,4 +440,4 @@ body > .grid {
 		margin-top: 0.5em;
 		font-size: 1.5em;
 	}
-} */
+	} */
