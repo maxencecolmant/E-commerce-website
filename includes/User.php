@@ -2,7 +2,7 @@
 
 class User {
 
-	private $bdd;
+	public $bdd;
 	private $session;
 	static $user = null;
 
@@ -21,34 +21,85 @@ class User {
 
 	}
 
-	public function connnect( $user_info ) {
+	public function signup() {
+		if (!empty($_POST)) {
+			if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_c'])) {
+
+				if ($_POST['password'] == $_POST['password_c']) {
+
+					$mail_exist = $this->bdd->query('SELECT email FROM users WHERE  email = :email', [':email' => htmlspecialchars($_POST['email'])])->fetch();
+
+					if (empty($mail_exist)) {
+
+						$this->bdd->query('INSERT INTO users(last_name,first_name,pseudonym, password, email, created_at) VALUES (:last_name,:first_name,:pseudonym,:password,:email, CURRENT_TIME )',
+							[
+								':last_name' => htmlspecialchars($_POST['last_name']),
+								':first_name' => htmlspecialchars($_POST['first_name']),
+								':pseudonym' => htmlspecialchars($_POST['pseudo']),
+								':password' => password_hash(htmlspecialchars($_POST['password']), PASSWORD_BCRYPT),
+								':email' => htmlspecialchars($_POST['email']),
+							]);
+						$user = $this->bdd->query('SELECT * FROM users WHERE email = :email ',
+							[
+								':email' => htmlspecialchars($_POST['email']),
+							])->fetch();
+						// add true parameter to mkdir recursively
+						mkdir("./users/user-".$user['id_user']);
+						mkdir("./users/user-".$user['id_user']."/data");
+						mkdir("./users/user-".$user['id_user']."/settings");
+						$this->connect($user);
+					} else {
+						$this->session->setFlash('error', 'Cet email est déjà utilisé !');
+					}
+				} else {
+					$this->session->setFlash('error', 'Mot de passe invalide');
+				}
+
+			} else {
+				$this->session->setFlash('error', 'Formulaire incomplet !');
+			}
+		}
+	}
+
+	public function login() {
+		if ( ! empty( $_POST ) ) {
+			if ( ! empty( $_POST['name'] ) && ! empty( $_POST['password'] ) ) {
+				$verif = $this->bdd->query( 'SELECT password from users WHERE pseudonym = :name OR  email = :name', [ ':name' => htmlspecialchars( $_POST['name'] ) ] )->fetch();
+				if ( ! empty( $verif ) ) {
+					if ( password_verify( htmlspecialchars( $_POST['password'] ), $verif['password'] ) ) {
+
+						$user = $this->bdd->query( 'SELECT * from users WHERE (pseudonym = :name OR email = :name ) AND password = :password',
+							[
+								':name'     => htmlspecialchars( $_POST['name'] ),
+								':password' => $verif['password'],
+							] )->fetch();
+
+						if ( ! empty( $user ) ) {
+							$this->connect( $user );
+						} else {
+							$this->session->setFlash( 'error', 'Identifiants Incorrect !' );
+						}
+					}
+				} else {
+					$this->session->setFlash( 'error', 'Identifiants Incorrect !' );
+				}
+			} else {
+				$this->session->setFlash( 'error', 'Formulaire incomplet ou vide !' );
+			}
+		}
+	}
+
+	public function connect( $user_info ) {
 		$this->session->write( 'connected', $user_info );
-		$this->bdd->query( 'UPDATE users SET last_connection = CURRENT_TIME WHERE id_user=:id', [ ':id' => $this->doubleRead( 'connected', 'id_user' ) ] );
+		$this->bdd->query( 'UPDATE users SET last_connection = CURRENT_TIME WHERE id_user=:id', [ ':id' => $this->session->doubleRead( 'connected', 'id_user' ) ] );
 		// change to header("Location:/index.php"); if necessary
 		header( "Location:/index.php" );
 	}
 
-	public function getUsers() {
-		$users = $this->bdd->query( 'SELECT `id_user`, `last_name`, `first_name`, `pseudonym`, `email`, `img_user_profile`, `created_at`, `last_connection`, `status` FROM `users`' )->fetchAll();
-
-		foreach ( $users as list( $id_user, $last_name, $first_name, $pseudonym, $email, $img_usr_profile, $created_at, $last_connection, $status ) ) {
-			echo '<tr>
-                            <td>' . $id_user . '</td>
-                            <td>' . $last_name . '</td>
-                            <td>' . $first_name . '</td>
-                            <td>' . $pseudonym . '</td>
-                            <td>' . $email . '</td>
-                            <td>' . $img_usr_profile . '</td>
-                            <td>' . $created_at . '</td>
-                            <td>' . $last_connection . '</td>
-                            <td>' . $status . '</td>
-                            <td>
-                            <a class="btn-primary" href="?id=' . $id_user . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
-                            <a class="btn-warning" href="?id=' . $id_user . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
-                            <a class="btn-danger" href="?id=' . $id_user . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
-                            </td>
-                        </tr>';
-		}
+	public function logout() {
+		$this->session->delete('connected');
+		header("Location: /index.php");
+		$this->session->setFlash( 'info', 'Vous avez bien été déconnecté !' );
 	}
 
 	public function actionUser() {

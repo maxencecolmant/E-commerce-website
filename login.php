@@ -4,31 +4,7 @@ include_once "includes/Session.php";
 include_once "includes/Util.php";
 include_once "includes/User.php";
 
-if ( ! empty( $_POST ) ) {
-	if ( ! empty( $_POST['name'] ) && ! empty( $_POST['password'] ) ) {
-		$verif = $bdd->query( 'SELECT password from users WHERE pseudonym = :name OR  email = :name', [ ':name' => htmlspecialchars( $_POST['name'] ) ] )->fetch();
-		if ( ! empty( $verif ) ) {
-			if ( password_verify( htmlspecialchars( $_POST['password'] ), $verif['password'] ) ) {
-
-				$user = $bdd->query( 'SELECT * from users WHERE (pseudonym = :name OR email = :name ) AND password = :password',
-					[
-						':name'     => htmlspecialchars( $_POST['name'] ),
-						':password' => $verif['password'],
-					] )->fetch();
-
-				if ( ! empty( $user ) ) {
-					$fct_user->connnect( $user, $bdd );
-				} else {
-					$session->setFlash( 'error', 'Identifiants Incorrect !' );
-				}
-			}
-		} else {
-			$session->setFlash( 'error', 'Identifiants Incorrect !' );
-		}
-	} else {
-		$session->setFlash( 'error', 'Formulaire incomplet ou vide !' );
-	}
-}
+$fct_user->login();
 ?>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php' ?>
