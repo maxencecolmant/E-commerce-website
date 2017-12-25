@@ -14,9 +14,9 @@
             <div class="widget col-md-6 col-lg-3">
                 <h2>Liens Utiles</h2>
                 <ul>
-                    <li><a href="">Accueil</a></li>
+                    <li><a href="/">Accueil</a></li>
                     <li><a href="">Dernières offres</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="/contact.php">Contact</a></li>
                 </ul>
             </div>
             <div class="widget col-md-6 col-lg-3">
@@ -30,7 +30,7 @@
             <div class="widget col-md-6 col-lg-3">
                 <h2>Mieux nous connaître</h2>
                 <ul>
-                    <li class="border-none"><a href="">Qui sommes nous ?</a></li>
+                    <li class="border-none"><a href="/about-us.php">Qui sommes nous ?</a></li>
                     <li class="border-none"><a href="">Conditions générales de vente</a></li>
                     <li class="border-none"><a href="">Foire Aux Questions</a></li>
                 </ul>
@@ -49,7 +49,7 @@
                     <img src="assets/payment-icons/mastercard.png" width="50px" alt="">
                     <img src="assets/payment-icons/paypal.png" width="50px" alt="">
                     <img src="assets/payment-icons/shopify.png" width="50px" alt="">
-                      <img src="assets/payment-icons/electron.png" width="50px" alt="">
+                    <img src="assets/payment-icons/electron.png" width="50px" alt="">
                 </div>
             </div>
         </div>
