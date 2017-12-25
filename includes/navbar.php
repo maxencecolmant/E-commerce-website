@@ -21,7 +21,7 @@
         <li></li>
     </ul>
 </li>
-<li><a href="contact.php">Contact</a></li>
+<li><a href="../Form-contact">Contact</a></li>
 <li class="search-nav">
   <div class="navbar-form navbar-left" role="search">
     <div class="form-group">
@@ -42,7 +42,7 @@
             <li><a href=""><i class="socicon-shopping-cart-black-shape"></i>Commandes</a></li>
             <?php if ( in_array( $session->doubleRead( 'connected', 'status' ), array('SUPER_ADMIN', 'ADMIN' ) ) ): ?>
                 <div class="divider"></div>
-                <li><a href="/panel-admin/" class="item"><i class="socicon-dashboard"></i>Panel Admin</a></li>
+                <li><a href="../Panel-Admin/" class="item"><i class="socicon-dashboard"></i>Panel Admin</a></li>
             <?php endif; ?>
             <li role="separator" class="divider"></li>
             <li><a href="/logout.php"><i class="socicon-logout"></i>Déconnexion</a></li>
@@ -52,8 +52,8 @@
 </div>
 <?php else: ?>
  <ul class="nav navbar-nav navbar-right extra-links">
-    <li><a href="/signup.php" class="btn-like-link-signin">Inscription</a></li>
-    <li><a href="/login.php" class="btn-like-link-signup">Connexion</a></li>
+    <li><a href="../signup.php" class="btn-like-link-signin">Inscription</a></li>
+    <li><a href="../login.php" class="btn-like-link-signup">Connexion</a></li>
 </ul>
 <?php endif; ?>
 </div>
