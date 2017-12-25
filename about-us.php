@@ -62,7 +62,9 @@ include 'includes/navbar.php';
 							Laurent Panek
 						</div>
 						<div class="job">
-							Développeur PHP </br> Sécurité Web
+							Développeur PHP 
+							<br> 
+							Sécurité Web
 						</div>
 						<div class="bio">
 							Bonbon topping cookie jelly-o icing brownie candy halvah bonbon. Carrot cake biscuit tiramisu cheesecake fruitcake wafer.
@@ -79,10 +81,7 @@ include 'includes/navbar.php';
 									<a href=""><i class="socicon-github"></i></a>
 								</li>
 							</ul>
-							
-							
 						</div>
-						
 					</div>
 				</div>
 			</div>
@@ -96,7 +95,9 @@ include 'includes/navbar.php';
 							Abdessalam Benharira
 						</div>
 						<div class="job">
-							Développeur PHP </br> Web Designer
+							Développeur PHP 
+							<br> 
+							Web Designer
 						</div>
 						<div class="bio">
 							Bonbon topping cookie jelly-o icing brownie candy halvah bonbon. Carrot cake biscuit tiramisu cheesecake fruitcake wafer.
@@ -113,11 +114,9 @@ include 'includes/navbar.php';
 									<a href=""><i class="socicon-github"></i></a>
 								</li>
 							</ul>
-							
 						</div>
-						
 					</div>
-				</div>	
+				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="main-content">
@@ -129,7 +128,9 @@ include 'includes/navbar.php';
 							Maxence Colmant
 						</div>
 						<div class="job">
-							Développeur PHP </br> Chef de projet
+							Développeur PHP 
+							<br> 
+							Chef de projet
 						</div>
 						<div class="bio">
 							Bonbon topping cookie jelly-o icing brownie candy halvah bonbon. Carrot cake biscuit tiramisu cheesecake fruitcake wafer.
@@ -146,10 +147,7 @@ include 'includes/navbar.php';
 									<a href=""><i class="socicon-github"></i></a>
 								</li>
 							</ul>
-							
-							
 						</div>
-						
 					</div>
 				</div>
 			</div>
