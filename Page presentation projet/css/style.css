@@ -1305,7 +1305,7 @@ a.screen {
 img.screen,
 a.screen img,
 .owl-carousel .owl-item img.screen {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
 }
 
