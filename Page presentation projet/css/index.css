@@ -1,0 +1,20 @@
+#nav-fluid-menu-social .nav-bg {
+    opacity:0.95;
+}#header-slogan-btn-2 {
+	background: linear-gradient(135deg, #6dd1f3, #8afaf8);
+    background: -webkit-linear-gradient(315deg, #6dd1f3, #8afaf8);
+}
+
+#header-slogan-btn-2 .bg {
+    background-image: url('../images/bg-pattern-2.png');
+	background-size: auto 80px;
+	-webkit-background-size: auto 80px;
+	background-repeat: repeat-y;
+	-webkit-background-repeat: repeat-y;
+	background-position: center right;
+	opacity: 0.9;
+}#team-3col-2 {
+    background: #222222;
+}#footer-center-social-logo {
+    background: #222222;
+}
