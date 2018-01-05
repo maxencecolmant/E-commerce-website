@@ -58,12 +58,5 @@
   <?php endif; ?>
 </div>
 </nav>
-<?php
-if (Session::getInstance()->hasFlashes()) {
-	foreach (Session::getInstance()->getFlashes() as $key => $values): ?>
-  <script type="text/javascript">
-    setTimeout(function () { swal(" <?php echo $key; ?>!"," <?php foreach ($values as $value) : ?><?php echo $value; ?> <?php endforeach; ?>","<?php echo $key; ?>");});</script>
-  <?php endforeach;
-} ?>
 
 
