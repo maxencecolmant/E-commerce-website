@@ -1,5 +1,8 @@
 <?php
 
+require_once "init.php";
+require_once "Session.php";
+
 class User
 {
     

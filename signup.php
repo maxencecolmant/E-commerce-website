@@ -1,12 +1,5 @@
-<?php
-include_once "includes/Session.php";
-include_once "includes/init.php";
-include_once "includes/Util.php";
-include_once "includes/User.php";
-
-$fct_user->signup();
-?>
 <?php include 'includes/header.php'; ?>
+<?php $fct_user->signup(); ?>
 <?php include 'includes/navbar.php' ?>
 
 <div class="container form">
