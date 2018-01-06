@@ -38,11 +38,11 @@ class User
                     
                     if (empty($mail_exist)) {
                         
-                        $this->bdd->query('INSERT INTO users(last_name,first_name,pseudonym, password, email, created_at) VALUES (:last_name,:first_name,:pseudonym,:password,:email, CURRENT_TIME )',
+                        $this->bdd->query('INSERT INTO users(last_name,first_name,username, password, email, created_at) VALUES (:last_name,:first_name,:username,:password,:email, CURRENT_TIME )',
                             [
                                 ':last_name' => htmlspecialchars($_POST['last_name']),
                                 ':first_name' => htmlspecialchars($_POST['first_name']),
-                                ':pseudonym' => htmlspecialchars($_POST['pseudo']),
+                                ':username' => htmlspecialchars($_POST['pseudo']),
                                 ':password' => password_hash(htmlspecialchars($_POST['password']), PASSWORD_BCRYPT),
                                 ':email' => htmlspecialchars($_POST['email']),
                             ]);
@@ -96,11 +96,11 @@ class User
     {
         if (!empty($_POST)) {
             if (!empty($_POST['name']) && !empty($_POST['password'])) {
-                $verif = $this->bdd->query('SELECT password from users WHERE pseudonym = :name OR  email = :name', [':name' => htmlspecialchars($_POST['name'])])->fetch();
+                $verif = $this->bdd->query('SELECT password from users WHERE username = :name OR  email = :name', [':name' => htmlspecialchars($_POST['name'])])->fetch();
                 if (!empty($verif)) {
                     if (password_verify(htmlspecialchars($_POST['password']), $verif['password'])) {
                         
-                        $user = $this->bdd->query('SELECT * from users WHERE (pseudonym = :name OR email = :name ) AND password = :password',
+                        $user = $this->bdd->query('SELECT * from users WHERE (username = :name OR email = :name ) AND password = :password',
                             [
                                 ':name' => htmlspecialchars($_POST['name']),
                                 ':password' => $verif['password'],

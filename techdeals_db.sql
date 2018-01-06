@@ -91,7 +91,7 @@ CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `last_name` varchar(25) DEFAULT NULL,
   `first_name` varchar(25) DEFAULT NULL,
-  `pseudonym` varchar(50) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
   `email` varchar(250) DEFAULT NULL,
   `password` varchar(250) DEFAULT NULL,
   `img_user_profile` varchar(250) DEFAULT NULL,

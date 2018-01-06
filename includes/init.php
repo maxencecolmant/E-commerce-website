@@ -47,19 +47,19 @@ class Database {
 	}
 
 	public function getUsers() {
-		$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `pseudonym`, `email`, `img_user_profile`, `created_at`, `last_connection`, `status` FROM `users`' )->fetchAll();
+		$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `img_user_profile`, `created_at`, `last_connection`, `status` FROM `users`' )->fetchAll();
 		
 		foreach ( $users as list( $id_user, $last_name, $first_name, $pseudonym, $email, $img_usr_profile, $created_at, $last_connection, $status ) ) {
 			echo '<tr id="'.$id_user.'">
-                            <td>' . $id_user . '</td>
-                            <td class="possible">' . $last_name . '</td>
-                            <td class="possible">' . $first_name . '</td>
-                            <td class="possible">' . $pseudonym . '</td>
-                            <td class="possible">' . $email . '</td>
-                            <td class="possible">' . $img_usr_profile . '</td>
+                            <td name="id_user">' . $id_user . '</td>
+                            <td name="last_name" class="possible">' . $last_name . '</td>
+                            <td name="first_name" class="possible">' . $first_name . '</td>
+                            <td name="username" class="possible">' . $pseudonym . '</td>
+                            <td name="email" class="possible">' . $email . '</td>
+                            <td name="img_user_profile" class="possible">' . $img_usr_profile . '</td>
                             <td>' . $created_at . '</td>
                             <td>' . $last_connection . '</td>
-                            <td>' . $status . '</td>
+                            <td name="status">' . $status . '</td>
                             <td>
                             <a id="'.$id_user.'" class="modify btn-primary" href="?id=' . $id_user . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
                             <a id="repare" class="btn-warning" href="?id=' . $id_user . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>

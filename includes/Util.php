@@ -32,9 +32,7 @@ class Util
                         <script type="text/javascript">
                             let data = <?php echo json_encode($value); ?>;
                             setTimeout(function () {
-                                swal(data)
-                                    .then((value) => {
-                                        console.log(value);
+                                swal(data).then((value) => {
                                         switch (value) {
                                             case true :
                                                 if (data.buttons != null) {
