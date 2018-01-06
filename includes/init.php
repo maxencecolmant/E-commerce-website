@@ -48,22 +48,22 @@ class Database {
 
 	public function getUsers() {
 		$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `pseudonym`, `email`, `img_user_profile`, `created_at`, `last_connection`, `status` FROM `users`' )->fetchAll();
-
+		
 		foreach ( $users as list( $id_user, $last_name, $first_name, $pseudonym, $email, $img_usr_profile, $created_at, $last_connection, $status ) ) {
-			echo '<tr>
+			echo '<tr id="'.$id_user.'">
                             <td>' . $id_user . '</td>
-                            <td>' . $last_name . '</td>
-                            <td>' . $first_name . '</td>
-                            <td>' . $pseudonym . '</td>
-                            <td>' . $email . '</td>
-                            <td>' . $img_usr_profile . '</td>
+                            <td class="possible">' . $last_name . '</td>
+                            <td class="possible">' . $first_name . '</td>
+                            <td class="possible">' . $pseudonym . '</td>
+                            <td class="possible">' . $email . '</td>
+                            <td class="possible">' . $img_usr_profile . '</td>
                             <td>' . $created_at . '</td>
                             <td>' . $last_connection . '</td>
                             <td>' . $status . '</td>
                             <td>
-                            <a class="btn-primary" href="?id=' . $id_user . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
-                            <a class="btn-warning" href="?id=' . $id_user . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
-                            <a class="btn-danger" href="?id=' . $id_user . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
+                            <a id="'.$id_user.'" class="modify btn-primary" href="?id=' . $id_user . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
+                            <a id="repare" class="btn-warning" href="?id=' . $id_user . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
+                            <a id="delete" class="btn-danger" href="?id=' . $id_user . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>';
 		}
