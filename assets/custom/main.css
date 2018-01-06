@@ -101,9 +101,18 @@ h2.img-header {
 	border-radius: 5px 5px 4px 4px;
 }
 
-.form-control {
+.form-control,
+.form-control.contact-email {
 	height: 40px !important;
 	padding: 6px 12px;
+	border-radius: 4px !important;
+	font-size: 14px !important;
+}
+
+.form-control.contact-email,
+.form-control.contact-subject {
+	height: 40px !important;
+	padding: 6px 12px !important;
 	border-radius: 4px !important;
 	font-size: 14px !important;
 }
@@ -117,6 +126,10 @@ h2.img-header {
 
 .form-control.none {
 	height: auto !important;
+}
+
+label.error {
+	color: #ea1616 !important;
 }
 
 li.search-nav {
