@@ -21,7 +21,7 @@
             <li></li>
           </ul>
         </li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="/contact-us.php">Contact</a></li>
         <li class="search-nav">
           <div class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -30,17 +30,17 @@
           </div>
         </li>
       </ul>
-      <?php if ( $session->read( 'connected' ) != null) : ?>
+      <?php if ($session->read('connected') != null) : ?>
         <ul class="nav navbar-nav navbar-right nav-custom">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
              <i class="socicon-users custom-icon"></i>Mon compte
              <span class="caret"></span></a>
              <ul class="dropdown-menu">
-              <li class="dropdown-header"><?php $session->doubleGet( 'connected', 'pseudonym' ); ?></li>
+              <li class="dropdown-header"><?php $session->doubleGet('connected', 'pseudonym'); ?></li>
               <li><a href=""><i class="socicon-users"></i>Profil</a></li>
               <li><a href=""><i class="socicon-shopping-cart-black-shape"></i>Commandes</a></li>
-              <?php if ( in_array( $session->doubleRead( 'connected', 'status' ), array('SUPER_ADMIN', 'ADMIN' ) ) ): ?>
+              <?php if (in_array($session->doubleRead('connected', 'status'), array('SUPER_ADMIN', 'ADMIN'))) : ?>
                 <div class="divider"></div>
                 <li><a href="/panel-admin/" class="item"><i class="socicon-dashboard"></i>Panel Admin</a></li>
               <?php endif; ?>
@@ -48,13 +48,29 @@
               <li><a href="/logout.php"><i class="socicon-logout"></i>Déconnexion</a></li>
             </ul>
           </li>
+          <li class="cart">
+          <a href="#">
+             <i class="socicon-shopping-cart-black-shape custom-icon"></i>Panier</a>
+          </li>
         </ul>
       </div>
-    <?php else: ?>
-     <ul class="nav navbar-nav navbar-right extra-links">
-      <li><a href="../signup.php" class="btn-like-link-signin">Inscription</a></li>
-      <li><a href="../login.php" class="btn-like-link-signup">Connexion</a></li>
-    </ul>
+    <?php else : ?>
+    <ul class="nav navbar-nav navbar-right nav-custom">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+             <i class="socicon-users custom-icon"></i>Mon compte
+             <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+             <li><a href="../signup.php" class="">  <i class="socicon-add-square-button"></i> Inscription</a></li>
+          <li><a href="../login.php" class=""><i class="socicon-login"></i> Connexion</a></li>
+            </ul>
+          </li>
+          <li class="cart">
+          <a href="#">
+             <i class="socicon-shopping-cart-black-shape custom-icon"></i>Panier</a>
+          </li>
+   </ul>
+
   <?php endif; ?>
 </div>
 </nav>
