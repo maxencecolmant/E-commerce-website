@@ -3,7 +3,6 @@ include '../includes/User.php';
 
 if ( !empty( $_POST ) ) {
 	$data     = array();
-	var_dump( $old_data );
 	$id = intval( $_POST['id'] );
 	$old_data = $bdd->query( 'SELECT last_name, first_name, username, email, img_user_profile, status FROM users WHERE id_user = :id', [
 		':id' => $id,

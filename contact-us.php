@@ -2,43 +2,20 @@
 include 'includes/header.php';
 include 'includes/navbar.php';
 
+if ( ! empty( $_POST ) ) {
+	if ( ! empty( $_POST['email'] ) && Util::isEmail( $_POST['email'] ) && ! empty( $_POST['subject'] ) && ! empty( $_POST['message'] ) ) {
 
-function isEmail($mail)
-{
-	return filter_var($mail, FILTER_VALIDATE_EMAIL);
-}
-
-if (!empty($_POST)) {
-	if (!empty($_POST['email']) && isEmail($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message'])) {
-
-		function get_ip()
-		{
-			if (isset($_SERVER['HTTP_CLIENT_IP'])) {
-				return $_SERVER['HTTP_CLIENT_IP'];
-			} elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-				return $_SERVER['HTTP_X_FORWARDED_FOR'];
-			} else {
-				return (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '');
-			}
-		}
-		function get_user()
-		{
-			if (isset($_SERVER['HTTP_USER_AGENT'])) {
-				return $_SERVER['HTTP_USER_AGENT'];
-			}
-		}
-		$email = htmlspecialchars($_POST['email']);
-		$message = htmlspecialchars("Adresse IP: " . get_ip() . "\r\nUser-Agent: " . get_user() . "\r\nEmail: " . $email . "\r \n" . $_POST['message'] . "\r\n");
-		$to = "contact@techdeals.com";
+		$email   = htmlspecialchars( $_POST['email'] );
+		$message = htmlspecialchars( "Adresse IP: " . Util::get_ip() . "\r\nUser-Agent: " . Util::get_user() . "\r\nEmail: " . $email . "\r \n" . $_POST['message'] . "\r\n" );
+		$to      = "contact@techdeals.com";
 		$headers = "From: <$email>" . "\r\n";
 		$subject = "Contact TechDeals :" . $_POST['subject'];
-		mail($to, $subject, $message, $headers);
+		mail( $to, $subject, $message, $headers );
 	}
 }
 ?>
 <div class="container form">
-	<div class="col-md-6 col-md-offset-3 form-custom">
-
+    <div class="col-md-6 col-md-offset-3 form-custom">
 		<div class="">
 			<h2 class="img-header">
 				<img class="img-logo" src="assets/icones/logo.png"/>
@@ -60,15 +37,12 @@ if (!empty($_POST)) {
                     <div id="forMessage" class="form-group">
 						<textarea id="message" class="contact-message form-control none" rows="8" placeholder="Message" name="message"></textarea>
 						<label id="message-error" class="error" for="message"></label>
+
                     </div>
-	
-					<div class="text-center submit-button">
-						<input id="submit" type="submit" class="btn-custom bttn-jelly bttn-md" value="Envoyer"/>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 <?php include 'includes/footer.php'; ?>

@@ -11,11 +11,10 @@
 #### Panel-Admin
 
 - Voir l'agencement de l'index du panel-admin
+- Faire des fonctions/objet dans get_form pour pouvoir adapter en fonctio ndu type de donné
 - Users :
 
     * Ajouter un bouton pour ajouter un utilisateur / qui ajoute une ligne editable
-    * Ajouter un test dans le js pour eviter les rechargement inutile
-    * Ajouter un bouton annuler lors de la modification
     * Ajouter la modification d'un status en fonction de l'utilisateur courant
 
 - Category et Product :

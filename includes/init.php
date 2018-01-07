@@ -48,9 +48,9 @@ class Database {
 
 	public function getUsers() {
 		$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `img_user_profile`, `created_at`, `last_connection`, `status` FROM `users`' )->fetchAll();
-		
+
 		foreach ( $users as list( $id_user, $last_name, $first_name, $pseudonym, $email, $img_usr_profile, $created_at, $last_connection, $status ) ) {
-			echo '<tr id="'.$id_user.'">
+			echo '<tr id="' . $id_user . '">
                             <td name="id_user">' . $id_user . '</td>
                             <td name="last_name" class="possible">' . $last_name . '</td>
                             <td name="first_name" class="possible">' . $first_name . '</td>
@@ -61,7 +61,10 @@ class Database {
                             <td>' . $last_connection . '</td>
                             <td name="status">' . $status . '</td>
                             <td>
-                            <a id="'.$id_user.'" class="modify btn-primary" href="?id=' . $id_user . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
+                            <span id="' . $id_user . '">
+                            <a id="modify-' . $id_user . '" class="modify btn-primary" href="" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
+                            <a id="cancel-' . $id_user . '" class="cancelMod btn-danger" href="" title="Annuler" hidden="true"><i class="fa fa-fw fa-close" aria-hidden="true"></i></a>
+                            </span>
                             <a id="repare" class="btn-warning" href="?id=' . $id_user . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
                             <a id="delete" class="btn-danger" href="?id=' . $id_user . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
                             </td>
