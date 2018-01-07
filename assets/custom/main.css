@@ -132,6 +132,11 @@ label.error {
 	color: #ea1616 !important;
 }
 
+.form .input-group.has_error i.custom-icon,
+.form .form-group.has_error i.custom-icon {
+	height: 60% !important;
+}
+
 li.search-nav {
 	padding: 5px 0!important;
 }

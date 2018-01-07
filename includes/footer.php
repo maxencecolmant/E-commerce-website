@@ -57,8 +57,10 @@
 </footer>
 <?php Util::set_previous_alert(); ?>
 <?php Util::get_alert(); ?>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="assets/custom/bootstrap/bootstrap.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/assets/custom/validation_form.js"></script>
+<script src="/assets/custom/main.js"></script>
 </body>
 </html>

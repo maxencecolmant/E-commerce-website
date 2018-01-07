@@ -47,18 +47,18 @@ if (!empty($_POST)) {
 				</div>
 			</h2>
 			<div class="contact-form">
-				<form class="form" id="mainForm" method="POST">
-					<div class="form-group">
-						<input id="email" type="email" class="contact-email form-control" placeholder="Email" name="email" required="">
+				<form class="form" id="mainForm" method="POST" name="contactForm">
+					<div id="forEmail" class="form-group">
+						<input id="email" type="email" class="contact-email form-control" placeholder="Email" name="email" >
 						<label id="email-error" class="error" for="email"></label>
 					</div>
-					<div class="form-group">
-						<input id="subject" type="text" class="contact-subject form-control" placeholder="Sujet" name="subject" required="">
+					<div id="forSubject" class="form-group">
+						<input id="subject" type="text" class="contact-subject form-control" placeholder="Sujet" name="subject">
 						<label id="subject-error" class="error" for="subject"></label>
                     </div>
                     
-                    <div class="form-group">
-						<textarea id="message" class="contact-message form-control none" rows="8" placeholder="Message" name="message" required=""></textarea>
+                    <div id="forMessage" class="form-group">
+						<textarea id="message" class="contact-message form-control none" rows="8" placeholder="Message" name="message"></textarea>
 						<label id="message-error" class="error" for="message"></label>
                     </div>
 	
@@ -72,4 +72,3 @@ if (!empty($_POST)) {
 </div>
 </div>
 <?php include 'includes/footer.php'; ?>
-<script src="/assets/custom/contact_form.js"></script>

@@ -11,15 +11,17 @@
                 </div>
 
             </h2>
-            <form class="form" action="" method="POST">
-                <div class="input-group">
+            <form id="mainForm" class="form" action="" method="POST" name="loginForm">
+                <div id="forName" class="input-group">
                     <i class="socicon-users custom-icon"></i>
                     <input class="custom-font form-control" name="name" placeholder="Nom d'utilisateur ou E-mail"
                            type="text"/>
+                           <label id="name-error" class="error" for="name"></label>
                 </div>
-                <div class="input-group">
+                <div id="forPassword" class="input-group">
                     <i class="socicon-padlock custom-icon"></i>
                     <input class="custom-font form-control" name="password" placeholder="Mot de passe" type="password"/>
+                    <label id="password-error" class="error" for="password"></label>
                 </div>
                 <div class="user-actions">
                     <div class="checkbox checkbox-circle keep-connected">
