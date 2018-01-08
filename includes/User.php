@@ -2,6 +2,7 @@
 
 require_once "init.php";
 require_once "Session.php";
+require_once "Validator.php";
 
 class User
 {
@@ -9,12 +10,14 @@ class User
     static $user = null;
     public $bdd;
     private $session;
+    private $validator;
     
     public function __construct ($bdd, $session)
     {
         
         $this->bdd = $bdd;
         $this->session = $session;
+        $this->validator = new Validator($this->session);
         
     }
     
@@ -30,55 +33,82 @@ class User
     public function signup ()
     {
         if (!empty($_POST)) {
-            if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_c'])) {
+            $this->validator->setData($_POST);
+            if (!$this->validator->hasEmptyFields()) {
                 
-                if ($_POST['password'] == $_POST['password_c']) {
+                if ($this->validator->isAlphaNum('last_name') && $this->validator->isAlphaNum('first_name') && $this->validator->isAlphaNum('username')) {
                     
-                    $mail_exist = $this->bdd->query('SELECT email FROM users WHERE  email = :email', [':email' => htmlspecialchars($_POST['email'])])->fetch();
-                    
-                    if (empty($mail_exist)) {
+                    if ($this->validator->isConfirmed('password')) {
                         
-                        $this->bdd->query('INSERT INTO users(last_name,first_name,username, password, email, created_at) VALUES (:last_name,:first_name,:username,:password,:email, CURRENT_TIME )',
-                            [
-                                ':last_name' => htmlspecialchars($_POST['last_name']),
-                                ':first_name' => htmlspecialchars($_POST['first_name']),
-                                ':username' => htmlspecialchars($_POST['pseudo']),
-                                ':password' => password_hash(htmlspecialchars($_POST['password']), PASSWORD_BCRYPT),
-                                ':email' => htmlspecialchars($_POST['email']),
-                            ]);
-                        $user = $this->bdd->query('SELECT * FROM users WHERE email = :email ',
-                            [
-                                ':email' => htmlspecialchars($_POST['email']),
-                            ])->fetch();
-                        // add true parameter to mkdir recursively
-                        mkdir("./users/user-" . $user['id_user']);
-                        mkdir("./users/user-" . $user['id_user'] . "/data");
-                        mkdir("./users/user-" . $user['id_user'] . "/settings");
-                        $this->connect($user);
+                        //$mail_exist = $this->bdd->query('SELECT email FROM users WHERE  email = :email', [':email' => htmlspecialchars($_POST['email'])])->fetch();
+                        
+                        if ($this->validator->isEmail('email')) {
+                            if ($this->validator->isUnique('email', $this->bdd, 'users')) {
+                                
+                                $this->bdd->query('INSERT INTO users(last_name,first_name,username, password, email, created_at) VALUES (:last_name,:first_name,:username,:password,:email, CURRENT_TIME )',
+                                    [
+                                        ':last_name' => htmlspecialchars($_POST['last_name']),
+                                        ':first_name' => htmlspecialchars($_POST['first_name']),
+                                        ':username' => htmlspecialchars($_POST['username']),
+                                        ':password' => password_hash(htmlspecialchars($_POST['password']), PASSWORD_BCRYPT),
+                                        ':email' => htmlspecialchars($_POST['email']),
+                                    ]);
+                                $user = $this->bdd->query('SELECT * FROM users WHERE email = :email ',
+                                    [
+                                        ':email' => htmlspecialchars($_POST['email']),
+                                    ])->fetch(PDO::FETCH_ASSOC);
+                                // add true parameter to mkdir recursively
+                                mkdir("./users/user-" . $user['id_user']);
+                                mkdir("./users/user-" . $user['id_user'] . "/data");
+                                mkdir("./users/user-" . $user['id_user'] . "/settings");
+                                $this->connect($user);
+                            } else {
+                                /*
+                                $args = array(
+                                    'title' => 'Erreur !',
+                                    'text' => 'Cet email est déjà utilisé !',
+                                    'icon' => 'error',
+                                );
+                                $this->session->setFlash('sweet_alert', 'error', $args);
+                                */
+                                $this->validator->showErrors();
+                            }
+                        } else {
+                            $this->validator->showErrors();
+                        }
                     } else {
+                        /*
                         $args = array(
                             'title' => 'Erreur !',
-                            'text' => 'Cet email est déjà utilisé !',
+                            'text' => 'Mot de passe invalide !',
                             'icon' => 'error',
                         );
                         $this->session->setFlash('sweet_alert', 'error', $args);
+                        */
+                        $this->validator->showErrors();
                     }
                 } else {
+                    /*
                     $args = array(
                         'title' => 'Erreur !',
                         'text' => 'Mot de passe invalide !',
                         'icon' => 'error',
                     );
-                    $this->session->setFlash('sweet_alert', 'error', $args);
+                    
+                    $this->session->setFlash('default', 'error', $args);
+                    */
+                    $this->validator->showErrors();
                 }
-                
             } else {
+                /*
                 $args = array(
                     'title' => 'Erreur !',
-                    'text' => 'Formulaire imcomplet !',
+                    'text' => 'Champ invalide !',
                     'icon' => 'error',
                 );
                 $this->session->setFlash('sweet_alert', 'error', $args);
+                */
+                $this->validator->showErrors();
             }
         }
     }
@@ -95,7 +125,8 @@ class User
     public function login ()
     {
         if (!empty($_POST)) {
-            if (!empty($_POST['name']) && !empty($_POST['password'])) {
+            $this->validator->setData($_POST);
+            if (!$this->validator->hasEmptyFields()) {
                 $verif = $this->bdd->query('SELECT password from users WHERE username = :name OR  email = :name', [':name' => htmlspecialchars($_POST['name'])])->fetch();
                 if (!empty($verif)) {
                     if (password_verify(htmlspecialchars($_POST['password']), $verif['password'])) {
@@ -104,34 +135,45 @@ class User
                             [
                                 ':name' => htmlspecialchars($_POST['name']),
                                 ':password' => $verif['password'],
-                            ])->fetch();
+                            ])->fetch(PDO::FETCH_ASSOC);
                         
                         if (!empty($user)) {
                             $this->connect($user);
                         } else {
+                            /*
                             $args = array(
                                 'title' => 'Erreur !',
                                 'text' => 'Identifiants Incorrect !',
                                 'icon' => 'error',
                             );
                             $this->session->setFlash('sweet_alert', 'error', $args);
+                            */
+                            $this->validator->showErrors();
+                            $this->session->setFlash('default', 'danger', 'Indentifiants Incorrect !');
                         }
                     }
                 } else {
+                    
                     $args = array(
                         'title' => 'Erreur !',
                         'text' => 'Identifiants Incorrect !',
                         'icon' => 'error',
                     );
                     $this->session->setFlash('sweet_alert', 'error', $args);
+                    
+                    $this->validator->showErrors();
+                    $this->session->setFlash('default', 'danger', 'Indentifiants Incorrect !');
                 }
             } else {
+                /*
                 $args = array(
                     'title' => 'Erreur !',
                     'text' => 'Formulaire incomplet ou vide !',
                     'icon' => 'error',
                 );
                 $this->session->setFlash('sweet_alert', 'error', $args);
+                */
+                $this->validator->showErrors();
             }
         }
     }

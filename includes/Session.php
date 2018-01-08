@@ -23,18 +23,22 @@ class Session
         $_SESSION['flash'][$mode][$type] = $args;
     }
     
-    
-    public function hasFlashes ()
+    public function getFlashes ($mode)
     {
-        return isset($_SESSION['flash']);
+        if ($this->hasFlashes($mode)) {
+            $flash = $_SESSION['flash'][$mode];
+            unset($_SESSION['flash'][$mode]);
+            
+            return $flash;
+        }
+        
+        return false;
+        
     }
     
-    public function getFlashes ()
+    public function hasFlashes ($mode)
     {
-        $flash = $_SESSION['flash'];
-        unset($_SESSION['flash']);
-        
-        return $flash;
+        return isset($_SESSION['flash'][$mode]);
     }
     
     public function setArgsFlash ($args)

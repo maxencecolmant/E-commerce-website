@@ -4,7 +4,7 @@ var path = window.location.pathname;
 
 var formAll = document.forms[$("#mainForm").attr('name')];
 
-var inputsSignUp = [{name:'first_name',rules:'required'},{name:'last_name',rules:'required'},{name:'pseudo',rules:'required'},{name:'email',rules:'valid_email|required'},{name:'password',rules:'required'},{name:'password_c',display:'password confirmation',rules:'required|matches[password]'}];
+var inputsSignUp = [{name:'first_name',rules:'required'},{name:'last_name',rules:'required'},{name:'username',rules:'required'},{name:'email',rules:'valid_email|required'},{name:'password',rules:'required'},{name:'password_c',display:'password confirmation',rules:'required|matches[password]'}];
 
 var inputsLogin = [{name:'name',rules:'required'},{name:'password',rules:'required'}];
 var inputsContact = [{name:'email',rules:'valid_email|required'},{name:'subject',rules:'required'},{name:'message',rules:'required'}];
@@ -43,7 +43,7 @@ function validation() {
                             $(".input-group#forLname").addClass('has_error');
                             $("#lname-error").html(errors[i].message);
                             break;
-                        case "pseudo":
+                        case "username":
                             $(".input-group#forUname").addClass('has_error');
                             $("#uname-error").html(errors[i].message);
                             break;

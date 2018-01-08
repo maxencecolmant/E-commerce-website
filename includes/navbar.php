@@ -75,4 +75,6 @@
 </div>
 </nav>
 
+<?php Util::get_alert('default'); ?>
+
 

@@ -3,23 +3,6 @@
 	<div class="content-wrapper">
 		<div class="container-fluid">
 			<?php Util::get_breadcrumb(); ?>
-			<?php
-			if (Session::getInstance()->hasFlashes()) {
-				foreach (Session::getInstance()->getFlashes() as $key => $values): ?>
-					<div class="ui <?php echo $key; ?> message">
-						<i class="close icon"></i>
-						<div class="header">
-							<?php echo $key; ?> !
-						</div>
-						<ul class="list">
-							<?php foreach ($values as $value) : ?>
-								<li><?php echo $value; ?></li>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				<?php endforeach;
-			} ?>
-
 			<!--User DataTables Card-->
 			<div class="card mb-3">
 				<div class="card-header">

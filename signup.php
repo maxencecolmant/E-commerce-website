@@ -30,7 +30,7 @@
                 </div>
                 <div id="forUname" class="input-group">
                     <i class="socicon-users custom-icon"></i>
-                    <input class="custom-font form-control" name="pseudo" placeholder="Nom d'utilisateur" type="text"/>
+                    <input class="custom-font form-control" name="username" placeholder="Nom d'utilisateur" type="text"/>
                     <label id="uname-error" class="error" for="pseudo"></label>
                 </div>
 
