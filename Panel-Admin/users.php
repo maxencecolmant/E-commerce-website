@@ -19,6 +19,7 @@
                                 <th>PRENOM</th>
                                 <th>NOM D'UTILISATEUR</th>
                                 <th>EMAIL</th>
+                                <th>MOT DE PASSE</th>
                                 <th>IMG_PROFILE</th>
                                 <th>CREE LE</th>
                                 <th>DERNIERE CONNEXION</th>
@@ -33,6 +34,7 @@
                                 <th>PRENOM</th>
                                 <th>NOM D'UTILISATEUR</th>
                                 <th>EMAIL</th>
+                                <th>MOT DE PASSE</th>
                                 <th>IMG_PROFILE</th>
                                 <th>CREE LE</th>
                                 <th>DERNIERE CONNEXION</th>

@@ -17,7 +17,9 @@
 							<th>ID_PRODUCT</th>
 							<th>NOM</th>
 							<th>PRIX</th>
+							<th>SPECIFICATIONS</th>
 							<th>DESCRIPTION</th>
+							<th>IMAGE</th>
 							<th>RANG</th>
 							<th>CATEGORY</th>
 							<th>QUANTITE</th>
@@ -31,7 +33,9 @@
                             <th>ID_PRODUCT</th>
                             <th>NOM</th>
                             <th>PRIX</th>
+                            <th>SPECIFICATIONS</th>
                             <th>DESCRIPTION</th>
+                            <th>IMAGE</th>
                             <th>RANG</th>
                             <th>CATEGORY</th>
                             <th>QUANTITE</th>
