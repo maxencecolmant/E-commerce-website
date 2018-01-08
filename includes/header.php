@@ -1,6 +1,18 @@
 <?php
-include_once "includes\Util.php";
-include_once "includes\User.php";
+use techdeals as PHP;
+
+require_once "Session.php";
+require_once "init.php";
+require_once "Validator.php";
+require_once "User.php";
+require_once "Util.php";
+
+$session = PHP\Session::getInstance();
+$bdd = PHP\Database::getDatabase();
+$user = PHP\User::getInstance();
+$util = PHP\Util::class;
+
+
 ?>
 <!DOCTYPE html>
 <html>

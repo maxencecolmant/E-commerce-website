@@ -3,7 +3,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
-        <?php Util::get_breadcrumb(); ?>
+        <?php $util::get_breadcrumb(); ?>
 
         <!-- Icon Cards-->
         <div class="row">

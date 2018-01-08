@@ -1,5 +1,7 @@
 <?php
 
+namespace techdeals;
+
 class Validator
 {
     private $data;

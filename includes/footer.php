@@ -55,8 +55,8 @@
         </div>
     </div>
 </footer>
-<?php Util::set_previous_alert(); ?>
-<?php Util::get_alert('sweet_alert'); ?>
+<?php $util::set_previous_alert(); ?>
+<?php $util::get_alert('sweet_alert'); ?>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="assets/custom/bootstrap/bootstrap.js"></script>

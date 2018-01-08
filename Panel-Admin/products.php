@@ -2,7 +2,7 @@
 <?php include_once "nav_dashboard.php"; ?>
 <div class="content-wrapper">
 	<div class="container-fluid">
-		<?php Util::get_breadcrumb(); ?>
+		<?php $util::get_breadcrumb(); ?>
 
 		<!--User DataTables Card-->
 		<div class="card mb-3">

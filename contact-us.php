@@ -1,18 +1,8 @@
 <?php
 include 'includes/header.php';
 include 'includes/navbar.php';
-
-if (!empty($_POST)) {
-    if (!empty($_POST['email']) && Util::isEmail($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message'])) {
-        $email = htmlspecialchars($_POST['email']);
-        $message = htmlspecialchars("Adresse IP: " . Util::get_ip() . "\r\nUser-Agent: " . Util::get_user() . "\r\nEmail: " . $email . "\r \n" . $_POST['message'] . "\r\n");
-        $to = "contact@techdeals.com";
-        $headers = "From: <$email>" . "\r\n";
-        $subject = "Contact TechDeals :" . $_POST['subject'];
-        mail($to, $subject, $message, $headers);
-    }
-}
 ?>
+<?php $util::sendMail(); ?>
 <div class="container form">
     <div class="col-md-6 col-md-offset-3 form-custom">
 		<div class="">

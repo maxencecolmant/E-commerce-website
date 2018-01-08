@@ -1,4 +1,5 @@
 <?php
+namespace techdeals;
 
 class Database {
 	static $instance_bdd = null;
@@ -6,8 +7,8 @@ class Database {
 
 	public function __construct( $login, $password, $database_name, $host = 'localhost' ) {
 		try {
-			$this->bdd = new PDO( "mysql:dbname=$database_name;host=$host", $login, $password );
-		} catch ( PDOException $e ) {
+			$this->bdd = new \PDO( "mysql:dbname=$database_name;host=$host", $login, $password );
+		} catch ( \PDOException $e ) {
 			echo 'Connexion échouée : ' . $e->getMessage();
 		}
 	}
@@ -60,7 +61,7 @@ class Database {
 	 * @param $query
 	 * @param bool|array $params
 	 *
-	 * @return PDOStatement
+	 * @return \PDOStatement
 	 */
 	public function query( $query, $params = false ) {
 		if ( $params ) {

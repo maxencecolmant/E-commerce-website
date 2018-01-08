@@ -1,5 +1,11 @@
 <?php
-include_once "includes/Util.php";
-include_once "includes/User.php";
 
-$fct_user->logout();
+use techdeals as PHP;
+
+require_once "./includes/Session.php";
+require_once "./includes/init.php";
+require_once "./includes/Validator.php";
+require_once "./includes/User.php";
+require_once "./includes/Util.php";
+
+PHP\User::getInstance()->logout();

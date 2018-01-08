@@ -1,5 +1,5 @@
 <?php include 'includes/header.php'; ?>
-<?php $fct_user->login(); ?>
+<?php $user->login(); ?>
 <?php include 'includes/navbar.php' ?>
 <div class="container form">
     <div class="row">

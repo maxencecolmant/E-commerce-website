@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-custom navbar-static-top">   
+<nav class="navbar navbar-default navbar-custom navbar-static-top">
   <div class="container">
     <a class="navbar-brand" href="/"><img src="assets/icones/logo.png" width="130px"></a> 
     <div class="navbar-header">
@@ -75,6 +75,6 @@
 </div>
 </nav>
 
-<?php Util::get_alert('default'); ?>
+<?php $util::get_alert('default'); ?>
 
 

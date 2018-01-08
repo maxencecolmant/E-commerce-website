@@ -28,8 +28,8 @@
 		</div>
 	</div>
 </div>
-<?php Util::set_previous_alert(); ?>
-<?php Util::get_alert('sweet_alert'); ?>
+<?php $util::set_previous_alert(); ?>
+<?php $util::get_alert('sweet_alert'); ?>
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
