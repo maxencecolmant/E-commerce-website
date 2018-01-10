@@ -1,46 +1,51 @@
 <?php
 namespace techdeals;
 
-class Database {
-	static $instance_bdd = null;
-	private $bdd;
+class Database
+{
+    public static $instance_bdd = null;
+    private $bdd;
 
-	public function __construct( $login, $password, $database_name, $host = 'localhost' ) {
-		try {
-			$this->bdd = new \PDO( "mysql:dbname=$database_name;host=$host", $login, $password );
-		} catch ( \PDOException $e ) {
-			echo 'Connexion échouée : ' . $e->getMessage();
-		}
-	}
+    public function __construct($login, $password, $database_name, $host = 'localhost')
+    {
+        try {
+            $this->bdd = new \PDO("mysql:dbname=$database_name;host=$host", $login, $password);
+        } catch (\PDOException $e) {
+            echo 'Connexion échouée : ' . $e->getMessage();
+        }
+    }
 
-	static function getDatabase() {
-		if ( ! self::$instance_bdd ) {
-			self::$instance_bdd = new Database( 'db_projet_php', 'password', 'techdeals_db', '81.57.206.30:3307' );
-		}
+    public static function getDatabase()
+    {
+        if (! self::$instance_bdd) {
+            self::$instance_bdd = new Database('db_projet_php', 'password', 'techdeals_db', '81.57.206.30:3307');
+        }
 
-		return self::$instance_bdd;
+        return self::$instance_bdd;
+    }
 
-	}
+    public function lastInsertId()
+    {
+        return $this->bdd->lastInsertId();
+    }
 
-	public function lastInsertId() {
-		return $this->bdd->lastInsertId();
-	}
+    public function setAttribute($attribut, $value)
+    {
+        $this->bdd->setAttribute($attribut, $value);
+    }
 
-	public function setAttribute( $attribut, $value ) {
-		$this->bdd->setAttribute( $attribut, $value );
-	}
+    public function getUsers()
+    {
+        $users = $this->query('SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `created_at`, `last_connection`, `status` FROM `users`')->fetchAll();
 
-	public function getUsers() {
-		$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `created_at`, `last_connection`, `status` FROM `users`' )->fetchAll();
-
-		foreach ( $users as list( $id_user, $last_name, $first_name, $username, $email, $password, $img_usr_profile, $created_at, $last_connection, $status ) ) {
-			echo '<tr id="' . $id_user . '">
+        foreach ($users as list($id_user, $last_name, $first_name, $username, $email, $password, $img_usr_profile, $created_at, $last_connection, $status)) {
+            echo '<tr id="' . $id_user . '">
                             <td name="id_user">' . $id_user . '</td>
                             <td name="last_name" class="possible">' . $last_name . '</td>
                             <td name="first_name" class="possible">' . $first_name . '</td>
                             <td name="username" class="possible">' . $username . '</td>
                             <td name="email" class="possible">' . $email . '</td>
-                            <td name="password">' . preg_replace( '/./', '*', $password ) . '</td>
+                            <td name="password">' . preg_replace('/./', '*', $password) . '</td>
                             <td name="img_user_profile" class="possible">' . $img_usr_profile . '</td>
                             <td>' . $created_at . '</td>
                             <td>' . $last_connection . '</td>
@@ -54,71 +59,73 @@ class Database {
                             <a id="delete" class="btn-danger" href="?id=' . $id_user . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>';
-		}
-	}
+        }
+    }
 
-	/**
-	 * @param $query
-	 * @param bool|array $params
-	 *
-	 * @return \PDOStatement
-	 */
-	public function query( $query, $params = false ) {
-		if ( $params ) {
-			$req = $this->bdd->prepare( $query );
-			$req->execute( $params ) or die ( print_r( $req->errorInfo() ) );
-		} else {
-			$req = $this->bdd->query( $query );
-		}
+    /**
+     * @param $query
+     * @param bool|array $params
+     *
+     * @return \PDOStatement
+     */
+    public function query($query, $params = false)
+    {
+        if ($params) {
+            $req = $this->bdd->prepare($query);
+            $req->execute($params) or die(print_r($req->errorInfo()));
+        } else {
+            $req = $this->bdd->query($query);
+        }
 
-		return $req;
-	}
+        return $req;
+    }
 
-	public function getProducts() {
-		$products = $this->query( 'SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `category_product`, `quantity_product`, `published_at_product`, `last_modification_product`, `is_hidden` FROM `products`' )->fetchAll();
+    public function getProducts()
+    {
+        $products = $this->query('SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `category_product`, `quantity_product`, `published_at_product`, `last_modification_product`, `is_hidden` FROM `products`')->fetchAll();
 
-		foreach ( $products as list( $id_product, $name_product, $price_product, $specs_product, $desc_product, $img_product, $rank_product, $category_product, $quantity_product, $published_at_product, $last_mod_product, $is_hidden ) ) {
-			echo '<tr>
+        foreach ($products as list($id_product, $name_product, $price_product, $specs_product, $desc_product, $img_product, $rank_product, $category_product, $quantity_product, $published_at_product, $last_mod_product, $is_hidden)) {
+            echo '<tr>
                             <td>' . $id_product . '</td>
-                            <td>' . $name_product . '</td>
-                            <td>' . $price_product . '</td>
-                            <td>' . $specs_product . '</td>
-                            <td>' . $desc_product . '</td>
-                            <td>' . $img_product . '</td>
-                            <td>' . $rank_product . '</td>
-                            <td>' . $category_product . '</td>
-                            <td>' . $quantity_product . '</td>
+                            <td class="possible">' . $name_product . '</td>
+                            <td class="possible">' . $price_product . '</td>
+                            <td class="possible">' . $specs_product . '</td>
+                            <td class="possible">' . $desc_product . '</td>
+                            <td class="possible">' . $img_product . '</td>
+                            <td class="possible">' . $rank_product . '</td>
+                            <td class="possible">' . $category_product . '</td>
+                            <td class="possible">' . $quantity_product . '</td>
                             <td>' . $published_at_product . '</td>
                             <td>' . $last_mod_product . '</td>
                             <td>' . $is_hidden . '</td>
                             <td>
-                            <a class="btn-primary" href="?id=' . $id_product . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
-                            <a class="btn-warning" href="?id=' . $id_product . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
-                            <a class="btn-danger" href="?id=' . $id_product . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
+                            <a class="modify btn-primary" href="?id=' . $id_product . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
+                            <a id="repare" class="btn-warning" href="?id=' . $id_product . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
+                            <a id="delete" class="btn-danger" href="?id=' . $id_product . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>';
-		}
-	}
+        }
+    }
 
-	public function getCategory() {
-		$products = $this->query( 'SELECT `id_category`, `name_category`, `id_parent_cat`, `published_at_category`, `last_modification_category` FROM `category_`' )->fetchAll();
+    public function getCategory()
+    {
+        $products = $this->query('SELECT `id_category`, `name_category`, `id_parent_cat`, `published_at_category`, `last_modification_category` FROM `category_`')->fetchAll();
 
-		foreach ( $products as list( $id_category, $name_category, $id_parent_cat, $published_at_category, $last_mod_category ) ) {
-			echo '<tr>
+        foreach ($products as list($id_category, $name_category, $id_parent_cat, $published_at_category, $last_mod_category)) {
+            echo '<tr>
                             <td>' . $id_category . '</td>
                             <td>' . $name_category . '</td>
                             <td>' . $id_parent_cat . '</td>
                             <td>' . $published_at_category . '</td>
                             <td>' . $last_mod_category . '</td>
                             <td>
-                            <a class="btn-primary" href="?id=' . $id_category . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
-                            <a class="btn-warning" href="?id=' . $id_category . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
-                            <a class="btn-danger" href="?id=' . $id_category . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
+                            <a class="modify btn-primary" href="?id=' . $id_category . '&action=1" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
+                            <a id="repare" class="btn-warning" href="?id=' . $id_category . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
+                            <a id="repare" class="btn-danger" href="?id=' . $id_category . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>';
-		}
-	}
-
+        }
+    }
 }
 
 $bdd = Database::getDatabase();
