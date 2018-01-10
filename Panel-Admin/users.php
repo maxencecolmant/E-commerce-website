@@ -7,7 +7,16 @@
             <!--User DataTables Card-->
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> Utilisateurs
+                    <div class="row">
+                        <div class="currentPage col-sm-12 col-md-6">
+                            <i class="fa fa-table"></i> Utilisateurs
+                        </div>
+                        <div class="custom-right col-sm-12 col-md-6">
+                            <a class="addItem btn btn-primary" href="#" role="button">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i> Ajouter un utilisateur
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

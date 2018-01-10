@@ -6,7 +6,16 @@
 			<!--User DataTables Card-->
 			<div class="card mb-3">
 				<div class="card-header">
-					<i class="fa fa-table"></i> Categories
+                    <div class="row">
+                        <div class="currentPage col-sm-12 col-md-6">
+                            <i class="fa fa-table"></i> Catégories
+                        </div>
+                        <div class="custom-right col-sm-12 col-md-6">
+                            <a class="addItem btn btn-primary" href="#" role="button">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter une catégorie
+                            </a>
+                        </div>
+                    </div>
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
