@@ -2,11 +2,27 @@
 
 namespace techdeals;
 
+/**
+ * Class Validator
+ * @package techdeals
+ */
 class Validator
 {
+    /**
+     * @var null
+     */
     private $data;
+    /**
+     * @var
+     */
     private $session;
+    /**
+     * @var array
+     */
     private $errors = [];
+    /**
+     * @var array
+     */
     private $errors_msg = array(
         'not_exist' => "Champ inexistant !",
         'not_alpha' => "Ce champs n'est pas alphanumérique !",
@@ -16,17 +32,30 @@ class Validator
         'not_fill' => "Ce champ n'est pas rempli !",
     );
     
+    /**
+     * Validator constructor.
+     * @param $session
+     * @param null $data
+     */
     public function __construct ($session, $data = null)
     {
         $this->session = $session;
         $this->data = $data;
     }
     
+    /**
+     * @param $data
+     */
     public function setData ($data)
     {
         $this->data = $data;
     }
     
+    /**
+     * @param $field
+     * @param bool $errorMsg
+     * @return bool
+     */
     public function isAlphaNum ($field, $errorMsg = false)
     {
         if (!preg_match('/^[a-zA-Z0-9_]+$/', $this->getField($field))) {
@@ -38,6 +67,10 @@ class Validator
         return true;
     }
     
+    /**
+     * @param $field
+     * @return null
+     */
     private function getField ($field)
     {
         if (!isset($this->data[$field])) {
@@ -49,6 +82,13 @@ class Validator
         return $this->data[$field];
     }
     
+    /**
+     * @param $field
+     * @param $db
+     * @param $table
+     * @param bool $errorMsg
+     * @return bool
+     */
     public function isUnique ($field, $db, $table, $errorMsg = false)
     {
         $record = $db->query('SELECT id_' . substr($table, 0, -1) . ' from ' . $table . ' WHERE ' . $field . ' = :value', [':value' => $this->getField($field)])->fetch();
@@ -61,6 +101,11 @@ class Validator
         return true;
     }
     
+    /**
+     * @param $field
+     * @param bool $errorMsg
+     * @return bool
+     */
     public function isEmail ($field, $errorMsg = false)
     {
         if (!filter_var($this->getField($field), FILTER_VALIDATE_EMAIL)) {
@@ -72,6 +117,11 @@ class Validator
         return true;
     }
     
+    /**
+     * @param $field
+     * @param bool $errorMsg
+     * @return bool
+     */
     public function isConfirmed ($field, $errorMsg = false)
     {
         if ($this->getField($field) != $this->getField($field . '_c')) {
@@ -83,6 +133,9 @@ class Validator
         return true;
     }
     
+    /**
+     * @return bool
+     */
     public function hasEmptyFields ()
     {
         foreach ($this->data as $field => $value) {
@@ -94,6 +147,11 @@ class Validator
         return false;
     }
     
+    /**
+     * @param $field
+     * @param bool $errorMsg
+     * @return bool
+     */
     public function isEmpty ($field, $errorMsg = false)
     {
         if (empty($this->getField($field))) {
@@ -105,17 +163,27 @@ class Validator
         return false;
     }
     
+    /**
+     * @return bool
+     */
     public function isValid ()
     {
         return empty($this->errors);
     }
     
+    /**
+     * @return array
+     */
     public function getErrors ()
     {
         return $this->errors;
     }
     
-    public function showErrors() {
+    /**
+     *
+     */
+    public function showErrors ()
+    {
         foreach ($this->errors as $error) {
             $this->session->setFlash('default', 'danger', $error);
         }
