@@ -3,13 +3,35 @@
 namespace techdeals;
 
 
+/**
+ * Class User
+ * @package techdeals
+ */
 class User {
 
+	/**
+	 * @var null
+	 */
 	static $user = null;
+	/**
+	 * @var
+	 */
 	public $bdd;
+	/**
+	 * @var
+	 */
 	private $session;
+	/**
+	 * @var Validator
+	 */
 	private $validator;
 
+	/**
+	 * User constructor.
+	 *
+	 * @param $bdd
+	 * @param $session
+	 */
 	public function __construct( $bdd, $session ) {
 
 		$this->bdd       = $bdd;
@@ -18,6 +40,9 @@ class User {
 
 	}
 
+	/**
+	 * @return null|User
+	 */
 	static function getInstance() {
 		if ( ! self::$user ) {
 			self::$user = new User( Database::getDatabase(), Session::getInstance() );
@@ -26,6 +51,10 @@ class User {
 		return self::$user;
 	}
 
+
+	/**
+	 *
+	 */
 	public function signup() {
 		if ( ! empty( $_POST ) ) {
 			$this->validator->setData( $_POST );
@@ -89,7 +118,6 @@ class User {
 						'text' => 'Mot de passe invalide !',
 						'icon' => 'error',
 					);
-
 					$this->session->setFlash('default', 'error', $args);
 					*/
 					$this->validator->showErrors();
@@ -108,6 +136,9 @@ class User {
 		}
 	}
 
+	/**
+	 * @param $user_info
+	 */
 	public function connect( $user_info ) {
 		$this->session->write( 'connected', $user_info );
 		$this->bdd->query( 'UPDATE users SET last_connection = CURRENT_TIME WHERE id_user=:id', [ ':id' => $this->session->doubleRead( 'connected', 'id_user' ) ] );
@@ -116,6 +147,9 @@ class User {
 		header( "Location: /" );
 	}
 
+	/**
+	 *
+	 */
 	public function login() {
 		if ( ! empty( $_POST ) ) {
 			$this->validator->setData( $_POST );
@@ -182,6 +216,9 @@ class User {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public function logout() {
 		$this->session->delete( 'connected' );
 		$args = array(
@@ -193,6 +230,9 @@ class User {
 		header( "Location: /" );
 	}
 
+	/**
+	 *
+	 */
 	public function actionUser() {
 		if ( ! empty( $_GET ) ) {
 			if ( isset( $_GET['id'] ) && isset( $_GET['action'] ) ) {
