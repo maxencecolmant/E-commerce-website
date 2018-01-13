@@ -27,6 +27,7 @@
 								<th>ID_PARENT</th>
 								<th>PUBLIE LE</th>
 								<th>DERNIERE MODIFICATION</th>
+                                <th></th>
 							</tr>
 							</thead>
 							<tfoot>
@@ -36,10 +37,11 @@
                                 <th>ID_PARENT</th>
                                 <th>PUBLIE LE</th>
                                 <th>DERNIERE MODIFICATION</th>
+                                <th></th>
 							</tr>
 							</tfoot>
 							<tbody>
-							<?php $fct_user->bdd->getCategory(); ?>
+							<?php $user->bdd->getCategory(); ?>
 							</tbody>
 						</table>
 					</div>

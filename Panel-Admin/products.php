@@ -54,7 +54,7 @@
                         </tr>
 						</tfoot>
 						<tbody>
-                        <?php $fct_user->bdd->getProducts(); ?>
+                        <?php $user->bdd->getProducts(); ?>
 						</tbody>
 					</table>
 				</div>

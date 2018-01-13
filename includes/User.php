@@ -282,5 +282,3 @@ class User {
 		}
 	}
 }
-
-$fct_user = User::getInstance();

@@ -14,6 +14,7 @@ class Validator
         'not_email' => "Ce champ n'est pas un email !",
         'not_confirm' => "Ce champ n'est pas confirmé !",
         'not_fill' => "Ce champ n'est pas rempli !",
+	    'not_number' => "Ce champs n'est pas un nombre !",
     );
     
     public function __construct ($session, $data = null)
@@ -103,6 +104,17 @@ class Validator
         }
         
         return false;
+    }
+
+    public function isNumber($field, $errorMsg = false) {
+
+	    if (!is_numeric($this->getField($field))) {
+		    $this->errors[$field] = $errorMsg ? $errorMsg : $this->errors_msg['not_number'];
+
+		    return false;
+	    }
+
+	    return true;
     }
     
     public function isValid ()

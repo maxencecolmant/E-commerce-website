@@ -108,5 +108,3 @@ class Session
         }
     }
 }
-
-$session = Session::getInstance();

@@ -12,7 +12,6 @@ $bdd = PHP\Database::getDatabase();
 $user = PHP\User::getInstance();
 $util = PHP\Util::class;
 
-
 ?>
 <!DOCTYPE html>
 <html>

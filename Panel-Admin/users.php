@@ -1,6 +1,6 @@
 <?php include_once "header_dashboard.php"; ?>
 <?php include_once "nav_dashboard.php"; ?>
-<?php $fct_user->actionUser(); ?>
+<?php $user->actionUser(); ?>
     <div class="content-wrapper">
         <div class="container-fluid">
             <?php $util::get_breadcrumb(); ?>
@@ -52,7 +52,7 @@
                             </tr>
                             </tfoot>
                             <tbody>
-                            <?php $fct_user->bdd->getUsers(); ?>
+                            <?php $user->bdd->getUsers(); ?>
 
                             </tbody>
                         </table>

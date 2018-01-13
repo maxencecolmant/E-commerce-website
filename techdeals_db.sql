@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost
--- Généré le :  Mar 19 Décembre 2017 à 15:46
+-- Généré le :  Sam 13 Janvier 2018 à 17:10
 -- Version du serveur :  10.0.32-MariaDB
 -- Version de PHP :  5.6.31
 
@@ -23,16 +23,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Structure de la table `category_`
 --
 
 CREATE TABLE `category_` (
   `id_category` int(11) NOT NULL,
   `name_category` varchar(25) DEFAULT NULL,
   `id_parent_cat` int(11) DEFAULT NULL,
-  `published_at_category` datetime DEFAULT NULL,
+  `published_at_category` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_modification_category` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `category_`
+--
+
+INSERT INTO `category_` (`id_category`, `name_category`, `id_parent_cat`, `published_at_category`, `last_modification_category`) VALUES
+(1, 'Test', NULL, '2017-12-22 16:28:38', '2018-01-13 16:46:38');
 
 -- --------------------------------------------------------
 
@@ -72,14 +79,21 @@ CREATE TABLE `products` (
   `desc_product` varchar(500) DEFAULT NULL,
   `img_product` varchar(500) DEFAULT NULL,
   `rank_product` int(11) DEFAULT NULL,
-  `category_product` int(11) DEFAULT NULL,
+  `category_product` varchar(250) DEFAULT NULL,
   `quantity_product` int(11) DEFAULT NULL,
-  `published_at_product` datetime DEFAULT NULL,
+  `published_at_product` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_modification_product` datetime DEFAULT NULL,
-  `is_hidden` tinyint(1) DEFAULT NULL,
+  `is_hidden` tinyint(1) NOT NULL DEFAULT '0',
   `id_user` int(11) DEFAULT NULL,
   `id_category` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `products`
+--
+
+INSERT INTO `products` (`id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `category_product`, `quantity_product`, `published_at_product`, `last_modification_product`, `is_hidden`, `id_user`, `id_category`) VALUES
+(1, 'Example', 10, 'Specs', 'Ma description', NULL, NULL, 'Test', 124, '2018-01-04 12:29:43', '2018-01-13 17:04:31', 0, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -95,8 +109,9 @@ CREATE TABLE `users` (
   `email` varchar(250) DEFAULT NULL,
   `password` varchar(250) DEFAULT NULL,
   `img_user_profile` varchar(250) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_connection` datetime DEFAULT NULL,
+  `last_modification_user` datetime DEFAULT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'USER'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
@@ -104,21 +119,20 @@ CREATE TABLE `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id_user`, `last_name`, `first_name`, `pseudonym`, `email`, `password`, `img_user_profile`, `created_at`, `last_connection`, `status`) VALUES
-(2, 'test', 'Test', 'test123', 'test@b.fr', '$2y$10$G2ogXQPddAi9UE/Z1fBkF.t4Rwn8LimkCJUhAp9NJYMB.Uedgb4bK', NULL, '2017-12-05 23:53:53', '2017-12-19 15:41:02', 'USER'),
-(3, 'Test', 'Test', 'tester', 'tester@test.test', '$2y$10$Egc/WtnNt8owlpZDL03SnOkpct8ldB76OYR/JXSpKyh4rw0d45zFO', NULL, '2017-12-06 08:18:12', '2017-12-19 15:41:02', 'USER'),
-(4, 'ATest', 'ATest', 'Atester', 'atester@test.test', '$2y$10$XM0LLmy1vYqRz7XbaevVk.X2ymqSdzSNk6NCee0i6/GRpAGVxjFJi', NULL, '2017-12-06 08:21:43', '2017-12-19 15:41:02', 'USER'),
-(5, 'Root', 'Admin', 'Root', 'admin@techdeals.com', '$2y$10$CzouLEfgrL/k7ySzJ8j/xOT6icnJUlGM0UNX4WNvDrwHQFmZ9IuOe', NULL, '2017-12-19 14:54:55', '2017-12-19 15:41:02', 'USER'),
-(6, 'to', 'To', 'toto', 'toto@too.com', '$2y$10$K.A4KnTi4t9fNmzm22m6jujjmOPkHPv4flJYqkTeF4LnXzBOmR0Ty', NULL, '2017-12-19 15:41:02', '2017-12-19 15:41:02', 'USER');
+INSERT INTO `users` (`id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `created_at`, `last_connection`, `last_modification_user`, `status`) VALUES
+(15, 'Another', 'Example', 'AnotherExample', 'another@example.fr', '$2y$10$aexGdYMSzR/Zh8JTexmT.uD6fdcgsT.4iez/sLdWFK5S8jIQMySui', NULL, '2018-01-08 11:19:13', '2018-01-08 11:19:13', NULL, 'USER'),
+(5, 'Root', 'Admin', 'Root', 'admin@techdeals.com', '$2y$10$CzouLEfgrL/k7ySzJ8j/xOT6icnJUlGM0UNX4WNvDrwHQFmZ9IuOe', NULL, '2017-12-19 14:54:55', '2018-01-13 13:52:33', NULL, 'SUPER_ADMIN'),
+(18, 'Space', 'Name', 'namespace', 'namespace@test.test', '$2y$10$gPGlfplrWxK0t5ynrDH6jeL7qT4/jW0GQz87JZdsUnOIe666PBfii', NULL, '2018-01-08 18:33:40', '2018-01-08 18:35:50', '2018-01-13 16:49:29', 'USER'),
+(12, 'An', 'Example', 'Lorem', 'example@test.com', '$2y$10$cdWi9FY4CYUSo/88NUpXxeg0H1AJQ/COTjlT/gucOarhYxxiP.Zh6', NULL, '2018-01-05 21:24:36', '2018-01-05 21:24:36', NULL, 'USER');
 
 --
 -- Index pour les tables exportées
 --
 
 --
--- Index pour la table `category`
+-- Index pour la table `category_`
 --
-ALTER TABLE `category`
+ALTER TABLE `category_`
   ADD PRIMARY KEY (`id_category`);
 
 --
@@ -154,10 +168,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT pour la table `category`
+-- AUTO_INCREMENT pour la table `category_`
 --
-ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `category_`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `orders`
 --
@@ -167,12 +181,12 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
