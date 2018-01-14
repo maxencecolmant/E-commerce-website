@@ -4,7 +4,7 @@ const locUrl = pathSplit[pathSplit.length - 1];
 //console.log(locUrl);
 var $defaultUser = "<tr><td name=\"id_user\"></td><td name=\"last_name\" class=\"possible\"></td><td name=\"first_name\" class=\"possible\"></td><td name=\"username\" class=\"possible\"></td><td name=\"email\" class=\"possible\"></td><td name=\"img_user_profile\" class=\"possible\"></td><td></td><td></td><td name=\"status\"></td><td><a href class=\"btn-success registerUser\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
 var $defaultProduct = '<tr><td></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td></td><td></td><td></td> <td><a href class=\"btn-success registerUser\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
-var $defaultCategory = '  <td></td><td class=\"possible\"></td><td class=\"possible\"></td><td></td><td></td><td><a href class=\"btn-success registerUser\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td>';
+var $defaultCategory = '<tr><td></td><td class=\"possible\"></td><td class=\"possible\"></td><td></td><td></td><td><a href class=\"btn-success registerUser\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td> </tr>';
 if (path.match("/users") || path.match("/products") || path.match("/category")) {
     if (path.match("/users")) {
         $type = $defaultUser;
@@ -133,7 +133,7 @@ function valueToID(value, colToSet, colToGet, table, type) {
             console.log(data);
             console.log(status);
             $return = data.toString();
-            return  $return;
+            return $return;
 
         },
     })
