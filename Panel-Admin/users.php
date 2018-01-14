@@ -30,9 +30,9 @@
                                 <th>EMAIL</th>
                                 <th>MOT DE PASSE</th>
                                 <th>IMG_PROFILE</th>
+                                <th>STATUS</th>
                                 <th>CREE LE</th>
                                 <th>DERNIERE CONNEXION</th>
-                                <th>STATUS</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -45,9 +45,9 @@
                                 <th>EMAIL</th>
                                 <th>MOT DE PASSE</th>
                                 <th>IMG_PROFILE</th>
+                                <th>STATUS</th>
                                 <th>CREE LE</th>
                                 <th>DERNIERE CONNEXION</th>
-                                <th>STATUS</th>
                                 <th></th>
                             </tr>
                             </tfoot>

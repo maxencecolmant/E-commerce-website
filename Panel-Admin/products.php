@@ -32,9 +32,10 @@
 							<th>RANG</th>
 							<th>CATEGORY</th>
 							<th>QUANTITE</th>
+							<th>CACHE</th>
 							<th>PUBLIE LE</th>
 							<th>DERNIERE MODIFICATION</th>
-							<th>CACHE</th>
+                            <th></th>
 						</tr>
 						</thead>
 						<tfoot>
@@ -48,9 +49,10 @@
                             <th>RANG</th>
                             <th>CATEGORY</th>
                             <th>QUANTITE</th>
+                            <th>CACHE</th>
                             <th>PUBLIE LE</th>
                             <th>DERNIERE MODIFICATION</th>
-                            <th>CACHE</th>
+                            <th></th>
                         </tr>
 						</tfoot>
 						<tbody>

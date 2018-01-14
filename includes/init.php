@@ -31,9 +31,9 @@ class Database {
 	}
 
 	public function getUsers() {
-		$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `created_at`, `last_connection`, `status` FROM `users`' )->fetchAll();
+		$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `status`, `created_at`, `last_connection` FROM `users`' )->fetchAll();
 
-		foreach ( $users as list( $id_user, $last_name, $first_name, $username, $email, $password, $img_usr_profile, $created_at, $last_connection, $status ) ) {
+		foreach ( $users as list( $id_user, $last_name, $first_name, $username, $email, $password, $img_usr_profile, $status, $created_at, $last_connection ) ) {
 			echo '<tr id="' . $id_user . '">
                             <td name="id_user">' . $id_user . '</td>
                             <td name="last_name" class="possible">' . $last_name . '</td>
@@ -42,9 +42,9 @@ class Database {
                             <td name="email" class="possible">' . $email . '</td>
                             <td name="password">' . preg_replace( '/./', '*', $password ) . '</td>
                             <td name="img_user_profile" class="possible">' . $img_usr_profile . '</td>
+                            <td name="status">' . $status . '</td>
                             <td>' . $created_at . '</td>
                             <td>' . $last_connection . '</td>
-                            <td name="status">' . $status . '</td>
                             <td>
                             <span id="' . $id_user . '">
                             <a id="modify-' . $id_user . '" class="modify btn-primary" href="" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
@@ -75,9 +75,9 @@ class Database {
 	}
 
 	public function getProducts() {
-		$products = $this->query( 'SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `name_category`, `quantity_product`, `published_at_product`, `last_modification_product`, `is_hidden` FROM `products` LEFT JOIN `category_` ON products.id_category = category_.id_category ' )->fetchAll();
+		$products = $this->query( 'SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `name_category`, `quantity_product`, `is_hidden`, `published_at_product`, `last_modification_product` FROM `products` LEFT JOIN `category_` ON products.id_category = category_.id_category ' )->fetchAll();
 
-		foreach ( $products as list( $id_product, $name_product, $price_product, $specs_product, $desc_product, $img_product, $rank_product, $category_product, $quantity_product, $published_at_product, $last_mod_product, $is_hidden ) ) {
+		foreach ( $products as list( $id_product, $name_product, $price_product, $specs_product, $desc_product, $img_product, $rank_product, $category_product, $quantity_product, $is_hidden, $published_at_product, $last_mod_product ) ) {
 			echo '<tr id="' . $id_product . '">
                             <td name="id_product">' . $id_product . '</td>
                             <td name="name_product" class="possible">' . $name_product . '</td>
@@ -88,9 +88,9 @@ class Database {
                             <td name="rank_product" class="possible">' . $rank_product . '</td>
                             <td name="id_category" class="possible">' . $category_product . '</td>
                             <td name="quantity_product" class="possible">' . $quantity_product . '</td>
+                            <td>' . $is_hidden . '</td>
                             <td>' . $published_at_product . '</td>
                             <td>' . $last_mod_product . '</td>
-                            <td>' . $is_hidden . '</td>
                             <td>
                             <span id="' . $id_product . '">
                             <a id="modify-' . $id_product . '" class="modify btn-primary" href="" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>

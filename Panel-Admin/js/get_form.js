@@ -2,9 +2,9 @@ const path = window.location.pathname;
 const pathSplit = path.split("/");
 const locUrl = pathSplit[pathSplit.length - 1];
 //console.log(locUrl);
-var $defaultUser = "<tr><td name=\"id_user\"></td><td name=\"last_name\" class=\"possible\"></td><td name=\"first_name\" class=\"possible\"></td><td name=\"username\" class=\"possible\"></td><td name=\"email\" class=\"possible\"></td><td name=\"img_user_profile\" class=\"possible\"></td><td></td><td></td><td name=\"status\"></td><td><a href class=\"btn-success registerUser\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
-var $defaultProduct = '<tr><td></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td class=\"possible\"></td><td></td><td></td><td></td> <td><a href class=\"btn-success registerUser\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
-var $defaultCategory = '<tr><td></td><td class=\"possible\"></td><td class=\"possible\"></td><td></td><td></td><td><a href class=\"btn-success registerUser\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td> </tr>';
+var $defaultUser = "<tr><td name=\"id_user\"></td><td name=\"last_name\" class=\"possible\"></td><td name=\"first_name\" class=\"possible\"></td><td name=\"username\" class=\"possible\"></td><td name=\"email\" class=\"possible\"></td><td name=\"img_user_profile\" class=\"possible\"></td><td name=\"status\"></td><td name=\"created_at\" ></td><td name=\"last_connection\"></td><td name=\"action\"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
+var $defaultProduct = '<tr><td name="id_product"></td><td name="name_product" class=\"possible\"></td><td name="price_product" class=\"possible\"></td><td name="specs_product" class=\"possible\"></td><td name="desc_product" class=\"possible\"></td><td name="img_product" class=\"possible\"></td><td name="rank_product" class=\"possible\"></td><td name="id_category" class=\"possible\"></td><td name="quantity_product" class=\"possible\"></td><td name="is_hidden"></td><td name="published_at_product"></td><td name="last_modification_product"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
+var $defaultCategory = '<tr><td name="id_category"></td><td name=\"name_category\" class=\"possible\"></td><td name="id_parent_cat" class=\"possible\"></td><td name="published_at_category"></td><td name="last_modification_category"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
 if (path.match("/users") || path.match("/products") || path.match("/category")) {
     if (path.match("/users")) {
         $type = $defaultUser;
@@ -42,6 +42,7 @@ function modify() {
                     if (value.innerText !== '' || $.inArray(value.attributes.name.value, ['img_user_profile', 'id_parent_cat', 'img_product'] !== -1)) {
                         $data['id'] = value.parentElement.id;
                         $data['origin'] = document.location.pathname;
+                        $data['type'] = 'UPDATE';
                         $data[value.attributes.name.value] = value.innerText;
                     } else {
                         value.innerText = $old_data[index];
@@ -108,7 +109,33 @@ function add() {
         //success button ; register user
         $registerItem.click(function (e) {
             e.preventDefault();
-            alert("OK");
+            $dataRAW = {};
+            $lastRow[0].childNodes.forEach(function (value) {
+               if (value.contentEditable === 'true') {
+                   $dataRAW['origin'] = document.location.pathname;
+                   $dataRAW['type'] = 'INSERT';
+                   $dataRAW[value.attributes.name.value] = value.innerText;
+               }
+                if (value.attributes.name.value === 'published_at_category') {
+                    $dataRAW[value.attributes.name.value] = 'CURRENT_TIME';
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: 'save.php',
+                data: $dataRAW,
+                success: function (data) {
+                    console.log("Running Insert...");
+                    console.log(data);
+                    window.location.href = locUrl;
+                },
+                fail: function (data) {
+                    console.log('fail');
+                    console.log(data);
+
+                },
+            });
+            //alert("OK");
         });
     });
 }
