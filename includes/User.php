@@ -67,7 +67,7 @@ class User {
 						//$mail_exist = $this->bdd->query('SELECT email FROM users WHERE  email = :email', [':email' => htmlspecialchars($_POST['email'])])->fetch();
 
 						if ( $this->validator->isEmail( 'email' ) ) {
-							if ( $this->validator->isUnique( 'email', $this->bdd, 'users' ) ) {
+							if ( $this->validator->isUnique( 'email', $this->bdd, 'users' ) && $this->validator->isUnique( 'username', $this->bdd, 'users' ) ) {
 
 								$this->bdd->query( 'INSERT INTO users(last_name,first_name,username, password, email, created_at) VALUES (:last_name,:first_name,:username,:password,:email, CURRENT_TIME )',
 									[

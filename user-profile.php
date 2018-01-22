@@ -1,5 +1,4 @@
 <?php include 'includes/header.php'; ?>
-<?php $user->login(); ?>
 <?php include 'includes/navbar.php' ?>
 <style>
     
