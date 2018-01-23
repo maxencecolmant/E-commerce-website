@@ -1,4 +1,5 @@
 <?php include_once "header_dashboard.php"; ?>
+<?php $util::rmItem('category'); ?>
 <?php include_once "nav_dashboard.php"; ?>
 	<div class="content-wrapper">
 		<div class="container-fluid">

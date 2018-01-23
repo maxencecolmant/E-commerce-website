@@ -82,20 +82,6 @@ class Util
     }
     
     /**
-     * @param $dir
-     * @return bool
-     */
-    static function rmDirR ($dir)
-    {
-        $files = array_diff(scandir($dir), array('.', '..'));
-        foreach ($files as $file) {
-            (is_dir("$dir/$file")) ? Util::rmDirR("$dir/$file") : unlink("$dir/$file");
-        }
-        
-        return rmdir($dir);
-    }
-    
-    /**
      *
      */
     static function sendMail ()
@@ -141,6 +127,85 @@ class Util
         if (isset($_SERVER['HTTP_USER_AGENT'])) {
             return $_SERVER['HTTP_USER_AGENT'];
         }
+    }
+    
+    static function rmItem ($item)
+    {
+        switch ($item) {
+            case 'category':
+                $params = array(
+                    'table' => 'category_',
+                    'id_col' => 'id_category',
+                    'text_alert' => 'la catégorie',
+                    'text_alert_success' => 'catégorie',
+                );
+                break;
+            case 'products':
+                $params = array(
+                    'table' => 'products',
+                    'id_col' => 'id_product',
+                    'text_alert' => 'le produit',
+                    'text_alert_success' => 'produit',
+                );
+                break;
+            default:
+                $params = null;
+                break;
+        }
+        if (!empty($_GET)) {
+            if (isset($_GET['id']) && isset($_GET['action'])) {
+                switch ($_GET['action']) {
+                    case 3:
+                        if (!isset($_GET['confirm'])) {
+                            $args = array(
+                                'title' => 'Supprimer ?',
+                                'text' => 'Cela supprimera ' . $params['text_alert'] . ' !',
+                                'icon' => 'warning',
+                                'buttons' => array(
+                                    'cancel' => 'Annuler',
+                                    'confirm' => 'Supprimer',
+                                ),
+                                'dangerMode' => true,
+                            );
+                            Session::getInstance()->setFlash('sweet_alert', 'warning', $args);
+                        } else {
+                            Database::getDatabase()->query('DELETE FROM '.$params['table'].' WHERE '.$params['id_col'].' = :id', [':id' => $_GET['id']]);
+                            $args = array(
+                                'title' => 'Succès !',
+                                'text' => 'Votre ' . $params['text_alert_success'] . ' a bien été supprimé !',
+                                'icon' => 'success',
+                            );
+                            Session::getInstance()->setArgsFlash($args);
+                            header("Location: $item.php");
+                        }
+                        break;
+                    default:
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'Cet action n\'existe pas ! ',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        Session::getInstance()->setFlash('sweet_alert', 'error', $args);
+                        
+                        break;
+                }
+            }
+        }
+    }
+    
+    /**
+     * @param $dir
+     * @return bool
+     */
+    static function rmDirR ($dir)
+    {
+        $files = array_diff(scandir($dir), array('.', '..'));
+        foreach ($files as $file) {
+            (is_dir("$dir/$file")) ? Util::rmDirR("$dir/$file") : unlink("$dir/$file");
+        }
+        
+        return rmdir($dir);
     }
 }
 

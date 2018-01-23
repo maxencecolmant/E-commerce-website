@@ -56,7 +56,7 @@ class Session
             return $flash;
         }
         
-        return false;
+        return null;
         
     }
     

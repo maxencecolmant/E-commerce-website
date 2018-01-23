@@ -3,7 +3,7 @@ const pathSplit = path.split("/");
 const locUrl = pathSplit[pathSplit.length - 1];
 //console.log(locUrl);
 var $defaultUser = "<tr><td name=\"id_user\"></td><td name=\"last_name\" class=\"possible\"></td><td name=\"first_name\" class=\"possible\"></td><td name=\"username\" class=\"possible\"></td><td name=\"email\" class=\"possible\"></td><td name=\"password\" class=\"possible\"></td><td name=\"img_user_profile\" class=\"possible\"></td><td name=\"status\"></td><td name=\"created_at\" ></td><td name=\"last_connection\"></td><td name=\"action\"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
-var $defaultProduct = '<tr><td name="id_product"></td><td name="name_product" class=\"possible\"></td><td name="price_product" class=\"possible\"></td><td name="specs_product" class=\"possible\"></td><td name="desc_product" class=\"possible\"></td><td name="img_product" class=\"possible\"></td><td name="rank_product" class=\"possible\"></td><td name="id_category" class=\"possible\"></td><td name="quantity_product" class=\"possible\"></td><td name="is_hidden"></td><td name="published_at_product"></td><td name="last_modification_product"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
+var $defaultProduct = '<tr><td name="id_product"></td><td name="name_product" class=\"possible\"></td><td name="price_product" class=\"possible\"></td><td name="specs_product" class=\"possible\"></td><td name="desc_product" class=\"possible\"></td><td name="img_product" class=\"possible\"></td><td name="rank_product" class=\"possible\"></td><td name="id_category" class=\"possible\"></td><td name="quantity_product" class=\"possible\"></td><td name="is_hidden" class=\"possible\"></td><td name="id_user" class="possible"></td><td name="published_at_product"></td><td name="last_modification_product"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
 var $defaultCategory = '<tr><td name="id_category"></td><td name=\"name_category\" class=\"possible\"></td><td name="id_parent_cat" class=\"possible\"></td><td name="published_at_category"></td><td name="last_modification_category"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
 if (path.match("/users") || path.match("/products") || path.match("/category")) {
     if (path.match("/users")) {
@@ -28,12 +28,7 @@ function modify() {
             $('#cancel-' + $(this)[0].parentElement.id)[0].hidden = false;
             $old_data = [];
             $currentRow.toArray().forEach(function ($value) {
-                if ($value.attributes.name.value === 'id_category') {
-                    $value_id = valueToID($value.innerText.toString(), 'name_category', 'id_category', 'category_', 'RAW');
-                    $old_data.push(parseInt($return));
-                } else {
-                    $old_data.push($value.innerText);
-                }
+                $old_data.push($value.innerText);
             });
         } else if ($(this)[0].classList.contains('btn-success') === true) {
             $data = {};
@@ -111,11 +106,11 @@ function add() {
             e.preventDefault();
             $dataRAW = {};
             $lastRow[0].childNodes.forEach(function (value) {
-               if (value.contentEditable === 'true') {
-                   $dataRAW['origin'] = document.location.pathname;
-                   $dataRAW['type'] = 'INSERT';
-                   $dataRAW[value.attributes.name.value] = value.innerText;
-               }
+                if (value.contentEditable === 'true') {
+                    $dataRAW['origin'] = document.location.pathname;
+                    $dataRAW['type'] = 'INSERT';
+                    $dataRAW[value.attributes.name.value] = value.innerText;
+                }
             });
             $.ajax({
                 type: 'POST',
@@ -135,31 +130,4 @@ function add() {
             //alert("OK");
         });
     });
-}
-
-function valueToID(value, colToSet, colToGet, table, type) {
-    $data = {
-        value: value,
-        colToSet: colToSet,
-        colToGet: colToGet,
-        table: table,
-        type: type,
-    };
-
-    $return = null;
-
-    $.ajax({
-        type: 'GET',
-        url: 'data.php',
-        data: $data,
-        dataType: 'text',
-        success: function (data, status) {
-            console.log(data);
-            console.log(status);
-            $return = data.toString();
-            return $return;
-
-        },
-    })
-
 }

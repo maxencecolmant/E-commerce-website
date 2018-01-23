@@ -75,9 +75,9 @@ class Database {
 	}
 
 	public function getProducts() {
-		$products = $this->query( 'SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `name_category`, `quantity_product`, `is_hidden`, `published_at_product`, `last_modification_product` FROM `products` LEFT JOIN `category_` ON products.id_category = category_.id_category ' )->fetchAll();
+		$products = $this->query( 'SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `name_category`, `quantity_product`, `is_hidden`, `username`, `published_at_product`, `last_modification_product` FROM `products` LEFT JOIN `category_` ON products.id_category = category_.id_category LEFT JOIN `users` ON  products.id_user = users.id_user' )->fetchAll();
 
-		foreach ( $products as list( $id_product, $name_product, $price_product, $specs_product, $desc_product, $img_product, $rank_product, $category_product, $quantity_product, $is_hidden, $published_at_product, $last_mod_product ) ) {
+		foreach ( $products as list( $id_product, $name_product, $price_product, $specs_product, $desc_product, $img_product, $rank_product, $category_product, $quantity_product, $is_hidden, $id_user, $published_at_product, $last_mod_product ) ) {
 			echo '<tr id="' . $id_product . '">
                             <td name="id_product">' . $id_product . '</td>
                             <td name="name_product" class="possible">' . $name_product . '</td>
@@ -88,7 +88,8 @@ class Database {
                             <td name="rank_product" class="possible">' . $rank_product . '</td>
                             <td name="id_category" class="possible">' . $category_product . '</td>
                             <td name="quantity_product" class="possible">' . $quantity_product . '</td>
-                            <td>' . $is_hidden . '</td>
+                            <td name="is_hidden" class="possible">' . $is_hidden . '</td>
+                            <td name="id_user" class="possible">' . $id_user . '</td>
                             <td>' . $published_at_product . '</td>
                             <td>' . $last_mod_product . '</td>
                             <td>
@@ -96,7 +97,6 @@ class Database {
                             <a id="modify-' . $id_product . '" class="modify btn-primary" href="" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
                             <a id="cancel-' . $id_product . '" class="cancelMod btn-danger" href="" title="Annuler" hidden="true"><i class="fa fa-fw fa-close" aria-hidden="true"></i></a>
                             </span>
-                            <a id="repare" class="btn-warning" href="?id=' . $id_product . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
                             <a id="delete" class="btn-danger" href="?id=' . $id_product . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>';
@@ -118,7 +118,6 @@ class Database {
                             <a id="modify-' . $id_category . '" class="modify btn-primary" href="" title="Modifier"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
                             <a id="cancel-' . $id_category . '" class="cancelMod btn-danger" href="" title="Annuler" hidden="true"><i class="fa fa-fw fa-close" aria-hidden="true"></i></a>
                             </span>
-                            <a id="repare" class="btn-warning" href="?id=' . $id_category . '&action=2" title="Réparer"><i class="fa fa-fw fa-wrench" aria-hidden="true"></i></a>
                             <a id="repare" class="btn-danger" href="?id=' . $id_category . '&action=3" title="Supprimer"><i class="fa fa-fw fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>';

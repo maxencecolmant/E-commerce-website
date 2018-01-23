@@ -1,4 +1,5 @@
 <?php include_once "header_dashboard.php"; ?>
+<?php $util::rmItem('products'); ?>
 <?php include_once "nav_dashboard.php"; ?>
 <div class="content-wrapper">
 	<div class="container-fluid">
@@ -33,6 +34,7 @@
 							<th>CATEGORY</th>
 							<th>QUANTITE</th>
 							<th>CACHE</th>
+                            <th>PROPRIETAIRE</th>
 							<th>PUBLIE LE</th>
 							<th>DERNIERE MODIFICATION</th>
                             <th></th>
@@ -50,6 +52,7 @@
                             <th>CATEGORY</th>
                             <th>QUANTITE</th>
                             <th>CACHE</th>
+                            <th>PROPRIETAIRE</th>
                             <th>PUBLIE LE</th>
                             <th>DERNIERE MODIFICATION</th>
                             <th></th>

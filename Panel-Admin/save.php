@@ -53,6 +53,28 @@ if (!empty($_POST)) {
                 ])->fetch(\PDO::FETCH_ASSOC);
             }
             
+            if ($table == 'products') {
+                if (!$validator->isEmpty('id_user')) {
+                    $req = $bdd->query('SELECT id_user FROM users WHERE username = :value', [
+                        ':value' => $_POST['id_user'],
+                    ])->fetch(\PDO::FETCH_ASSOC);
+                    if (!empty($req)) {
+                        $_POST['id_user'] = $req['id_user'];
+                    }
+                }
+                if (!$validator->isEmpty('id_category')) {
+                    $req = $bdd->query('SELECT id_category FROM category_ WHERE name_category = :value', [
+                        ':value' => $_POST['id_category'],
+                    ])->fetch(\PDO::FETCH_ASSOC);
+                    if (!empty($req)) {
+                        $_POST['id_category'] = $req['id_category'];
+                    }
+                }
+                
+                $validator->setData($_POST);
+            }
+            
+            
             foreach ($_POST as $col => $value) {
                 $value = htmlspecialchars($value);
                 switch ($col) {
@@ -73,11 +95,109 @@ if (!empty($_POST)) {
                             }
                         }
                         break;
+                    case 'price_product':
+                    case 'rank_product':
+                    case 'quantity_product':
+                        if ($old_data[$col] != $value && !empty(trim($value))) {
+                            if ($validator->isNumber($col)) {
+                                $bdd->query('UPDATE ' . $table . ' SET ' . $col . ' = :value WHERE ' . $col_id . ' = :id', [
+                                    ':id' => $id,
+                                    ':value' => $value,
+                                ]);
+                            } else {
+                                $args = array(
+                                    'title' => 'Une erreur est survenue !',
+                                    'text' => 'Le champ doit être un nombre !',
+                                    'icon' => 'error',
+                                );
+                                $session->setArgsFlash($args);
+                            }
+                        }
+                        break;
                     case 'img_user_profile':
+                    case 'img_product':
                         if ($old_data[$col] != $value) {
                             if (empty(trim($value))) {
                                 $value = null;
                             }
+                            $bdd->query('UPDATE ' . $table . ' SET ' . $col . ' = :value WHERE ' . $col_id . ' = :id', [
+                                ':id' => $id,
+                                ':value' => $value,
+                            ]);
+                        }
+                        break;
+                    case 'id_category':
+                        if ($old_data[$col] != $value) {
+                            if ($validator->isEmpty($col)) {
+                                $value = null;
+                            } elseif ($validator->isNumber($col)) {
+                                if ($validator->isValidID($col, 'category_', 'id_category')) {
+                                    $value = intval($value);
+                                    if ($value === 0) {
+                                        $value = null;
+                                    }
+                                } else {
+                                    $value = null;
+                                    $args = array(
+                                        'title' => 'Erreur !',
+                                        'text' => 'ID_CATEGORY doit être un ID existant !',
+                                        'icon' => 'error',
+                                        'timer' => 3000,
+                                    );
+                                    $session->setArgsFlash($args);
+                                    break;
+                                }
+                            } else {
+                                $value = null;
+                                $args = array(
+                                    'title' => 'Erreur !',
+                                    'text' => 'Invalid entry !',
+                                    'icon' => 'error',
+                                    'timer' => 3000,
+                                );
+                                $session->setArgsFlash($args);
+                                break;
+                            }
+                            
+                            $bdd->query('UPDATE ' . $table . ' SET ' . $col . ' = :value WHERE ' . $col_id . ' = :id', [
+                                ':id' => $id,
+                                ':value' => $value,
+                            ]);
+                        }
+                        break;
+                    case 'id_user':
+                        if ($old_data[$col] != $value) {
+                            if ($validator->isEmpty($col)) {
+                                $value = null;
+                            } elseif ($validator->isNumber($col)) {
+                                if ($validator->isValidID($col, 'users', 'id_user')) {
+                                    $value = intval($value);
+                                    if ($value === 0) {
+                                        $value = null;
+                                    }
+                                } else {
+                                    $value = null;
+                                    $args = array(
+                                        'title' => 'Erreur !',
+                                        'text' => 'ID_USER doit être un ID existant !',
+                                        'icon' => 'error',
+                                        'timer' => 3000,
+                                    );
+                                    $session->setArgsFlash($args);
+                                    break;
+                                }
+                            } else {
+                                $value = null;
+                                $args = array(
+                                    'title' => 'Erreur !',
+                                    'text' => 'Invalid owner!',
+                                    'icon' => 'error',
+                                    'timer' => 3000,
+                                );
+                                $session->setArgsFlash($args);
+                                break;
+                            }
+                            
                             $bdd->query('UPDATE ' . $table . ' SET ' . $col . ' = :value WHERE ' . $col_id . ' = :id', [
                                 ':id' => $id,
                                 ':value' => $value,
@@ -274,9 +394,111 @@ if (!empty($_POST)) {
                     }
                     $cols_values[':password'] = password_hash($cols_values[':password'], PASSWORD_BCRYPT);
                     $bdd->query('INSERT INTO ' . $table . ' (' . $cols . ') VALUES (' . $cols_alias . ')', $cols_values);
+                    mkdir("./users/user-" . $cols_values[':id_user']);
+                    mkdir("./users/user-" . $cols_values[':id_user'] . "/data");
+                    mkdir("./users/user-" . $cols_values[':id_user'] . "/settings");
                     $args = array(
                         'title' => 'Bravo !',
-                        'text' => 'Votre catégorie a bien été ajouté !',
+                        'text' => 'Votre utilisateur a bien été ajouté !',
+                        'icon' => 'success',
+                        'timer' => 3000,
+                    );
+                    $session->setArgsFlash($args);
+                    break;
+                case 'products' :
+                    if (!$validator->isAlphaNum('name_product')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'Le nom du produit n\'est pas valide !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif (!$validator->isNumber('price_product')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'Le prix doit être un nombre !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif (!$validator->isNumber('rank_product')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'Le rang doit être un nombre !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif (!$validator->isNumber('quantity_product')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'La quantité doit être un nombre !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif (!$validator->isNumber('id_category')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'La catégorie doit être un nombre !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif (!$validator->isValidID('id_category', 'category_', 'id_category')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'La catégorie n\'existe pas !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif (!$validator->isNumber('id_user')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'Le propriétaire doit être un nombre !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif (!$validator->isValidID('id_user', 'users', 'id_user')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'Le propriétaire n\'existe pas !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif (!$validator->isUnique('rank_product', $bdd, 'products')) {
+                        $args = array(
+                            'title' => 'Erreur !',
+                            'text' => 'Le rang doit être unique !',
+                            'icon' => 'error',
+                            'timer' => 3000,
+                        );
+                        $session->setArgsFlash($args);
+                        break;
+                    } elseif ($validator->isEmpty('img_product')) {
+                        $cols_values[':img_product'] = null;
+                    }
+                    if ($validator->isEmpty('is_hidden')) {
+                        unset($cols_values[':is_hidden']);
+                        $cols_alias = str_replace(':is_hidden, ', '', $cols_alias);
+                        $cols = str_replace('is_hidden, ', '', $cols);
+                    }
+                    $bdd->query('INSERT INTO ' . $table . ' (' . $cols . ') VALUES (' . $cols_alias . ')', $cols_values);
+                    $args = array(
+                        'title' => 'Bravo !',
+                        'text' => 'Votre utilisateur a bien été ajouté !',
                         'icon' => 'success',
                         'timer' => 3000,
                     );
