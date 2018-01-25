@@ -6,11 +6,13 @@ require_once "init.php";
 require_once "Validator.php";
 require_once "User.php";
 require_once "Util.php";
+require_once "Category.php";
 
 $session = PHP\Session::getInstance();
 $bdd = PHP\Database::getDatabase();
 $user = PHP\User::getInstance();
 $util = PHP\Util::class;
+$category = PHP\Category::getCategory();
 
 ?>
 <!DOCTYPE html>

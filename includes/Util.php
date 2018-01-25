@@ -23,7 +23,7 @@ class Util
             if ($item == end($path)) {
                 $breadcrumb .= '<li class="breadcrumb-item active">' . ucfirst($item) . '</li>';
             } else {
-                $breadcrumb .= '<li class="breadcrumb-item"><a href="">' . ucfirst($item) . '</a></li>';
+                $breadcrumb .= '<li class="breadcrumb-item"><a href="/'. $item .'/">' . ucfirst($item) . '</a></li>';
             }
         }
         

@@ -15,10 +15,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <?php echo $category->getNavCat(); ?>
           </ul>
         </li>
         <li><a href="/contact-us.php">Contact</a></li>
@@ -37,12 +34,12 @@
              <i class="socicon-users custom-icon"></i>Mon compte
              <span class="caret"></span></a>
              <ul class="dropdown-menu">
-              <li class="dropdown-header"><?php $session->doubleGet('connected', 'pseudonym'); ?></li>
+              <li class="dropdown-header"><?php $session->doubleGet('connected', 'username'); ?></li>
               <li><a href=""><i class="socicon-users"></i>Profil</a></li>
               <li><a href=""><i class="socicon-shopping-cart-black-shape"></i>Commandes</a></li>
               <?php if (in_array($session->doubleRead('connected', 'status'), array('SUPER_ADMIN', 'ADMIN'))) : ?>
                 <div class="divider"></div>
-                <li><a href="/panel-admin/" class="item"><i class="socicon-dashboard"></i>Panel Admin</a></li>
+                <li><a href="/dashboard/" class="item"><i class="socicon-dashboard"></i>Dashboard</a></li>
               <?php endif; ?>
               <li role="separator" class="divider"></li>
               <li><a href="/logout.php"><i class="socicon-logout"></i>Déconnexion</a></li>
