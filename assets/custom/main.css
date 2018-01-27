@@ -542,6 +542,11 @@
 			padding: 0 !important;
 		}
 
+		.container .content,
+		.container .aside {
+			padding: 20px;
+		}
+
 		/***Header Carousel***/
 
 		.carousel-control {}
@@ -912,6 +917,203 @@
 			opacity: 1;
 			-webkit-filter: grayscale(0);
 			filter: grayscale(0);
+		}
+
+		.breadcrumb-title,
+		.breadcrumb-title .breadcrumb {
+			background-color: #fcfafa;
+			color: #313131;
+		}
+
+		.breadcrumb-title .breadcrumb {
+			padding: 30px;
+		}
+
+		.breadcrumb-title .breadcrumb .active {
+			color: #313131;
+		}
+
+		.breadcrumb-title .breadcrumb .breadcrumb-item {
+			font-weight: 600;
+			text-transform: uppercase;
+			font-size: 12px;
+		}
+
+		.view-page .container {
+			background: #fff;
+		}
+
+		.view-page .content .row,
+		.view-page .aside .row {
+			margin: 0;
+		}
+
+		h2.currentCategory {
+			margin-top: 0;
+			margin-bottom: 30px;
+			font-weight: 600;
+			color: #067fd8;
+			padding: 0 15px;
+		}
+
+		/***View***/
+
+		.view-page .product-item-4 .product {
+			float: left;
+			width: 25%;
+			/* margin-bottom: 30px; */
+			padding: 0 15px;
+			position: relative;
+			min-height: 300px;
+		}
+
+		.view-page .product-item-4 .product .content {
+			border: 1px solid #e6e6e6;
+			padding: 9px;
+			background: #fff;
+			display: inline-block;
+			width: 100%;
+			position: relative;
+		}
+
+		.view-page .product-item-4 .product .cat {
+			color: #aaaaaa;
+			display: inline-block;
+			width: 100%;
+			margin: 7px 0;
+			font-size: 13px;
+		}
+
+		.view-page .product-item-4 .product .title:hover {
+			color: #067fd8;
+		}
+
+		.view-page .product-item-4 .product .title {
+			color: #333;
+			font-size: 14px;
+			display: inline-block;
+			min-height: 40px;
+			font-weight: 600;
+		}
+
+		.view-page .product-item-4 .product .rev {
+			font-size: 12px;
+			margin-top: 5px;
+		}
+
+		.view-page .product-item-4 .product .rev i {
+			color: #fbc02d;
+		}
+
+		.view-page .product-item-4 .product .price {
+			font-weight: bold;
+			color: #333333;
+			float: left;
+		}
+
+		.view-page .product-item-4 .product span.currentPrice {
+			font-weight: bold;
+			color: #067fd8;
+			float: left;
+		}
+
+		.view-page .product-item-4 .product .price span.oldPrice {
+			color: #aaaaaa;
+			text-decoration: line-through;
+			font-weight: normal;
+			margin-left: 10px;
+			font-size: 12px;
+		}
+
+		.view-page .product-item-4 .product .cart-btn {
+			height: 42px;
+			width: 42px;
+			border-radius: 50%;
+			background: #eeeeee;
+			color: #888888 !important;
+			float: right;
+			text-align: center;
+			line-height: 44px;
+			margin-top: -15px;
+		}
+
+		.view-page .aside {
+			float: left;
+			width: 20%;
+		}
+
+		.view-page .content {
+			float: right;
+			width: 80%;
+		}
+
+		.view-page .aside-title {
+			background: #067fd8;
+			color: #fff;
+			padding: 10px;
+			margin: 0;
+			font-size: 14px;
+		}
+
+		/*****View Categories*****/
+
+		.view-page .category-item-3 .category {
+			float: left;
+			width: 33%;
+			margin-bottom: 30px;
+			padding: 0 15px;
+			position: relative;
+			min-height: 341px;
+		}
+
+		.view-page .category-item-3 .category .content {
+			border: 1px solid #e6e6e6;
+			padding: 9px;
+			background: #fff;
+			display: inline-block;
+			width: 100%;
+			position: relative;
+		}
+
+		.view-page .category-item-3 .category .category-header {
+			text-align: center;
+			margin-bottom: 5px;
+		}
+
+		.view-page .category-item-4 .category .category-header img {
+			margin-bottom: 10px;
+		}
+
+		.view-page .category-item-3 .category a.title {
+			background: #067fd8 !important;
+			color: #fff !important;
+			border-radius: 3px;
+			border: 2px solid #067fd8;
+			padding: 6px 60px !important;
+		}
+
+		.view-page .category-item-3 .category ul {
+			padding: 15px !important;
+		}
+
+		.view-page .category-item-3 .category ul li {
+			list-style-type: none;
+		}
+
+		.view-page .category-item-3 .category ul li a {
+			color: #333
+		}
+
+		.view-page .category-item-3 .category ul li a:hover {
+			color: #067fd8;
+			text-decoration: none
+		}
+
+		.view-page .category-item-3 .category li a:before {
+			content: "\e9e2";
+			font-family: socicons-font;
+			margin-right: 10px;
+			color: #067fd8;
 		}
 
 		/*
