@@ -31,7 +31,22 @@ class Database {
 	}
 
 	public function getUsers() {
-		$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `status`, `created_at`, `last_connection` FROM `users`' )->fetchAll();
+		switch ( Session::getInstance()->doubleRead( 'connected', 'status' ) ) {
+			case 'SUPER_ADMIN':
+				$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `status`, `created_at`, `last_connection` FROM `users`' )->fetchAll();
+				break;
+			case 'ADMIN':
+				$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `status`, `created_at`, `last_connection` FROM `users` WHERE status  NOT IN (:val1,:val2)', [
+					':val1' => 'SUPER_ADMIN',
+					':val2' => 'ADMIN',
+				] )->fetchAll();
+				break;
+			default:
+				$users = $this->query( 'SELECT `id_user`, `last_name`, `first_name`, `username`, `email`, `password`, `img_user_profile`, `status`, `created_at`, `last_connection` FROM `users` WHERE id_user = :val', [
+					':val' => Session::getInstance()->doubleRead( 'connected', 'id_user' ),
+				] )->fetchAll();
+				break;
+		}
 
 		foreach ( $users as list( $id_user, $last_name, $first_name, $username, $email, $password, $img_usr_profile, $status, $created_at, $last_connection ) ) {
 			echo '<tr id="' . $id_user . '">
@@ -42,7 +57,7 @@ class Database {
                             <td name="email" class="possible">' . $email . '</td>
                             <td name="password">' . preg_replace( '/./', '*', $password ) . '</td>
                             <td name="img_user_profile" class="possible">' . $img_usr_profile . '</td>
-                            <td name="status">' . $status . '</td>
+                            <td name="status" class="possible select">' . $status . '</td>
                             <td>' . $created_at . '</td>
                             <td>' . $last_connection . '</td>
                             <td>
@@ -68,14 +83,28 @@ class Database {
 			$req = $this->bdd->prepare( $query );
 			$req->execute( $params ) or die( print_r( $req->errorInfo() ) );
 		} else {
-			$req = $this->bdd->query( $query ) or die( var_dump( $this->bdd->errorInfo() ) ) ;
+			$req = $this->bdd->query( $query ) or die( var_dump( $this->bdd->errorInfo() ) );
 		}
 
 		return $req;
 	}
 
 	public function getProducts() {
-		$products = $this->query( 'SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `name_category`, `quantity_product`, `is_hidden`, `username`, `published_at_product`, `last_modification_product` FROM `products` LEFT JOIN `category_` ON products.id_category = category_.id_category LEFT JOIN `users` ON  products.id_user = users.id_user' )->fetchAll();
+		switch ( Session::getInstance()->doubleRead( 'connected', 'status' ) ) {
+			case 'SUPER_ADMIN':
+			case 'ADMIN':
+				$products = $this->query( 'SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `name_category`, `quantity_product`, `is_hidden`, `username`, `published_at_product`, `last_modification_product` FROM `products` LEFT JOIN `category_` ON products.id_category = category_.id_category LEFT JOIN `users` ON  products.id_user = users.id_user' )->fetchAll();
+				$edit     = 'class="possible select"';
+				break;
+			case 'PARTNER':
+				$products = $this->query( 'SELECT `id_product`, `name_product`, `price_product`, `specs_product`, `desc_product`, `img_product`, `rank_product`, `name_category`, `quantity_product`, `is_hidden`, `username`, `published_at_product`, `last_modification_product` FROM `products` LEFT JOIN `category_` ON products.id_category = category_.id_category LEFT JOIN `users` ON  products.id_user = users.id_user WHERE username = :curr_username', [
+					':curr_username' => Session::getInstance()->doubleRead( 'connected', 'username' ),
+				] )->fetchAll();
+				$edit     = '';
+				break;
+			default:
+				return;
+		}
 
 		foreach ( $products as list( $id_product, $name_product, $price_product, $specs_product, $desc_product, $img_product, $rank_product, $category_product, $quantity_product, $is_hidden, $id_user, $published_at_product, $last_mod_product ) ) {
 			echo '<tr id="' . $id_product . '">
@@ -89,7 +118,7 @@ class Database {
                             <td name="id_category" class="possible select">' . $category_product . '</td>
                             <td name="quantity_product" class="possible">' . $quantity_product . '</td>
                             <td name="is_hidden" class="possible">' . $is_hidden . '</td>
-                            <td name="id_user" class="possible select">' . $id_user . '</td>
+                            <td name="id_user" '. $edit .'>' . $id_user . '</td>
                             <td>' . $published_at_product . '</td>
                             <td>' . $last_mod_product . '</td>
                             <td>
@@ -104,13 +133,21 @@ class Database {
 	}
 
 	public function getCategory() {
-		$products = $this->query( 'SELECT `id_category`, `name_category`, `id_parent_cat`, `published_at_category`, `last_modification_category` FROM `category_`' )->fetchAll();
+		switch ( Session::getInstance()->doubleRead( 'connected', 'status' ) ) {
+			case 'SUPER_ADMIN':
+			case 'ADMIN':
+				$products = $this->query( 'SELECT `id_category`, `name_category`, `id_parent_cat`, `published_at_category`, `last_modification_category` FROM `category_`' )->fetchAll();
+				break;
+			default:
+				return;
+				break;
+		}
 
 		foreach ( $products as list( $id_category, $name_category, $id_parent_cat, $published_at_category, $last_mod_category ) ) {
 			echo '<tr id="' . $id_category . '">
                             <td name="id_category">' . $id_category . '</td>
                             <td name="name_category" class="possible">' . $name_category . '</td>
-                            <td name="id_parent_cat" class="possible">' . $id_parent_cat . '</td>
+                            <td name="id_parent_cat" class="possible select">' . $id_parent_cat . '</td>
                             <td>' . $published_at_category . '</td>
                             <td>' . $last_mod_category . '</td>
                             <td>

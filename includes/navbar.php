@@ -55,7 +55,7 @@
               <a href="">
                 <i class="socicon-shopping-cart-black-shape"></i>Commandes</a>
             </li>
-            <?php if (in_array($session->doubleRead('connected', 'status'), array('SUPER_ADMIN', 'ADMIN'))) : ?>
+            <?php if (in_array($session->doubleRead('connected', 'status'), array('SUPER_ADMIN', 'ADMIN', 'PARTNER'))) : ?>
             <div class="divider"></div>
             <li>
               <a href="/dashboard/" class="item">

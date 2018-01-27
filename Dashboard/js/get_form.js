@@ -2,9 +2,24 @@ const path = window.location.pathname;
 const pathSplit = path.split("/");
 const locUrl = pathSplit[pathSplit.length - 1];
 //console.log(locUrl);
-var $defaultUser = "<tr><td name=\"id_user\"></td><td name=\"last_name\" class=\"possible\"></td><td name=\"first_name\" class=\"possible\"></td><td name=\"username\" class=\"possible\"></td><td name=\"email\" class=\"possible\"></td><td name=\"password\" class=\"possible\"></td><td name=\"img_user_profile\" class=\"possible\"></td><td name=\"status\"></td><td name=\"created_at\" ></td><td name=\"last_connection\"></td><td name=\"action\"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
-var $defaultProduct = '<tr><td name="id_product"></td><td name="name_product" class=\"possible\"></td><td name="price_product" class=\"possible\"></td><td name="specs_product" class=\"possible\"></td><td name="desc_product" class=\"possible\"></td><td name="img_product" class=\"possible\"></td><td name="rank_product" class=\"possible\"></td><td name="id_category" class=\"possible select\"></td><td name="quantity_product" class=\"possible\"></td><td name="is_hidden" class=\"possible\"></td><td name="id_user" class="possible"></td><td name="published_at_product"></td><td name="last_modification_product"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
-var $defaultCategory = '<tr><td name="id_category"></td><td name=\"name_category\" class=\"possible\"></td><td name="id_parent_cat" class=\"possible\"></td><td name="published_at_category"></td><td name="last_modification_category"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
+const cookie = document.cookie;
+let arrayCookie = cookie.split(';');
+$status = '';
+arrayCookie.forEach(function (cookie) {
+    $infoCookie = cookie.split('=');
+    if ($infoCookie[0] === 'status_user') {
+        $status = $infoCookie[1];
+    }
+});
+var edit;
+if ($status === 'ADMIN' || $status === 'SUPER_ADMIN') {
+    edit = 'class="possible select"';
+} else {
+    edit = '';
+}
+var $defaultUser = "<tr><td name=\"id_user\"></td><td name=\"last_name\" class=\"possible\"></td><td name=\"first_name\" class=\"possible\"></td><td name=\"username\" class=\"possible\"></td><td name=\"email\" class=\"possible\"></td><td name=\"password\" class=\"possible\"></td><td name=\"img_user_profile\" class=\"possible\"></td><td name=\"status\" class=\"possible select\"></td><td name=\"created_at\" ></td><td name=\"last_connection\"></td><td name=\"action\"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>";
+var $defaultProduct = '<tr><td name="id_product"></td><td name="name_product" class=\"possible\"></td><td name="price_product" class=\"possible\"></td><td name="specs_product" class=\"possible\"></td><td name="desc_product" class=\"possible\"></td><td name="img_product" class=\"possible\"></td><td name="rank_product" class=\"possible\"></td><td name="id_category" class=\"possible select\"></td><td name="quantity_product" class=\"possible\"></td><td name="is_hidden" class=\"possible\"></td><td name="id_user" ' + edit + '></td><td name="published_at_product"></td><td name="last_modification_product"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
+var $defaultCategory = '<tr><td name="id_category"></td><td name=\"name_category\" class=\"possible\"></td><td name="id_parent_cat" class=\"possible select\"></td><td name="published_at_category"></td><td name="last_modification_category"></td><td name="action"><a href class=\"btn-success registerItem\"><i class=\"fa fa-fw fa-check\" aria-hidden=\"true\"></i></a> <a href class=\"btn-danger removeRow\"><i class=\"fa fa-fw fa-times\" aria-hidden=\"true\"></i></a></td></tr>';
 if (path.match("/users") || path.match("/products") || path.match("/category")) {
     if (path.match("/users")) {
         $type = $defaultUser;
@@ -17,6 +32,7 @@ if (path.match("/users") || path.match("/products") || path.match("/category")) 
     add();
 }
 
+
 function modify() {
     let $currentButton = $('.modify');
     $currentButton.click(function (e) {
@@ -28,6 +44,7 @@ function modify() {
             $('#cancel-' + $(this)[0].parentElement.id)[0].hidden = false;
             $old_data = [];
             $currentRow.toArray().forEach(function ($value) {
+                $old_data[$value.attributes.name.value] = $value.innerText;
                 if ($value.className.indexOf('select') !== -1) {
                     $value.contentEditable = false;
                     switch ($value.attributes.name.value) {
@@ -35,12 +52,25 @@ function modify() {
                             $data = {
                                 table: 'category_',
                                 cols: 'name_category',
+                                where: 'id_parent_cat',
+                                id_parent_cat: 'NOTNULL',
                             };
                             break;
                         case 'id_user':
                             $data = {
                                 table: 'users',
                                 cols: 'username',
+                            };
+                            break;
+                        case 'id_parent_cat':
+                            $data = {
+                                table: 'category_',
+                                cols: 'id_category',
+                            };
+                            break;
+                        case 'status':
+                            $data = {
+                                status: $status,
                             };
                             break;
                         default:
@@ -54,19 +84,37 @@ function modify() {
                         dataType: 'json',
                         success: function (data) {
                             console.log(data);
-                            data.forEach(function (item) {
-                                switch ($value.attributes.name.value) {
-                                    case 'id_category':
-                                        $returnValue = 'name_category';
-                                        break;
-                                    case 'id_user':
-                                        $returnValue = 'username';
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                $optionSelect += '<option>' + item[$returnValue] + '</option>';
-                            });
+                            switch ($value.attributes.name.value) {
+                                case 'id_category':
+                                    $returnValue = 'name_category';
+                                    break;
+                                case 'id_user':
+                                    $returnValue = 'username';
+                                    break;
+                                case 'id_parent_cat':
+                                    $returnValue = 'id_category';
+                                    $optionSelect += '<option></option>';
+                                    break;
+                                default:
+                                    break;
+                            }
+                            if ($value.attributes.name.value === 'status') {
+                                data.forEach(function (item) {
+                                    if ($old_data[$value.attributes.name.value] === item) {
+                                        $optionSelect += '<option selected="selected">' + item + '</option>';
+                                    } else {
+                                        $optionSelect += '<option>' + item + '</option>';
+                                    }
+                                });
+                            } else {
+                                data.forEach(function (item) {
+                                    if ($old_data[$value.attributes.name.value] === item[$returnValue]) {
+                                        $optionSelect += '<option selected="selected">' + item[$returnValue] + '</option>';
+                                    } else {
+                                        $optionSelect += '<option>' + item[$returnValue] + '</option>';
+                                    }
+                                });
+                            }
 
                             $value.innerHTML = '<select class="form-control">' + $optionSelect + '</select>';
 
@@ -74,20 +122,28 @@ function modify() {
                         },
                     });
                 }
-                $old_data.push($value.innerText);
             });
         } else if ($(this)[0].classList.contains('btn-success') === true) {
             $data = {};
-            $currentRow.toArray().forEach(function ($value, index) {
-
-                if ($value.innerText !== $old_data[index]) {
-                    if ($value.innerText !== '' || $.inArray($value.attributes.name.value, ['img_user_profile', 'id_parent_cat', 'img_product'] !== -1)) {
-                        $data['id'] = value.parentElement.id;
+            $currentRow.toArray().forEach(function ($value) {
+                if ($value.className.indexOf('select') !== -1) {
+                    if ($value.childNodes[0].value !== $old_data[$value.attributes.name.value]) {
+                        $data['id'] = $value.parentElement.id;
                         $data['origin'] = document.location.pathname;
                         $data['type'] = 'UPDATE';
-                        $data[$value.attributes.name.value] = $value.innerText;
-                    } else {
-                        $value.innerText = $old_data[index];
+                        $data[$value.attributes.name.value] = $value.childNodes[0].value;
+                    }
+                    $value.innerText = $value.childNodes[0].value;
+                } else {
+                    if ($value.innerText !== $old_data[$value.attributes.name.value]) {
+                        if ($value.innerText !== '' || $.inArray($value.attributes.name.value, ['img_user_profile', 'id_parent_cat', 'img_product'] !== -1)) {
+                            $data['id'] = $value.parentElement.id;
+                            $data['origin'] = document.location.pathname;
+                            $data['type'] = 'UPDATE';
+                            $data[$value.attributes.name.value] = $value.innerText;
+                        } else {
+                            $value.innerText = $old_data[$value.attributes.name.value];
+                        }
                     }
                 }
             });
@@ -108,11 +164,6 @@ function modify() {
                             window.location.href = locUrl;
                         }
                     },
-                    fail: function (data) {
-                        console.log('fail');
-                        console.log(data);
-
-                    },
                 });
             } else {
                 console.log("No Update");
@@ -127,8 +178,11 @@ function modify() {
         $(this)[0].hidden = true;
         $currentRow = $(this).parents('tr').find('td.possible');
         $currentRow.prop('contenteditable', false).removeClass('canEdit');
-        $currentRow.toArray().forEach(function (value, index) {
-            value.innerText = $old_data[index];
+        $currentRow.toArray().forEach(function (value) {
+            if (value.className.indexOf('select') !== -1) {
+                value.innerHTML = '';
+            }
+            value.innerText = $old_data[value.attributes.name.value];
         });
     });
 }
@@ -142,7 +196,78 @@ function add() {
         var $removeRow = $('.removeRow');
         var $registerItem = $('.registerItem');
         var $lastRow = $("tbody tr").last();
+
         $lastRow.find('td.possible').prop('contenteditable', true).toggleClass('canEdit');
+        $lastRow.find('td.select').prop('contenteditable', false);
+
+        $lastRow.find('td.select').toArray().forEach(function ($value) {
+            switch ($value.attributes.name.value) {
+                case 'id_category':
+                    $data = {
+                        table: 'category_',
+                        cols: 'name_category',
+                        where: 'id_parent_cat',
+                        id_parent_cat: 'NOTNULL',
+                    };
+                    break;
+                case 'id_user':
+                    $data = {
+                        table: 'users',
+                        cols: 'username',
+                    };
+                    break;
+                case 'id_parent_cat':
+                    $data = {
+                        table: 'category_',
+                        cols: 'id_category',
+                    };
+                    break;
+                case 'status':
+                    $data = {
+                        status: $status,
+                    };
+                    break;
+                default:
+                    break;
+            }
+            $optionSelect = '';
+            $.ajax({
+                type: 'GET',
+                url: 'data.php',
+                data: $data,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    switch ($value.attributes.name.value) {
+                        case 'id_category':
+                            $returnValue = 'name_category';
+                            break;
+                        case 'id_user':
+                            $returnValue = 'username';
+                            break;
+                        case 'id_parent_cat':
+                            $returnValue = 'id_category';
+                            $optionSelect += '<option></option>';
+                            break;
+                        default:
+                            break;
+                    }
+                    if ($value.attributes.name.value === 'status') {
+                        data.forEach(function (item) {
+                            $optionSelect += '<option>' + item + '</option>';
+                        });
+                    } else {
+                        data.forEach(function (item) {
+                            $optionSelect += '<option>' + item[$returnValue] + '</option>';
+                        });
+                    }
+
+                    $value.innerHTML = '<select class="form-control">' + $optionSelect + '</select>';
+
+                    $optionSelect = '';
+                },
+            });
+        });
         //danger button ; removeRow
         $removeRow.click(function (e) {
             e.preventDefault();
@@ -152,13 +277,21 @@ function add() {
         $registerItem.click(function (e) {
             e.preventDefault();
             $dataRAW = {};
+            $dataRAW['origin'] = document.location.pathname;
+            $dataRAW['type'] = 'INSERT';
+            if (path.match('/products')) {
+                $dataRAW['id_user'] = '';
+            }
             $lastRow[0].childNodes.forEach(function (value) {
                 if (value.contentEditable === 'true') {
-                    $dataRAW['origin'] = document.location.pathname;
-                    $dataRAW['type'] = 'INSERT';
                     $dataRAW[value.attributes.name.value] = value.innerText;
                 }
+                if (value.className.indexOf('select') !== -1) {
+                    $dataRAW[value.attributes.name.value] = value.childNodes[0].value;
+                    ;
+                }
             });
+            console.log($dataRAW);
             $.ajax({
                 type: 'POST',
                 url: 'save.php',

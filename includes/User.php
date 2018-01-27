@@ -143,7 +143,7 @@ class User {
 		$this->session->write( 'connected', $user_info );
 		$this->bdd->query( 'UPDATE users SET last_connection = CURRENT_TIME WHERE id_user=:id', [ ':id' => $this->session->doubleRead( 'connected', 'id_user' ) ] );
 		// change to header("Location:/index.php"); if necessary
-		setcookie( 'status_user', $this->session->doubleRead( 'connected', 'status' ), time() + 3600, '/panel-admin/' );
+		setcookie( 'status_user', $this->session->doubleRead( 'connected', 'status' ), time() + 3600, '/dashboard/' );
 		header( "Location: /" );
 	}
 
