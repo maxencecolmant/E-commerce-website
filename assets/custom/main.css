@@ -64,7 +64,7 @@
 
 		.form input.form-control {
 			border-top-left-radius: 4px !important;
-			border-bottom-left-radius: 4px!important;
+			border-bottom-left-radius: 4px !important;
 			padding: 0 10px 0 40px;
 			width: 100%;
 		}
@@ -153,7 +153,7 @@
 		}
 
 		li.search-nav {
-			padding: 5px 0!important;
+			padding: 5px 0 !important;
 		}
 
 		.forgot_password {
@@ -538,9 +538,10 @@
 			color: #067fd8;
 		}
 
-		main.main .container:not('.social .container') {
+		#main .container:not(#social-container) {
 			padding: 0 !important;
 		}
+
 		/***Header Carousel***/
 
 		.carousel-control {}
@@ -551,6 +552,7 @@
 			top: 50%;
 			transform: translateY(-50%);
 		}
+
 		/* .carousel-item img {
 	width: auto;
 	max-width: auto !important;
@@ -593,6 +595,24 @@
 			font-size: 18px;
 			font-weight: 600;
 		}
+
+		/***Selection***/
+
+		.selection .container {
+			background: #fff;
+		}
+
+		.selection .content {
+			padding: 20px;
+		}
+
+		.selection .content h2 {
+			margin-top: 50px;
+			margin-bottom: 30px;
+			font-weight: 600;
+			color: #067fd8;
+		}
+
 		/***Partners***/
 
 		.partners .container {
@@ -737,6 +757,7 @@
 			line-height: 44px;
 			margin-top: -15px;
 		}
+
 		/***Categories***/
 
 		.categories .container {
@@ -754,7 +775,7 @@
 			color: #067fd8;
 		}
 
-		.categories .category-item-5 .category {
+		.categories .category-item-4 .category {
 			float: left;
 			width: 25%;
 			margin-bottom: 30px;
@@ -763,7 +784,7 @@
 			min-height: 341px;
 		}
 
-		.categories .category-item-5 .category .content {
+		.categories .category-item-4 .category .content {
 			border: 1px solid #e6e6e6;
 			padding: 9px;
 			background: #fff;
@@ -772,16 +793,16 @@
 			position: relative;
 		}
 
-		.categories .category-item-5 .category .category-header {
+		.categories .category-item-4 .category .category-header {
 			text-align: center;
 			margin-bottom: 5px;
 		}
 
-		.categories .category-item-5 .category .category-header img {
+		.categories .category-item-4 .category .category-header img {
 			margin-bottom: 10px;
 		}
 
-		.categories .category-item-5 .category a.title {
+		.categories .category-item-4 .category a.title {
 			background: #067fd8 !important;
 			color: #fff !important;
 			border-radius: 3px;
@@ -789,29 +810,30 @@
 			padding: 6px 60px !important;
 		}
 
-		.categories .category-item-5 .category ul {
+		.categories .category-item-4 .category ul {
 			padding: 15px !important;
 		}
 
-		.categories .category-item-5 .category ul li {
+		.categories .category-item-4 .category ul li {
 			list-style-type: none;
 		}
 
-		.categories .category-item-5 .category ul li a {
+		.categories .category-item-4 .category ul li a {
 			color: #333
 		}
 
-		.categories .category-item-5 .category ul li a:hover {
+		.categories .category-item-4 .category ul li a:hover {
 			color: #067fd8;
 			text-decoration: none
 		}
 
-		.categories .category-item-5 .category li a:before {
+		.categories .category-item-4 .category li a:before {
 			content: "\e9e2";
 			font-family: socicons-font;
 			margin-right: 10px;
 			color: #067fd8;
 		}
+
 		/***Social***/
 
 		.social .container {
@@ -859,6 +881,39 @@
 			font-weight: bold;
 			border-radius: 0 50px 50px 0px;
 		}
+
+		/***Brands***/
+
+		.brands .cl-5 .brand {
+			float: left;
+			width: 20%;
+			padding: 0 15px;
+			position: relative;
+			text-align: center;
+		}
+
+		.brands .container {
+			background: #fcfafa;
+		}
+
+		.brands .row {
+			padding-top: 40px;
+		}
+
+		.brands .cl-5 .brand a img {
+			-webkit-filter: grayscale(100%);
+			filter: grayscale(100%);
+			opacity: 0.8;
+			-webkit-transition: .3s ease-in-out;
+			transition: .3s ease-in-out;
+		}
+
+		.brands .cl-5 .brand a:hover img {
+			opacity: 1;
+			-webkit-filter: grayscale(0);
+			filter: grayscale(0);
+		}
+
 		/*
 ------------------------
 	About US
@@ -1031,6 +1086,7 @@
 			text-decoration: none;
 			color: #8799a3;
 		}
+
 		/*
 ------------------------
 	Footer
@@ -1085,6 +1141,6 @@
 
 		@media (min-width: 768px) {
 			.navbar-nav>li>a {
-				padding-top: 18px!important;
+				padding-top: 18px !important;
 			}
 		}

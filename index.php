@@ -64,6 +64,18 @@
     </section>
 
 
+    <section id="selection" class="selection">
+        <div class="container">
+            <div class=content>
+                <h2>
+                    Notre selection du mois
+                </h2>
+
+    </section>
+
+
+    <!-- Partners -->
+
     <section id="partners" class="partners">
         <div class="container">
             <div class=content>
@@ -262,7 +274,7 @@
                 <h2>
                     Catégories
                 </h2>
-                <div class="category-item-5 components">
+                <div class="category-item-4 components">
                     <div class="category">
                         <div class="content">
                             <div class="category-header">
@@ -294,7 +306,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="category-item-5 components">
+                <div class="category-item-4 components">
                     <div class="category">
                         <div class="content">
                             <div class="category-header">
@@ -325,7 +337,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="category-item-5 components">
+                <div class="category-item-4 components">
                     <div class="category">
                         <div class="content">
                             <div class="category-header">
@@ -357,7 +369,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="category-item-5 components">
+                <div class="category-item-4 components">
                     <div class="category">
                         <div class="content">
                             <div class="category-header">
@@ -394,7 +406,7 @@
 
     <!-- Social -->
     <section class="social" id="social">
-        <div class="container">
+        <div id="social-container" class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h3>Abonnez-vous à la newsletter
@@ -411,10 +423,47 @@
         </div>
     </section>
 
-    <!-- Features -->
+    <!--  -->
     <!-- I'll add it later -->
-    <section class="features" id="features">
+    <section class="brands" id="brands">
         <div class="container">
+            <div class="row">
+                <div class="cl-5">
+                    <div class="brand">
+                        <a href="https://fr.msi.com/">
+                            <img src="/assets/images/brand/msi-logo.png" width="120px" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="cl-5">
+                    <div class="brand">
+                        <a href="https://www.asus.com/fr/">
+                            <img src="/assets/images/brand/asus-logo.png" width="120px" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="cl-5">
+                    <div class="brand">
+                        <a href="http://www.samsung.com/fr/">
+                            <img src="/assets/images/brand/samsung-logo.png" width="120px" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="cl-5">
+                    <div class="brand">
+                        <a href="https://www.nvidia.fr/">
+                            <img src="/assets/images/brand/nvidia-logo.png" width="120px" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="cl-5">
+                    <div class="brand">
+                        <a href="https://www.intel.fr/">
+                            <img src="/assets/images/brand/intel-logo.png" width="120px" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
