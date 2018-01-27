@@ -68,7 +68,7 @@ class Database {
 			$req = $this->bdd->prepare( $query );
 			$req->execute( $params ) or die( print_r( $req->errorInfo() ) );
 		} else {
-			$req = $this->bdd->query( $query );
+			$req = $this->bdd->query( $query ) or die( var_dump( $this->bdd->errorInfo() ) ) ;
 		}
 
 		return $req;
@@ -86,10 +86,10 @@ class Database {
                             <td name="desc_product" class="possible">' . $desc_product . '</td>
                             <td name="img_product" class="possible">' . $img_product . '</td>
                             <td name="rank_product" class="possible">' . $rank_product . '</td>
-                            <td name="id_category" class="possible">' . $category_product . '</td>
+                            <td name="id_category" class="possible select">' . $category_product . '</td>
                             <td name="quantity_product" class="possible">' . $quantity_product . '</td>
                             <td name="is_hidden" class="possible">' . $is_hidden . '</td>
-                            <td name="id_user" class="possible">' . $id_user . '</td>
+                            <td name="id_user" class="possible select">' . $id_user . '</td>
                             <td>' . $published_at_product . '</td>
                             <td>' . $last_mod_product . '</td>
                             <td>

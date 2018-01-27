@@ -17,7 +17,7 @@ if (!empty($_POST)) {
     $data = $_POST;
     $id = isset($_POST['id']) ? intval(htmlspecialchars($_POST['id'])) : null;
     unset($_POST['id']);
-    $table = substr(str_replace('/panel-admin/', '', htmlspecialchars($_POST['origin'])), 0, -4);
+    $table = substr(str_replace('/dashboard/', '', htmlspecialchars($_POST['origin'])), 0, -4);
     $table = $table == 'category' ? $table . '_' : $table;
     unset($_POST['origin']);
     $type = isset($_POST['type']) ? htmlspecialchars($_POST['type']) : null;
