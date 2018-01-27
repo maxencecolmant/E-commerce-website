@@ -1193,6 +1193,11 @@
 			color: #fbc02d;
 		}
 
+		.product-page .infos-product h2 {
+			font-size: 18px;
+			font-weight: 600;
+		}
+
 		/*
 ------------------------
 	About US
