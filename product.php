@@ -55,7 +55,7 @@
                             <div class="price">
                                 <span class="price-product">
                                     <?php echo $price_product;?>
-                                    <sup>€00</sup>
+                                    <sup>€</sup>
                                 </span>
                             </div>
                             <div class=delivery>
