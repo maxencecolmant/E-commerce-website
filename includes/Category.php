@@ -168,12 +168,11 @@ class Category
                             <i class="socicon-star"></i>
                             <i class="socicon-star"></i>
                             <i class="socicon-star-half-empty"></i>
-                            <span>(4)</span>
                         </p>
                         <div class="price">
 
                             <span class="currentPrice">'.$item['price_product'].'€</span>
-                            <span class="oldPrice">179,90€</span>
+                            <span class="oldPrice"></span>
                         </div>
                         <a href="product.php?id=' . $item['id_product'] . '" class="cart-btn">
                             <i class="socicon-shopping-cart-black-shape"></i>
