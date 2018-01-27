@@ -1116,6 +1116,83 @@
 			color: #067fd8;
 		}
 
+		/***Product Page***/
+
+		.product-page .container,
+		.technical-details .container {
+			background: #fff;
+		}
+
+		.product-page .content .row,
+		.technical-details .content .row {
+			margin: 0;
+		}
+
+		.product-page .content .row {
+			margin-bottom: 20px;
+		}
+
+		.product-page .content,
+		.technical-details .content {
+			border-bottom: 1px solid #f4f7f8;
+		}
+
+		.technical-details h2 {
+			font-size: 20px;
+			margin-bottom: 20px;
+			font-weight: 600;
+			color: #067fd8;
+		}
+
+		.op-product .price {
+			text-align: center;
+		}
+
+		.op-product .price sup {
+			font-size: 17px;
+		}
+
+		.op-product .price-product {
+			font-size: 36px;
+			text-align: center;
+			font-weight: 600;
+			color: #067fd8;
+		}
+
+		.op-product .delivery {
+			text-align: center;
+			font-size: 12px;
+		}
+
+		.op-product .tax {
+			font-size: 12px;
+		}
+
+		.op-product .shop {
+			text-align: center;
+			margin-top: 30px;
+		}
+
+		.op-product .shop .addToCart {
+			background: #067fd8;
+			color: #fff;
+			border-radius: 3px;
+			border: 2px solid #067fd8;
+			padding: 10px 30px;
+			cursor: pointer;
+		}
+
+		.op-product .shop .addToCart:hover,
+		.op-product .shop .addToCart:focus {
+			background: #119cd6;
+			border: 2px solid #119cd6;
+			text-decoration: none;
+		}
+
+		.product-page .infos-product .rev i {
+			color: #fbc02d;
+		}
+
 		/*
 ------------------------
 	About US
