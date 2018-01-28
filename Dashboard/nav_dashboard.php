@@ -11,18 +11,22 @@
               <a class="nav-link" href="index.php">
                   <i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
           </li>
+          <?php if($restrict->isAllow('/dashboard/users.php')): ?>
 	      <li class="nav-item">
 		      <a class="nav-link" href="users.php">
 			      <i class="fa fa-fw fa-users"></i> Users</a>
 	      </li>
+          <?php endif; ?>
           <li class="nav-item">
               <a class="nav-link" href="products.php">
                   <i class="fa fa-fw fa-database"></i> Products</a>
           </li>
+	      <?php if($restrict->isAllow('/dashboard/category.php')): ?>
           <li class="nav-item">
               <a class="nav-link" href="category.php">
                   <i class="fa fa-fw fa-sitemap"></i> Category</a>
           </li>
+          <?php endif; ?>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i> Logout</a>

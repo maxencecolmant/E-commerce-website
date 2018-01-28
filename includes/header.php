@@ -7,6 +7,11 @@ require_once "Validator.php";
 require_once "User.php";
 require_once "Util.php";
 require_once "Category.php";
+require_once "UserRestrict.php";
+
+$restrict = new PHP\UserRestrict();
+
+$restrict->restrict();
 
 $session = PHP\Session::getInstance();
 $bdd = PHP\Database::getDatabase();
