@@ -82,4 +82,27 @@ include 'includes/navbar.php';
 	})(expYear, startYear, count);
 </script>
 
+<?php
+ function luhn_validate($number, $mod5 = false) {
+     $parity = strlen($number) % 2;
+     $total = 0;
+     $digits = str_split($number);
+     foreach($digits as $key => $digit) {
+         if (($key % 2) == $parity)
+             $digit = ($digit * 2);
+
+         if ($digit >= 10) {
+
+             $digit_parts = str_split($digit);
+
+             $digit = $digit_parts[0]+$digit_parts[1];
+         }
+         $total += $digit;
+     }
+     return ($total % ($mod5 ? 5 : 10) == 0 ? true : false); // If the mod 10 or mod 5 value is equal to zero (0), then it is valid
+ }
+ var_dump(luhn_validate("1234567894563"))
+
+?>
+
 <?php include 'includes/footer.php'; ?>
