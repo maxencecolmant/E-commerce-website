@@ -58,7 +58,7 @@
                                     <sup>€</sup>
                                 </span>
                             </div>
-                            <div class=delivery>
+                            <div class="delivery">
                                 <p>
                                     Livraison gratuite
                                 </p>
@@ -68,7 +68,11 @@
                                     Dont 0,00€ d'éco-participation
                                 </p>
                             </div>
-                            <div class="shop">
+                            <div class="quantity col-md-4 col-md-offset-4">
+                                <label for="quantity_offer">Quantité :</label>
+                                <input type="number" class="form-control" name="quantity_product_ordered" value="1">
+                            </div>
+                            <div class="shop col-md-12">
                                 <a href="" class="addToCart">Ajouter au panier</a>
                             </div>
                         </div>

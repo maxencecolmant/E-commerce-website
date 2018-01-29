@@ -18,6 +18,7 @@ $bdd = PHP\Database::getDatabase();
 $user = PHP\User::getInstance();
 $util = PHP\Util::class;
 $category = PHP\Category::getCategory();
+$validator = new PHP\Validator($session);
 
 ?>
 <!DOCTYPE html>

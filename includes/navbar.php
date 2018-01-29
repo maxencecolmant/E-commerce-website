@@ -94,7 +94,7 @@
         </ul>
       </li>
       <li class="cart">
-        <a href="#">
+        <a href="/panier.php">
           <i class="socicon-shopping-cart-black-shape custom-icon"></i>Panier</a>
       </li>
     </ul>
