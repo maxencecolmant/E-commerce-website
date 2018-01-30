@@ -9,6 +9,7 @@ class UserRestrict {
 	private $rules = array(
 		'/index.php'  => 'ALL',
 		'/includes/'  => 'ANY',
+		'/payment.php' => 'LOGGED',
 		'/dashboard/' => array(
 			'PARTNER',
 			'ADMIN',
@@ -52,6 +53,16 @@ class UserRestrict {
 	}
 	
 	private function redirect( $path ) {
+		
+		if($this->rules[$path] == 'LOGGED') {
+			$this->rules[$path] = array(
+				'USER',
+				'PARTNER',
+				'ADMIN',
+				'SUPER_ADMIN',
+			);
+		}
+		
 		if( is_array( $this->rules[$path] ) ) {
 			if( !in_array( $this->statusUser, $this->rules[$path] ) ) {
 				header( 'Location: /' );

@@ -35,4 +35,7 @@ $validator = new PHP\Validator($session);
     <link rel="stylesheet" href="assets/custom/font_icons/icon_sets.css">
     <link rel="stylesheet" href="assets/custom/main.css">
 </head>
+<script>
+    var status = <?php echo json_encode($session->doubleRead('connected', 'status')); ?>;
+</script>
 <body class="colored">

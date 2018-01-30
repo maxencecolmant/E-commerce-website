@@ -32,13 +32,34 @@ $('#add-cart').click(function () {
         data: $data,
         success: function (data) {
             console.log(data);
-            location.reload();
+            swal({
+                icon: 'info',
+                text: 'Continuer vos Achats ?',
+                buttons: ["Annuler", "Voir le Panier ?"],
+            }).then((value => {
+                if (value) {
+                    location.href = 'panier.php';
+                } else {
+                    location.reload();
+                }
+            }));
         },
     });
 
 });
 
 $('#valid-order').click(function (e) {
+
+    if (status === 'null') {
+        e.preventDefault();
+        swal({
+            title: 'Une erreur est survenue !',
+            text: 'Vous devez être connecté !',
+            icon: 'error',
+        })
+    }
+
+
     if (jQuery.isEmptyObject(cartInfo)) {
         e.preventDefault();
         location.reload();

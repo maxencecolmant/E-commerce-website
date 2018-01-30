@@ -24,6 +24,8 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a href="view.php">Tout</a></li>
+                        <li role="separator" class="divider"></li>
                         <?php echo $category->getNavCat(); ?>
                     </ul>
                 </li>
@@ -56,7 +58,7 @@
                                     <i class="socicon-users"></i>Profil</a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="/orders.php">
                                     <i class="socicon-shopping-cart-black-shape"></i>Commandes</a>
                             </li>
                             <?php if ($restrict->isAllow('/dashboard/')) : ?>
