@@ -12,7 +12,7 @@ class Util
     /**
      *
      */
-    public static function get_breadcrumb()
+    public static function get_breadcrumb ()
     {
         //$path = explode( "/", $_SERVER['REQUEST_URI'] );
         $path = preg_split("/\//", $_SERVER['PHP_SELF'], -1, PREG_SPLIT_NO_EMPTY);
@@ -23,7 +23,7 @@ class Util
             if ($item == end($path)) {
                 $breadcrumb .= '<li class="breadcrumb-item active">' . ucfirst($item) . '</li>';
             } else {
-                $breadcrumb .= '<li class="breadcrumb-item"><a href="/'. $item .'/">' . ucfirst($item) . '</a></li>';
+                $breadcrumb .= '<li class="breadcrumb-item"><a href="/' . $item . '/">' . ucfirst($item) . '</a></li>';
             }
         }
         
@@ -35,46 +35,61 @@ class Util
     /**
      * @param $mode
      */
-    public static function get_alert($mode)
+    public static function get_alert ($mode)
     {
         if (Session::getInstance()->hasFlashes($mode)) {
             foreach (Session::getInstance()->getFlashes($mode) as $type => $value): ?>
-    <?php if ($mode == 'sweet_alert') : ?>
-    <script type="text/javascript">
-        let data = <?php echo json_encode($value); ?>;
-        setTimeout(function() {
-            swal(data).then((value) => {
-                switch (value) {
-                    case true:
-                        if (data.buttons != null) {
-                            window.location.href += "&confirm=";
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            });
-        });
-    </script>
-    <?php endif; ?>
-    <?php if ($mode == 'default') : ?>
-    <div class="alert alert-<?php echo $type; ?> alert-dismissible show" role="alert">
-        <ul>
-            <?php echo $value; ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </ul>
-    </div>
-    <?php endif; ?>
-    <?php endforeach;
+                <?php if ($mode == 'sweet_alert') : ?>
+                    <script type="text/javascript">
+                        let data = <?php echo json_encode($value); ?>;
+                        setTimeout(function () {
+                            swal(data).then((value) => {
+                                switch (value) {
+                                    case true:
+                                        if (data.buttons != null) {
+                                            window.location.href += "&confirm=";
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            });
+                        });
+                    </script>
+                <?php endif; ?>
+                <?php if ($mode == 'default') : ?>
+                    <div class="alert alert-<?php echo $type; ?> alert-dismissible show" role="alert">
+                        <ul>
+                            <?php echo $value; ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach;
         }
+    }
+    
+    public static function countCart ()
+    {
+        $count = 0;
+        if (Session::getInstance()->exist('cart')) {
+            foreach (Session::getInstance()->read('cart') as $p) {
+                if (is_array($p)) {
+                    $count++;
+                }
+            }
+        }
+        $label = '<span class="badge">' . $count . '</span>';
+        
+        echo $count > 0 ? $label : '';
     }
     
     /**
      *
      */
-    public static function set_previous_alert()
+    public static function set_previous_alert ()
     {
         if (Session::getInstance()->hasArgsFlash()) {
             Session::getInstance()->setFlash('sweet_alert', 'success', Session::getInstance()->getArgsFlash());
@@ -84,7 +99,7 @@ class Util
     /**
      *
      */
-    public static function sendMail()
+    public static function sendMail ()
     {
         $validator = new Validator(Session::getInstance(), $_POST);
         if (!empty($_POST)) {
@@ -108,7 +123,7 @@ class Util
     /**
      * @return string
      */
-    public static function get_ip()
+    public static function get_ip ()
     {
         if (isset($_SERVER['HTTP_CLIENT_IP'])) {
             return $_SERVER['HTTP_CLIENT_IP'];
@@ -122,14 +137,14 @@ class Util
     /**
      * @return mixed
      */
-    public static function get_user()
+    public static function get_user ()
     {
         if (isset($_SERVER['HTTP_USER_AGENT'])) {
             return $_SERVER['HTTP_USER_AGENT'];
         }
     }
     
-    public static function rmItem($item)
+    public static function rmItem ($item)
     {
         switch ($item) {
             case 'category':
@@ -169,7 +184,7 @@ class Util
                             );
                             Session::getInstance()->setFlash('sweet_alert', 'warning', $args);
                         } else {
-                            Database::getDatabase()->query('DELETE FROM '.$params['table'].' WHERE '.$params['id_col'].' = :id', [':id' => $_GET['id']]);
+                            Database::getDatabase()->query('DELETE FROM ' . $params['table'] . ' WHERE ' . $params['id_col'] . ' = :id', [':id' => $_GET['id']]);
                             $args = array(
                                 'title' => 'Succès !',
                                 'text' => 'Votre ' . $params['text_alert_success'] . ' a bien été supprimé !',
@@ -198,7 +213,7 @@ class Util
      * @param $dir
      * @return bool
      */
-    public static function rmDirR($dir)
+    public static function rmDirR ($dir)
     {
         $files = array_diff(scandir($dir), array('.', '..'));
         foreach ($files as $file) {

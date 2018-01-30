@@ -70,10 +70,11 @@
                             </div>
                             <div class="quantity col-md-4 col-md-offset-4">
                                 <label for="quantity_offer">Quantité :</label>
-                                <input type="number" class="form-control" name="quantity_product_ordered" value="1">
+                                <input id="q" type="number" class="form-control" name="quantity_product_ordered" value="1">
                             </div>
                             <div class="shop col-md-12">
-                                <a href="" class="addToCart">Ajouter au panier</a>
+                                <input type="hidden" id="id_product" value="<?php echo $id_product;?>">
+                                <button id="add-cart" class="addToCart">Ajouter au panier</button>
                             </div>
                         </div>
                     </div>

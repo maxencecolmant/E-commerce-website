@@ -4,180 +4,170 @@
 
 <?php
 require_once 'includes/Cart.php';
-$cart = new techdeals\Cart( $_GET );
+$cart = new techdeals\Cart($_POST);
 
-if( !empty( $_GET ) ) {
-	$validator->setData( $_GET );
-	
-	if( !$validator->isEmpty( 'action' ) ) {
-		$id = htmlspecialchars( $_GET['id'] );
-		$q = htmlspecialchars( $_GET['q_' . $id] );
-		switch( htmlspecialchars( $_GET['action'] ) ) {
-			case 'add':
-				if( !$validator->isEmpty( 'id' ) && !$validator->isEmpty( 'q_' . $id ) ) {
-					$cart->addProductToCart( $id, $q );
-				} else {
-					$session->setFlash( 'default', 'danger', 'Une erreur est survenue !' );
-				}
-				break;
-			case 'remove':
-				if( !$validator->isEmpty( 'id' ) ) {
-					$cart->removeProductToCart( $id );
-				} else {
-					$session->setFlash( 'default', 'danger', 'Une erreur est survenue !' );
-				}
-				break;
-			case 'refresh':
-				if( !$validator->isEmpty( 'id' ) && !$validator->isEmpty( 'q_' . $id ) ) {
-					$cart->updateProductQuantity( $id, $q );
-				} else {
-					$session->setFlash( 'default', 'danger', 'Une erreur est survenue !' );
-				}
-				break;
-			case 'drop':
-				$cart->removeCart();
-				break;
-			default:
-				break;
-		}
-	}
+if (!empty($_POST)) {
+    $validator->setData($_POST);
+    
+    if (!$validator->isEmpty('action')) {
+        $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : null;
+        $q = isset($_POST['q']) ? htmlspecialchars($_POST['q']) : null;
+        switch (htmlspecialchars($_POST['action'])) {
+            case 'add':
+                if (!$validator->isEmpty('id') && !$validator->isEmpty('q')) {
+                    $cart->addProductToCart($id, $q);
+                    header('Location: /panier.php');
+                    
+                } else {
+                    $session->setFlash('default', 'danger', 'Une erreur est survenue !');
+                }
+                break;
+            case 'remove':
+                if (!$validator->isEmpty('id')) {
+                    $cart->removeProductToCart($id);
+                    header('Location: /panier.php');
+                } else {
+                    $session->setFlash('default', 'danger', 'Une erreur est survenue !');
+                }
+                break;
+            case 'refresh':
+                if (!$validator->isEmpty('id') && !$validator->isEmpty('q')) {
+                    $cart->updateProductQuantity($id, $q);
+                    header('Location: /panier.php');
+                } else {
+                    $session->setFlash('default', 'danger', 'Une erreur est survenue !');
+                }
+                break;
+            case 'drop':
+                $cart->removeCart();
+                header('Location: /panier.php');
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 ?>
-<main class="container">
-	<?php var_dump( $session->read( 'cart' ) );
-	
-	?>
+<main class="container" style="margin-top: 10%;margin-bottom: 10%;">
+    <?php
+    $cart_product = null;
+    $cartP = $session->read('cart');
+    if ($cart->createCart()) {
+        foreach ($cartP as $id => $item) {
+            if (is_array($item)) {
+                $cart_product .= $item['id_product'] . ', ';
+            }
+        }
+        if ($cart_product != null) {
+            $cart_product = substr($cart_product, 0, -2);
+            $curr_cart = $bdd->query('SELECT id_product, name_product, price_product, img_product FROM products WHERE id_product IN (' . $cart_product . ')')->fetchAll(\PDO::FETCH_ASSOC);
+        }
+    }
+    ?>
+    <script>
+        var cartInfo = [];
+    </script>
     <div class="row">
-        <form method="get" action="#">
-            <fieldset>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
+        <fieldset>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="text-center"></th>
+                        <th class="text-center">Produit</th>
+                        <th class="text-center">Quantité</th>
+                        <th class="text-center">Prix TTC</th>
+                        <th class="text-center">Sous-Total</th>
+                        <th class="text-center"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if ($cart_product != null) : ?>
+                    <?php $i = 0; ?>
+                        <?php foreach ($curr_cart as $curr_product): ?>
+                            <tr>
+                                <form method="post" action="panier.php">
+                                    <td class="align-middle text-center">
+                                        <a href=""> <img
+                                                    class="img-responsive center-block extra-small-img"
+                                                    alt="product"
+                                                    src="<?php echo $curr_product['img_product']; ?>">
+                                        </a></td>
+                                    <td class="align-middle text-center">
+                                        <?php echo $curr_product['name_product']; ?>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <input type="number" class="form-control stepper-input"
+                                               id="q_<?php echo $i; $i++;?>"
+                                               name="q"
+                                               value="<?php echo $_SESSION['cart'][$curr_product['id_product']]['quantity_product_ordered']; ?>"
+                                               step="1">
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <?php echo $curr_product['price_product'] ?> €
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <?php echo floatval($curr_product['price_product']) * $_SESSION['cart'][$curr_product['id_product']]['quantity_product_ordered']; ?>
+                                        €
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <input type="hidden" name="id"
+                                               value="<?php echo $curr_product['id_product']; ?>">
+                                        <input type="hidden" name="action" value="refresh">
+                                        <button type="submit" class="btn btn-info text-center no-margin" href="#"><i
+                                                    class="fa fa-refresh"></i></button>
+                                        <button id="<?php echo $curr_product['id_product']; ?>"
+                                                class="btn btn-danger text-center no-margin remove-product"><i
+                                                    class="fa fa-trash"></i></button>
+                                    </td>
+                                </form>
+                                <script>
+                                     cartInfo.push(<?php echo json_encode($session->doubleRead('cart', $curr_product['id_product']));?>);
+                                </script>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
                         <tr>
-                            <th class="bg-extra-light-grey"></th>
-                            <th class="bg-extra-light-grey">Product</th>
-                            <th class="bg-extra-light-grey">Quantity</th>
-                            <th class="bg-extra-light-grey">Price</th>
-                            <th class="bg-extra-light-grey">Subtotal</th>
-                            <th class="bg-extra-light-grey"></th>
+                            <td colspan="6" class="align-middle text-center">Panier Vide</td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <form method="get" action="#">
-                                <td class="align-middle">
-                                    <a href=""> <img
-                                                class="img-responsive center-block extra-small-img"
-                                                alt="product"
-                                                src="<?php ///img_product ?>">
-                                    </a></td>
-                                <td class="align-middle">
-									<?php //name_product ?>
-                                </td>
-                                <td scope="row" class="align-middle">
-                                    <input type="number" class="form-control stepper-input"
-                                           name="<?php //q_(id_product) ?>" value="<?php //quantity ?>"
-                                           step="1">
-                                </td>
-                                <td class="align-middle text-center">
-									<?php //price ?>
-                                </td>
-                                <td class="align-middle text-center">
-									<?php //sub-total ?>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <input type="hidden" name="id" value="<?php //id_product ?>">
-                                    <button type="submit" class="btn btn-info text-center no-margin" href="#"><i
-                                                class="fa fa-refresh"></i></button>
-                                    <a class="btn btn-danger text-center no-margin" href="#"><i class="fa fa-trash"></i></a>
-                                </td>
-                            </form>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </fieldset>
-            <fieldset class="buttons">
-                <div class="pull-right">
-                    <a class="btn btn-info btn-lg lg-2x text-uppercase" href="/shop">Back to shopping</a>
-                    <a class="btn btn-info btn-lg lg-2x text-uppercase" href="/payment">Purchase it</a>
-                    <a class="btn btn-info btn-lg lg-2x text-uppercase" href="#"><i class="fa fa-refresh"></i></a>
-
-                    </a></div>
-            </fieldset>
-        </form>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <fieldset class="buttons">
+            <div class="pull-left">
+                <button id="drop-cart" class="btn btn-danger btn-lg lg-2x text-uppercase">Vider le
+                    Panier
+                </button>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-info btn-lg lg-2x text-uppercase" href="/view.php">Retour vers Boutique</a>
+                <a id="valid-order" class="btn btn-info btn-lg lg-2x text-uppercase" href="payment.php">Commander</a>
+            </div>
+        </fieldset>
     </div>
-    <div class="row">
-        <div class="col-sm-4">
-            <section class="single-block bg-white wrap-radius">
-                <div class="icon-email"> <!--icon-email, icon-discount, icon-shipping-->
-                    <h4 class="title-box text-uppercase no-margin-top">
-                        SUBSCRIBE TO NEWSLETTER
-                    </h4>
-                    <p class="copy-box no-margin-top">
-                        Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et
-                        dolore magna aliqua.
-                    </p>
-                    <div class="text-center">
-                        <a class="btn btn-link no-margin" href="#">SHOW MORE</a>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-        <div class="col-sm-4">
-            <section class="single-block bg-white wrap-radius">
-                <div class="icon-discount"> <!--icon-email, icon-discount, icon-shipping-->
-                    <h4 class="title-box text-uppercase no-margin-top">
-                        Have a Coupon?
-                    </h4>
-                    <p class="copy-box no-margin-top">
-                        Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et
-                        dolore magna aliqua.
-                    </p>
-                    <div class="text-center">
-                        <a class="btn btn-link no-margin" href="#">SHOW MORE</a>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-        <div class="col-sm-4">
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-sm-4 col-sm-offset-8">
             <section class="wrap wrap-border internal-padding spacer-bottom-15">
                 <h4 class="text-uppercase no-margin">Summary order</h4>
                 <div class="spacer-top-5">
                     <div class="row spacer-bottom-5">
                         <div class="col-xs-6">Articles:</div>
-                        <div class="col-xs-6 text-right">$ 45,00</div>
+                        <div class="col-xs-6 text-right"><?php echo $cart->cartHT(); ?> €</div>
                     </div>
                     <div class="row spacer-bottom-5">
-                        <div class="col-xs-6">Shipping costs:</div>
-                        <div class="col-xs-6 text-right">
-                            <b>GRATIS</b>
-                        </div>
+                        <div class="col-xs-6">TVA:</div>
+                        <div class="col-xs-6 text-right"><?php echo $cart->cartTVA(); ?> €</div>
                     </div>
+                    <div class="row"></div>
                     <div class="row spacer-bottom-5">
-                        <div class="col-xs-6 highlighted">
-                            <strong>Gift Certificate:</strong>
-                        </div>
-                        <div class="col-xs-6 text-right">
-                            <b>- $ 45,00</b>
-                        </div>
+                        <div class="col-xs-6 "><strong>Total order:</strong></div>
+                        <div class="col-xs-6 text-right"><?php echo $cart->totalCart(); ?> €</div>
                     </div>
-                    <div class="row spacer-bottom-5">
-                        <div class="col-xs-6">Total order:</div>
-                        <div class="col-xs-6 text-right">$ 0,00</div>
-                    </div>
-                    <p class="small no-margin spacer-top-15">
-                        Your order includes VAT.
-                        <a href="/kidstore/terms-conditions">
-                            <u>Details</u>
-                        </a>
-                    </p>
                 </div>
             </section>
-
         </div>
     </div>
 </main>

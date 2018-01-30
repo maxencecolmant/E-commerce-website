@@ -98,6 +98,7 @@
 <script src="assets/custom/bootstrap/bootstrap.js"></script>
 <script src="/assets/custom/validation_form.js"></script>
 <script src="/assets/custom/main.js"></script>
+<script src="/assets/custom/cart.js"></script>
 <script src="/assets/custom/scroll.js"></script>
 <script>
     $('.carousel').carousel({
