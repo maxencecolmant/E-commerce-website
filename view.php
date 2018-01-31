@@ -3,6 +3,7 @@
 <?php include 'includes/navbar.php' ?>
 
 <?php $currentCategory = isset( $_GET['category'] ) ? htmlspecialchars( $_GET['category'] ) : null; ?>
+<?php $search = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : null ?>
 
     <main id=main class="container main" style="min-height: 70vh;">
         <section id="view-page" class="view-page">
@@ -29,6 +30,10 @@
 								$category->displayProduct( $currentCategory );
 							}
 							?>
+                        <?php elseif($search != null): ?>
+                            <?php
+                                $category->displaySearch($search);
+                            ?>
 						<?php else: ?>
 							<?php $category->displayAll(); ?>
 						<?php endif; ?>

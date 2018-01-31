@@ -195,24 +195,6 @@ class Category {
 		$return = '';
 		
 		foreach( $products as $item ) {
-			// $return .= '<div class="media">
-			//       <div class="media-left media-middle">
-			//         <a href="#">
-			//           <img class="media-object" src="' . $item['img_product'] . '" alt="...">
-			//         </a>
-			//       </div>
-			//       <div class="media-body">
-			//         <h4 class="media-heading">' . $item['name_product'] . '</h4>
-			//         ' . $item['desc_product'] . '
-			//       </div>
-			//       <div class="media-right">
-			//         ' . $item['price_product'] . ' €
-			//       </div>
-			//       <div class="media-right">
-			//       <a href="product.php?id=' . $item['id_product'] . '">Acheter</a>
-			//       </div>
-			//     </div>';
-			
 			
 			// le nom de la categorie est en get
 			$return .= '<div class="product-item-4">
@@ -220,6 +202,46 @@ class Category {
                     <div class="content">
                         <img class="img-responsive" src="' . $item['img_product'] . '" alt="">
                         <span class="cat">' . htmlspecialchars( $_GET['category'] ) . '</span>
+                        <a href="product.php?id=' . $item['id_product'] . '" class="title">' . $item['name_product'] . '</a>
+
+                        <p class="rev">
+                            <i class="socicon-star"></i>
+                            <i class="socicon-star"></i>
+                            <i class="socicon-star"></i>
+                            <i class="socicon-star"></i>
+                            <i class="socicon-star-half-empty"></i>
+                        </p>
+                        <div class="price">
+
+                            <span class="currentPrice">' . $item['price_product'] . '€</span>
+                            <span class="oldPrice"></span>
+                        </div>
+                        <a href="product.php?id=' . $item['id_product'] . '" class="cart-btn">
+                            <i class="socicon-shopping-cart-black-shape"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>';
+		}
+		
+		echo $return;
+	}
+	
+	public function displaySearch( $searchElement ) {
+		$products = $this->bdd->query(
+			'SELECT id_product, name_product, price_product, desc_product, img_product, name_category FROM products LEFT JOIN category_ ON products.id_category = category_.id_category WHERE name_product LIKE :s', [
+			':s' => '%'. $searchElement .'%',
+		] )->fetchAll( \PDO::FETCH_ASSOC );
+		
+		$return = '';
+		
+		foreach( $products as $item ) {
+			
+			$return .= '<div class="product-item-4">
+                <div class="product">
+                    <div class="content">
+                        <img class="img-responsive" src="/assets/images/products/' . $item['img_product'] . '" alt="">
+                        <span class="cat">' . $item['name_category'] . '</span>
                         <a href="product.php?id=' . $item['id_product'] . '" class="title">' . $item['name_product'] . '</a>
 
                         <p class="rev">

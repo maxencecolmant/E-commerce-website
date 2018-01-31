@@ -24,7 +24,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <?php echo $category->getNavCat(); ?>
+						<?php echo $category->getNavCat(); ?>
                     </ul>
                 </li>
                 <li>
@@ -32,10 +32,17 @@
                 </li>
                 <li class="search-nav">
                     <div class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input id="search-input" type="text" class="form-control search-form" name="search-input"
-                                   placeholder="Rechercher">
-                        </div>
+                        <form name="search" method="get" class="form-inline" action="view.php">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input id="search-input" type="text"
+                                           class="form-control search-form" name="search"
+                                           placeholder="Rechercher">
+
+                                </div>
+                            </div>
+                            <button type="submit" class="btn hidden"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -47,9 +54,9 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <?php if ($session->read('connected') != null) : ?>
+						<?php if( $session->read( 'connected' ) != null ) : ?>
                             <li class="dropdown-header">
-                                <?php $session->doubleGet('connected', 'username'); ?>
+								<?php $session->doubleGet( 'connected', 'username' ); ?>
                             </li>
                             <li>
                                 <a href="/profile.php">
@@ -59,19 +66,19 @@
                                 <a href="/orders.php">
                                     <i class="socicon-shopping-cart-black-shape"></i>Commandes</a>
                             </li>
-                            <?php if ($restrict->isAllow('/dashboard/')) : ?>
+							<?php if( $restrict->isAllow( '/dashboard/' ) ) : ?>
                                 <div class="divider"></div>
                                 <li>
                                     <a href="/dashboard/" class="item">
                                         <i class="socicon-dashboard"></i>Dashboard</a>
                                 </li>
-                            <?php endif; ?>
+							<?php endif; ?>
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="/logout.php">
                                     <i class="socicon-logout"></i>Déconnexion</a>
                             </li>
-                        <?php else : ?>
+						<?php else : ?>
                             <li>
                                 <a href="../signup.php" class="">
                                     <i class="socicon-add-square-button"></i> Inscription</a>
@@ -80,15 +87,16 @@
                                 <a href="../login.php" class="">
                                     <i class="socicon-login"></i> Connexion</a>
                             </li>
-                        <?php endif; ?>
+						<?php endif; ?>
                     </ul>
                 </li>
                 <li class="cart">
                     <a href="/panier.php">
-                        <i class="socicon-shopping-cart-black-shape custom-icon"></i>Panier <?php $util::countCart() ?></a>
+                        <i class="socicon-shopping-cart-black-shape custom-icon"></i>Panier <?php $util::countCart() ?>
+                    </a>
                 </li>
             </ul>
         </div>
 </nav>
 
-<?php $util::get_alert('default'); ?>
+<?php $util::get_alert( 'default' ); ?>
