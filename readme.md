@@ -1,21 +1,63 @@
-# E-commerce Site
+![logo projet](pics/logo.png)
+# E-commerce Site ![project-title](https://img.shields.io/badge/techdeals-e--commerce-067fd8.svg)
 
-#### Panel-Admin
+> Projet PHP 2018 Site E-Commerce.
 
-- Voir l'agencement de l'index du panel-admin
+![screen projet](pics/screenshot.png)
 
-#### User CRUD
+### Thème
 
-- Page de profil avec envoie de l'img de profil + modification et password
-- Page récapitulative des commandes
-- Procedure Mot de passe oublié
+- Vente de matériels informatiques
 
-#### Display Category
+### Types d'utilisateurs
 
-- Creer les pages PHP pour cat PARENT et cat ENFANT
-- Creer les fonction PHP pour dynamiser l'affichage
-- Voir la structure HTML de l'affichage  PARENT/ENFANT
+- Super Administrateur : SUPER_ADMIN
+- Administrateur : Admin
+- Partenaire : Partner
+- Utilisateur ordinaire :User
 
-#### General
+### Fonctionnalités implémentées
 
-- Mettre en place des sécurité sur l'accès des fichier PHP
+- Le système d’authentification
+
+    * Connexion
+
+    * Inscription
+
+- Affichage et édition du profil (à partir du dashbord)
+
+    * Affichage
+
+    * Edition
+
+    * Suppression
+
+- Affichage et édition des produits (également catégories)
+
+    * Affichage
+
+    * Edition
+
+    * Suppression
+
+
+- Système de « panier »
+
+    * Ajout des produits
+
+    * Suppression des produits
+
+### Auteurs
+
+#### Chef de projet : [Maxence COLMANT](https://github.com/maxencecolmant)
+
+#### Développeurs :
+
+- [Laurent PANEK](https://github.com/Laurent-PANEK)
+- [Abdessalam BENHARIRA](https://github.com/Abdessalam98)
+- [Maxence COLMANT](https://github.com/maxencecolmant)
+
+### Licence
+
+Ce projet est sous licence MIT.
+Copyright © 2018 Techdeals 
