@@ -22,6 +22,11 @@ if( !empty( $_POST ) ) {
 	$data = $_POST;
 	$id = isset( $_POST['id'] ) ? intval( htmlspecialchars( $_POST['id'] ) ) : null;
 	unset( $_POST['id'] );
+	$pass_c = isset( $_POST['password_c'] ) ?  htmlspecialchars( $_POST['password_c'] ) : null;
+	unset( $_POST['password_c'] );
+	if(isset($_POST['password']) && !empty($_POST['password'])) {
+		$_POST['password'] = password_hash( htmlspecialchars( $_POST['password'] ), PASSWORD_BCRYPT );
+	}
 	$table = substr( str_replace( '/dashboard/', '', htmlspecialchars( $_POST['origin'] ) ), 0, -4 );
 	$table = $table == 'category' ? $table . '_' : $table;
 	unset( $_POST['origin'] );
@@ -101,6 +106,24 @@ if( !empty( $_POST ) ) {
 								$args = array(
 									'title' => 'Une erreur est survenue !',
 									'text'  => 'L\'email n\'est pas valide !',
+									'icon'  => 'error',
+								);
+								$session->setArgsFlash( $args );
+							}
+						}
+						break;
+					case 'password':
+						if( $old_data[$col] != $value && !empty( trim( $value ) ) ) {
+							if( password_verify($pass_c, $value) ) {
+								$bdd->query(
+									'UPDATE ' . $table . ' SET ' . $col . ' = :value WHERE ' . $col_id . ' = :id', [
+									':id'    => $id,
+									':value' => $value,
+								] );
+							} else {
+								$args = array(
+									'title' => 'Une erreur est survenue !',
+									'text'  => 'Les mots de passe ne sont pas identiques !',
 									'icon'  => 'error',
 								);
 								$session->setArgsFlash( $args );

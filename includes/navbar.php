@@ -24,8 +24,6 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="view.php">Tout</a></li>
-                        <li role="separator" class="divider"></li>
                         <?php echo $category->getNavCat(); ?>
                     </ul>
                 </li>
@@ -54,7 +52,7 @@
                                 <?php $session->doubleGet('connected', 'username'); ?>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="/profile.php">
                                     <i class="socicon-users"></i>Profil</a>
                             </li>
                             <li>

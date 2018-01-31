@@ -27,6 +27,12 @@
                   <i class="fa fa-fw fa-sitemap"></i> Category</a>
           </li>
           <?php endif; ?>
+          <?php if($restrict->isAllow('/dashboard/orders.php')): ?>
+          <li class="nav-item">
+              <a class="nav-link" href="orders.php">
+                  <i class="fa fa-fw fa-shopping-cart"></i> Orders</a>
+          </li>
+          <?php endif; ?>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i> Logout</a>

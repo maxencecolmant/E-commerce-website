@@ -40,6 +40,7 @@ class Util
         if (Session::getInstance()->hasFlashes($mode)) {
             foreach (Session::getInstance()->getFlashes($mode) as $type => $value): ?>
                 <?php if ($mode == 'sweet_alert') : ?>
+                <?php $then = isset($value['then']) ? $value['then'] : null; unset($value['then']); ?>
                     <script type="text/javascript">
                         let data = <?php echo json_encode($value); ?>;
                         setTimeout(function () {
@@ -53,7 +54,7 @@ class Util
                                     default:
                                         break;
                                 }
-                            });
+                            })<?php echo $then != null ? $then : '';?>;
                         });
                     </script>
                 <?php endif; ?>
@@ -70,8 +71,29 @@ class Util
             <?php endforeach;
         }
     }
-    
-    public static function countCart ()
+	
+	public static function luhn_validate($number, $mod5 = false) {
+		$parity = strlen($number) % 2;
+		$total = 0;
+		$digits = str_split($number);
+		foreach($digits as $key => $digit) {
+			if (($key % 2) == $parity)
+				$digit = ($digit * 2);
+			
+			if ($digit >= 10) {
+				
+				$digit_parts = str_split($digit);
+				
+				$digit = $digit_parts[0]+$digit_parts[1];
+			}
+			$total += $digit;
+		}
+		return ($total % ($mod5 ? 5 : 10) == 0 ? true : false); // If the mod 10 or mod 5 value is equal to zero (0), then it is valid
+	}
+	
+	
+	
+	public static function countCart ()
     {
         $count = 0;
         if (Session::getInstance()->exist('cart')) {

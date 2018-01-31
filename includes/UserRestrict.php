@@ -23,6 +23,10 @@ class UserRestrict {
 			'ADMIN',
 			'SUPER_ADMIN',
 		),
+		'/dashboard/orders.php' => array(
+			'ADMIN',
+			'SUPER_ADMIN',
+		),
 	);
 	
 	/**
