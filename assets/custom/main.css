@@ -1198,6 +1198,76 @@
 			font-weight: 600;
 		}
 
+		/***Cart Page***/
+
+		.cart-page .container {
+			background: #fff;
+		}
+
+		.cart-page .row {
+			padding: 0 50px;
+		}
+
+		.cart-page .content h2 {
+			margin-top: 0;
+			margin-bottom: 30px;
+			font-weight: 600;
+			color: #067fd8;
+			padding: 0 15px;
+		}
+
+		.cart-page .total-cart {
+			background: #067fd8;
+			color: #fff;
+			border-radius: 3px;
+		}
+
+		.cart-page section {
+			margin: 15px 0;
+		}
+
+		.cart-page .drop-cart {
+			background: #e74c3c;
+			border-color: #e74c3c;
+			font-size: 14px;
+			border-radius: 3px;
+			padding: 10px 30px;
+		}
+
+		.cart-page .drop-cart:hover,
+		.cart-page .drop-cart:focus {
+			background: #db4737;
+			border-color: #db4737;
+		}
+
+		.cart-page .valid-order {
+			background: #067fd8;
+			border-color: #067fd8;
+			font-size: 14px;
+			border-radius: 3px;
+			padding: 10px 30px;
+		}
+
+		.cart-page .valid-order:hover,
+		.cart-page .valid-order:focus {
+			background: #119cd6;
+			border-color: #119cd6;
+		}
+
+		.cart-page .return {
+			background: #e67e22;
+			border-color: #e67e22;
+			font-size: 14px;
+			border-radius: 3px;
+			padding: 10px 30px;
+		}
+
+		.cart-page .return:hover,
+		.cart-page .return:focus {
+			background: #e67818;
+			border-color: #e67818;
+		}
+
 		/*
 ------------------------
 	About US
