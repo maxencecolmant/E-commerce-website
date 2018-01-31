@@ -73,7 +73,7 @@
 					<?php
 					$product_select = $bdd->query(
 						'SELECT id_product, name_product, name_category, img_product, price_product
- FROM products LEFT JOIN category_ ON products.id_category = category_.id_category WHERE is_hidden = :v', [ ':v' => 1, ] )->fetchAll( \PDO::FETCH_ASSOC );
+ FROM products LEFT JOIN category_ ON products.id_category = category_.id_category WHERE is_hidden = :v ORDER BY id_product DESC LIMIT 4', [ ':v' => 1, ] )->fetchAll( \PDO::FETCH_ASSOC );
 					?>
                     <div class="container">
                         <div class="content">

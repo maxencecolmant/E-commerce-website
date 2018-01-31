@@ -14,6 +14,8 @@ arrayCookie.forEach(function (cookie) {
 var edit;
 if ($status === 'ADMIN' || $status === 'SUPER_ADMIN') {
     edit = 'class="possible select"';
+}else if ($status === '') {
+    edit = 'class="possible select"';
 } else {
     edit = '';
 }
