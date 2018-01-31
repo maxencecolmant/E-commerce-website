@@ -63,7 +63,7 @@ if( $cart->createCart() ) {
 <script>
     var cartInfo = [];
 </script>
-<main id=main class="container main">
+<main id=main class="container main" style="min-height: 70vh;">
     <section id="cart-page" class="cart-page">
         <div class="container">
             <div class="breadcrumb-title">

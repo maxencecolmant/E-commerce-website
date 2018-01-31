@@ -10,6 +10,8 @@ class UserRestrict {
 		'/index.php'  => 'ALL',
 		'/includes/'  => 'ANY',
 		'/payment.php' => 'LOGGED',
+		'/orders.php' => 'LOGGED',
+		'/profile.php' => 'LOGGED',
 		'/dashboard/' => array(
 			'PARTNER',
 			'ADMIN',
@@ -82,6 +84,14 @@ class UserRestrict {
 	}
 	
 	public function isAllow($pathToAllow) {
+		if($this->rules[$pathToAllow] == 'LOGGED') {
+			$this->rules[$pathToAllow] = array(
+				'USER',
+				'PARTNER',
+				'ADMIN',
+				'SUPER_ADMIN',
+			);
+		}
 		if( is_array( $this->rules[$pathToAllow] ) ) {
 			if( in_array( $this->statusUser, $this->rules[$pathToAllow] ) ) {
 				return true;

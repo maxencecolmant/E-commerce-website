@@ -14,7 +14,7 @@
 <?php echo $name_category;?>
 <?php echo $username;?> -->
 
-<main id=main class="container main">
+<main id=main class="container main" style="min-height: 70vh;">
     <section id="product-page" class="product-page">
         <div class="container">
             <div class="breadcrumb-title">

@@ -44,15 +44,7 @@
             <div class="widget col-md-6 col-lg-3">
                 <h2>Catégories</h2>
                 <ul>
-                    <li class="border-none">
-                        <a href="">Composants PC</a>
-                    </li>
-                    <li class="border-none">
-                        <a href="">Périphériques PC</a>
-                    </li>
-                    <li class="border-none">
-                        <a href="">Serveurs</a>
-                    </li>
+                   <?php echo $category->getNavCat(); ?>
                 </ul>
             </div>
             <div class="widget col-md-6 col-lg-3">

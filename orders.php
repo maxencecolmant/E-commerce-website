@@ -12,7 +12,7 @@ $cmd = $bdd->query(
 )->fetchAll(\PDO::FETCH_ASSOC);
 ?>
 
-    <main id=main class="container main">
+    <main id=main class="container main" style="min-height: 70vh;">
         <section id="orders-page" class="orders-page">
             <div class="container">
                 <div class="breadcrumb-title">

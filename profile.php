@@ -8,7 +8,7 @@ $user = $bdd->query( 'SELECT * FROM users WHERE id_user = :id ',
 $session->write('connected', $user);
 $info = $session->read('connected');
 ?>
-<div class="container" style="text-align:center;">
+<div class="container" style="text-align:center;min-height: 70vh;">
     <h1 class="page-header">Modifiez votre profil</h1>
     <div class="row">
         <!-- edit form column -->

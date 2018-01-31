@@ -4,7 +4,7 @@
 
 <?php $currentCategory = isset( $_GET['category'] ) ? htmlspecialchars( $_GET['category'] ) : null; ?>
 
-    <main id=main class="container main">
+    <main id=main class="container main" style="min-height: 70vh;">
         <section id="view-page" class="view-page">
             <div class="container">
                 <div class="breadcrumb-title">
