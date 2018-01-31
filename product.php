@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="img-product">
-                            <img src="<?php echo $img_product;?>" alt="img-product">
+                            <img src="/assets/images/products/<?php echo $img_product;?>" alt="img-product">
                         </div>
                     </div>
                     <div class="col-md-4">

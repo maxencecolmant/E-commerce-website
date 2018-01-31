@@ -86,7 +86,7 @@
                                                 <div class="product">
                                                     <div class="content">
                                                         <img class="img-responsive"
-                                                             src="assets/images/products/<?php echo $pr['img_product']; ?>"
+                                                             src="/assets/images/products/<?php echo $pr['img_product']; ?>"
                                                              alt="">
                                                         <span class="cat"><?php echo $pr['name_category']; ?></span>
                                                         <a href="product.php?id=<?php echo $pr['id_product']; ?>"

@@ -200,7 +200,7 @@ class Category {
 			$return .= '<div class="product-item-4">
                 <div class="product">
                     <div class="content">
-                        <img class="img-responsive" src="' . $item['img_product'] . '" alt="">
+                        <img class="img-responsive" src="/assets/images/products/' . $item['img_product'] . '" alt="">
                         <span class="cat">' . htmlspecialchars( $_GET['category'] ) . '</span>
                         <a href="product.php?id=' . $item['id_product'] . '" class="title">' . $item['name_product'] . '</a>
 
