@@ -1204,11 +1204,13 @@
 			background: #fff;
 		}
 
-		.cart-page .row {
+		.cart-page .row,
+		.orders-page .row {
 			padding: 0 50px;
 		}
 
-		.cart-page .content h2 {
+		.cart-page .content h2,
+		.orders-page .content h2 {
 			margin-top: 0;
 			margin-bottom: 30px;
 			font-weight: 600;
@@ -1266,6 +1268,36 @@
 		.cart-page .return:focus {
 			background: #e67818;
 			border-color: #e67818;
+		}
+
+		/***Orders Page***/
+
+		.orders-page .container {
+			background: #fff;
+		}
+
+		.orders-page .nbcmd,
+		.orders-page .totalprice {
+			width: 35px;
+		}
+
+		.orders-page .datecmd {
+			width: 180px;
+		}
+
+		.orders-page th {
+			width: 180px;
+			background: #067fd8;
+			color: #fff;
+			padding-bottom: 18px;
+		}
+
+		.orders-page .panel-footer {
+			display: none;
+		}
+
+		.orders-page .panel-collapse {
+			padding: 15px;
 		}
 
 		/*
