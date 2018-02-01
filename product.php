@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="img-product">
-                            <img src="/assets/images/products/<?php echo $img_product;?>" alt="img-product">
+                            <img src="/assets/images/products/<?php echo $img_product;?>" class="img-responsive" alt="img-product">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -70,7 +70,7 @@
                             </div>
                             <div class="quantity col-md-4 col-md-offset-4">
                                 <label for="quantity_offer">Quantité :</label>
-                                <input id="q" type="number" class="form-control" name="quantity_product_ordered" value="1">
+                                <input id="q" type="number" class="form-control" name="quantity_product_ordered" value="1" max="<?php echo $quantity_product;?>">
                             </div>
                             <div class="shop col-md-12">
                                 <input type="hidden" id="id_product" value="<?php echo $id_product;?>">

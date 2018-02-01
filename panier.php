@@ -94,7 +94,7 @@ if( $cart->createCart() ) {
                                                 <td class="align-middle text-center">
                                                     <a href="">
                                                         <img class="img-responsive center-block extra-small-img"
-                                                             alt="product"
+                                                             alt="product" style="max-height: 60px;"
                                                              src="/assets/images/products/<?php echo $curr_product['img_product']; ?>">
                                                     </a>
                                                 </td>

@@ -2,14 +2,14 @@
 
 <?php include 'includes/navbar.php' ?>
 
-<?php $currentCategory = isset( $_GET['category'] ) ? htmlspecialchars( $_GET['category'] ) : null; ?>
+<?php $currentCategory = isset($_GET['category']) ? htmlspecialchars($_GET['category']) : null; ?>
 <?php $search = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : null ?>
 
     <main id=main class="container main" style="min-height: 70vh;">
         <section id="view-page" class="view-page">
             <div class="container">
                 <div class="breadcrumb-title">
-					<?php $util::get_breadcrumb(); ?>
+                    <?php $util::get_breadcrumb(); ?>
                 </div>
                 <div class=aside>
                     <div class="row">
@@ -20,23 +20,27 @@
                 <div class="content">
                     <div class="row">
                         <h2 class="currentCategory">
-							<?php echo $currentCategory != null ? $currentCategory : 'Toutes les catégories'; ?>
+                            <?php if ($search != null): ?>
+                                Résultat de la recherche pour : <?php echo $search; ?>
+                            <?php else: ?>
+                                <?php echo $currentCategory != null ? $currentCategory : 'Toutes les catégories'; ?>
+                            <?php endif; ?>
                         </h2>
-						<?php if( $currentCategory != null ) : ?>
-							<?php
-							if( $category->isParentCat( $currentCategory ) ) {
-								$category->displayChild( $currentCategory );
-							} else {
-								$category->displayProduct( $currentCategory );
-							}
-							?>
-                        <?php elseif($search != null): ?>
+                        <?php if ($currentCategory != null) : ?>
                             <?php
-                                $category->displaySearch($search);
+                            if ($category->isParentCat($currentCategory)) {
+                                $category->displayChild($currentCategory);
+                            } else {
+                                $category->displayProduct($currentCategory);
+                            }
                             ?>
-						<?php else: ?>
-							<?php $category->displayAll(); ?>
-						<?php endif; ?>
+                        <?php elseif ($search != null): ?>
+                            <?php
+                            $category->displaySearch($search);
+                            ?>
+                        <?php else: ?>
+                            <?php $category->displayAll(); ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
