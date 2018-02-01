@@ -66,10 +66,10 @@
                                 <a href="/orders.php">
                                     <i class="socicon-shopping-cart-black-shape"></i>Commandes</a>
                             </li>
-							<?php if( $restrict->isAllow( '/dashboard/' ) ) : ?>
+							<?php if( $restrict->isAllow( '/Dashboard/' ) ) : ?>
                                 <div class="divider"></div>
                                 <li>
-                                    <a href="/dashboard/" class="item">
+                                    <a href="/Dashboard/" class="item">
                                         <i class="socicon-dashboard"></i>Dashboard</a>
                                 </li>
 							<?php endif; ?>
