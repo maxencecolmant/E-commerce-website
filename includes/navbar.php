@@ -69,7 +69,7 @@
 							<?php if( $restrict->isAllow( '/dashboard/' ) ) : ?>
                                 <div class="divider"></div>
                                 <li>
-                                    <a href="/Dashboard/" class="item">
+                                    <a href="/dashboard/" class="item">
                                         <i class="socicon-dashboard"></i>Dashboard</a>
                                 </li>
 							<?php endif; ?>

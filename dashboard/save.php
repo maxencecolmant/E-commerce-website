@@ -576,6 +576,7 @@ if (!empty($_POST)) {
                     break;
                 default:
                     echo 'Invalid Table';
+                    echo $table;
                     echo json_encode($data);
                     break;
             }

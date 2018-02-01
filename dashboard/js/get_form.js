@@ -7,14 +7,13 @@ let arrayCookie = cookie.split(';');
 $status = '';
 arrayCookie.forEach(function (cookie) {
     $infoCookie = cookie.split('=');
-    if ($infoCookie[0] === 'status_user') {
+    console.log($infoCookie[0].trim());
+    if ($infoCookie[0].trim() === 'status_user') {
         $status = $infoCookie[1];
     }
 });
 var edit;
 if ($status === 'ADMIN' || $status === 'SUPER_ADMIN') {
-    edit = 'class="possible select"';
-}else if ($status === '') {
     edit = 'class="possible select"';
 } else {
     edit = '';
@@ -290,7 +289,6 @@ function add() {
                 }
                 if (value.className.indexOf('select') !== -1) {
                     $dataRAW[value.attributes.name.value] = value.childNodes[0].value;
-                    ;
                 }
             });
             console.log($dataRAW);
@@ -301,7 +299,7 @@ function add() {
                 success: function (data) {
                     console.log("Running Insert...");
                     console.log(data);
-                    window.location.href = locUrl;
+                    window.location.reload();
                 },
                 fail: function (data) {
                     console.log('fail');
