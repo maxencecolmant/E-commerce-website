@@ -66,7 +66,7 @@
                                 <a href="/orders.php">
                                     <i class="socicon-shopping-cart-black-shape"></i>Commandes</a>
                             </li>
-							<?php if( $restrict->isAllow( '/Dashboard/' ) ) : ?>
+							<?php if( $restrict->isAllow( '/dashboard/' ) ) : ?>
                                 <div class="divider"></div>
                                 <li>
                                     <a href="/Dashboard/" class="item">
