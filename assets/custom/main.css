@@ -1299,7 +1299,10 @@
 		.orders-page .panel-collapse {
 			padding: 15px;
 		}
-
+		/***Search Nav***/
+		.search-nav .input-group {
+			margin-bottom:0;
+		}
 		/*
 ------------------------
 	About US
