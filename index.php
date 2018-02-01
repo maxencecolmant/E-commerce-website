@@ -75,8 +75,6 @@
 						'SELECT id_product, name_product, name_category, img_product, price_product
  FROM products LEFT JOIN category_ ON products.id_category = category_.id_category WHERE is_hidden = :v ORDER BY id_product DESC LIMIT 4', [ ':v' => 1, ] )->fetchAll( \PDO::FETCH_ASSOC );
 					?>
-                    <div class="container">
-                        <div class="content">
                             <table class="table">
                                 <tr>
 									<?php if( !empty( $product_select )) : ?>
@@ -116,8 +114,6 @@
 									<?php endforeach; ?>
                                 </tr>
                             </table>
-                        </div>
-                    </div>
 				<?php else: ?>
                     <div>
                         <p>En cours de sélection !</p>
