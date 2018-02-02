@@ -329,6 +329,7 @@ if (!empty($_POST)) {
                         break;
                     case 'name_product':
                     case 'desc_product':
+	                case 'specs_product':
                         if ($old_data[$col] != $value && !empty(trim($value))) {
                             $bdd->query(
                                 'UPDATE ' . $table . ' SET ' . $col . ' = :value WHERE ' . $col_id . ' = :id', [
@@ -560,15 +561,6 @@ if (!empty($_POST)) {
                         $args = array(
                             'title' => 'Erreur !',
                             'text' => 'Le propriétaire n\'existe pas !',
-                            'icon' => 'error',
-                            'timer' => 3000,
-                        );
-                        $session->setArgsFlash($args);
-                        break;
-                    } elseif (!$validator->isUnique('rank_product', $bdd, 'products')) {
-                        $args = array(
-                            'title' => 'Erreur !',
-                            'text' => 'Le rang doit être unique !',
                             'icon' => 'error',
                             'timer' => 3000,
                         );

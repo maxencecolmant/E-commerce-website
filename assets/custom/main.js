@@ -4,15 +4,25 @@ var path = window.location.pathname;
 
 var formAll = document.forms[$("#mainForm").attr('name')];
 
-var inputsSignUp = [{name:'first_name',rules:'required'},{name:'last_name',rules:'required'},{name:'username',rules:'required'},{name:'email',rules:'valid_email|required'},{name:'password',rules:'required'},{name:'password_c',display:'password confirmation',rules:'required|matches[password]'}];
+var inputsSignUp = [{name: 'first_name', rules: 'required'}, {name: 'last_name', rules: 'required'}, {
+    name: 'username',
+    rules: 'required'
+}, {name: 'email', rules: 'valid_email|required'}, {name: 'password', rules: 'required'}, {
+    name: 'password_c',
+    display: 'password confirmation',
+    rules: 'required|matches[password]'
+}];
 
-var inputsLogin = [{name:'name',rules:'required'},{name:'password',rules:'required'}];
-var inputsContact = [{name:'email',rules:'valid_email|required'},{name:'subject',rules:'required'},{name:'message',rules:'required'}];
+var inputsLogin = [{name: 'name', rules: 'required'}, {name: 'password', rules: 'required'}];
+var inputsContact = [{name: 'email', rules: 'valid_email|required'}, {
+    name: 'subject',
+    rules: 'required'
+}, {name: 'message', rules: 'required'}];
 
 function validation() {
 
     var inputs = [];
-    
+
     if (path.match('/signup')) {
         inputs = inputsSignUp;
     } else if (path.match('/login')) {
@@ -77,4 +87,85 @@ function validation() {
 
 if (path.match('/signup') || path.match('/login') || path.match('/contact-us')) {
     validation();
+}
+
+// store filter for each group
+var filters = [];
+
+
+// external js: isotope.pkgd.js
+
+// init Isotope
+var $grid = $('.grid').isotope({
+    itemSelector: '.product'
+});
+
+$('.apply-filter').click(function (e) {
+    e.preventDefault();
+    $form = document.forms['filters'].elements;
+    filters = {};
+
+    for (var i = 0; i < $form.length; i++) {
+        if ($form[i].type === 'checkbox') {
+            if ($form[i].checked) {
+                $checkGroup = $($form[i]).parent('.input-group').parent('.check-group');
+                var filterGroup = $checkGroup.attr('data-filter-group');
+
+                if (filters[filterGroup]) {
+                    filters[filterGroup] += ', ' + $($form[i]).attr('data-filter');
+                } else {
+                    filters[filterGroup] = $($form[i]).attr('data-filter');
+                }
+            }
+        }
+    }
+
+    if (!jQuery.isEmptyObject(filters)) {
+        $('.cancel-filter').removeClass('hidden');
+    } else {
+        $('.cancel-filter').addClass('hidden');
+    }
+
+    var filterValue = concatValues(filters);
+    // set filter for Isotope
+    $grid.isotope({filter: filterValue});
+});
+
+$('.cancel-filter').click(function (e) {
+    e.preventDefault();
+    $form = document.forms['filters'].elements;
+    filters = [];
+
+    for (var i = 0; i < $form.length; i++) {
+        if ($form[i].type === 'checkbox') {
+            if ($form[i].checked) {
+                $form[i].checked = false;
+            }
+        }
+    }
+
+    $('.cancel-filter').addClass('hidden');
+
+    var filterValue = concatValues(filters);
+    // set filter for Isotope
+    $grid.isotope({filter: filterValue});
+});
+
+
+// flatten object by concatting values
+function concatValuesArray(array) {
+    var value = '';
+    array.forEach(function (filter) {
+        value += filter;
+    });
+
+    return value;
+}
+
+function concatValues( obj ) {
+    var value = '';
+    for ( var prop in obj ) {
+        value += obj[ prop ];
+    }
+    return value;
 }
