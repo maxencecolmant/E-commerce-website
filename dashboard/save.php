@@ -62,6 +62,24 @@ if (!empty($_POST)) {
             }
         }
         
+        $validator->dropError();
+        
+        $validator->setData($_POST);
+    }
+    
+    if ($table == 'category_') {
+        if (!$validator->isNumber('id_parent_cat')) {
+            $req = $bdd->query(
+                'SELECT id_category FROM category_ WHERE name_category = :value', [
+                ':value' => $_POST['id_parent_cat'],
+            ])->fetch(\PDO::FETCH_ASSOC);
+            if (!empty($req)) {
+                $_POST['id_parent_cat'] = $req['id_category'];
+            }
+        }
+        
+        $validator->dropError();
+        
         $validator->setData($_POST);
     }
     

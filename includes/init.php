@@ -136,18 +136,21 @@ class Database {
 		switch ( Session::getInstance()->doubleRead( 'connected', 'status' ) ) {
 			case 'SUPER_ADMIN':
 			case 'ADMIN':
-				$products = $this->query( 'SELECT `id_category`, `name_category`, `id_parent_cat`, `published_at_category`, `last_modification_category` FROM `category_`' )->fetchAll();
+				$category = $this->query( 'SELECT `id_category`, `name_category`, `id_parent_cat`, `published_at_category`, `last_modification_category` FROM `category_`' )->fetchAll();
 				break;
 			default:
 				return;
 				break;
 		}
 
-		foreach ( $products as list( $id_category, $name_category, $id_parent_cat, $published_at_category, $last_mod_category ) ) {
-			echo '<tr id="' . $id_category . '">
+		foreach ( $category as list( $id_category, $name_category, $id_parent_cat, $published_at_category, $last_mod_category ) ) {
+            $parent_category = $this->query('SELECT name_category FROM category_ WHERE id_category = :id_c', [
+                ':id_c' => $id_parent_cat,
+            ])->fetch(\PDO::FETCH_COLUMN);
+		    echo '<tr id="' . $id_category . '">
                             <td name="id_category">' . $id_category . '</td>
                             <td name="name_category" class="possible">' . $name_category . '</td>
-                            <td name="id_parent_cat" class="possible select">' . $id_parent_cat . '</td>
+                            <td name="id_parent_cat" class="possible select">' . $parent_category . '</td>
                             <td>' . $published_at_category . '</td>
                             <td>' . $last_mod_category . '</td>
                             <td>

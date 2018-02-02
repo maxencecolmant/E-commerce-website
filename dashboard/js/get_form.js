@@ -66,7 +66,7 @@ function modify() {
                         case 'id_parent_cat':
                             $data = {
                                 table: 'category_',
-                                cols: 'id_category',
+                                cols: 'name_category',
                             };
                             break;
                         case 'status':
@@ -93,7 +93,7 @@ function modify() {
                                     $returnValue = 'username';
                                     break;
                                 case 'id_parent_cat':
-                                    $returnValue = 'id_category';
+                                    $returnValue = 'name_category';
                                     $optionSelect += '<option></option>';
                                     break;
                                 default:

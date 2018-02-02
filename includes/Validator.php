@@ -156,6 +156,10 @@ class Validator
         return false;
     }
     
+    public function dropError() {
+        $this->errors = array();
+    }
+    
     /**
      * @param $field
      * @param bool $errorMsg
