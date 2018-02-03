@@ -75,48 +75,7 @@ class Category {
 			':id' => $this->nameToID( $nameCategory ),
 		] )->fetchAll( \PDO::FETCH_COLUMN );
 		
-		$return = '';
-		
-		if( !empty( $isParentCat ) ) {
-			foreach( $isParentCat as $item ) {
-				$infoItem = $this->getInfoCat( $item );
-				//         $return .= '<div class="col-sm-6 col-md-4">
-				//     <div class="thumbnail">
-				//         <img src="" alt="...">
-				//         <div class="caption">
-				//             <h3>' . $infoItem['name_category'] . '</h3>
-				//             <p>...</p>
-				//             <p><a href="view.php?category=' . $infoItem['name_category'] . '" class="btn btn-primary" role="button">Voir plus</a></p>
-				//         </div>
-				//     </div>
-				// </div>';
-				
-				$subcategory = $this->getSubcategory( $item );
-				
-				$stringsubcat = '<ul>';
-				
-				foreach( $subcategory as $subcat ) {
-					$info = $this->getInfoCat( $subcat );
-					
-					$stringsubcat .= '<li><a href="view.php?category=' . $info['name_category'] . '">' . $info['name_category'] . '</a></li>';
-				}
-				
-				$stringsubcat .= '</ul>';
-				
-				$return .= '<div class="category-item-3 components">
-                    <div class="category">
-                        <div class="content">
-                            <div class="category-header">
-                                <img class="img-responsive" src="" alt="">
-                                <a href="view.php?category=' . $infoItem['name_category'] . '" class="title">' . $infoItem['name_category'] . '</a>
-                            </div>
-
-                       			' . $stringsubcat . '
-                        </div>
-                    </div>
-                </div>';
-			}
-		}
+		$return = $this->getCategories( $isParentCat );
 		
 		echo $return;
 	}
@@ -124,21 +83,18 @@ class Category {
 	public function displayAll() {
 		$isParentCat = $this->bdd->query( 'SELECT id_category FROM category_ WHERE id_parent_cat is NULL ' )->fetchAll( \PDO::FETCH_COLUMN );
 		
+		$return = $this->getCategories( $isParentCat );
+		
+		echo $return;
+	}
+	
+	private function getCategories( $isParentCat ) {
 		$return = '';
 		
 		if( !empty( $isParentCat ) ) {
 			foreach( $isParentCat as $item ) {
 				$infoItem = $this->getInfoCat( $item );
-				//         $return .= '<div class="col-sm-6 col-md-4">
-				//     <div class="thumbnail">
-				//         <img src="" alt="...">
-				//         <div class="caption">
-				//             <h3>' . $infoItem['name_category'] . '</h3>
-				//             <p>...</p>
-				//             <p><a href="view.php?category=' . $infoItem['name_category'] . '" class="btn btn-primary" role="button">Voir plus</a></p>
-				//         </div>
-				//     </div>
-				// </div>';
+				
 				$subcategory = $this->getSubcategory( $item );
 				
 				$stringsubcat = '<ul>';
@@ -167,7 +123,7 @@ class Category {
 			}
 		}
 		
-		echo $return;
+		return $return;
 	}
 	
 	public function nameToID( $nameCategory ) {
@@ -188,56 +144,12 @@ class Category {
 	
 	public function displayProduct( $nameCategory ) {
 		$products = $this->bdd->query(
-			'SELECT id_product, name_product, specs_product, price_product, desc_product, img_product FROM products WHERE id_category = :id', [
+			'SELECT id_product, name_product, specs_product, price_product, rank_product, desc_product, img_product, name_category FROM products LEFT JOIN category_ ON products.id_category = category_.id_category WHERE products.id_category = :id', [
 			':id' => $this->nameToID( $nameCategory ),
 		] )->fetchAll( \PDO::FETCH_ASSOC );
 		
-		$return = '';
+		$return = $this->getProducts( $products );
 		
-		foreach( $products as $item ) {
-			$specs = $item['specs_product'];
-			$stringSpecs = '';
-			
-			if( !empty( $specs ) ) {
-				$specs = explode( ';', $specs );
-				
-				
-				foreach( $specs as $spec ) {
-					if( preg_match( '/=/', $spec ) ) {
-						$specArray = explode( '=', $spec );
-						
-						$stringSpecs .= strtolower( $specArray[1] ) . ' ';
-					}
-				}
-				
-			}
-			// le nom de la categorie est en get
-			$return .= '<div class="product-item-4">
-                <div class="product ' . $stringSpecs . '">
-                    <div class="content">
-                        <img class="img-responsive" src="/assets/images/products/' . $item['img_product'] . '" alt="">
-                        <span class="cat">' . htmlspecialchars( $_GET['category'] ) . '</span>
-                        <a href="product.php?id=' . $item['id_product'] . '" class="title">' . $item['name_product'] . '</a>
-
-                        <p class="rev">
-                            <i class="socicon-star"></i>
-                            <i class="socicon-star"></i>
-                            <i class="socicon-star"></i>
-                            <i class="socicon-star"></i>
-                            <i class="socicon-star-half-empty"></i>
-                        </p>
-                        <div class="price">
-
-                            <span class="currentPrice">' . $item['price_product'] . '€</span>
-                            <span class="oldPrice"></span>
-                        </div>
-                        <a href="product.php?id=' . $item['id_product'] . '" class="cart-btn">
-                            <i class="socicon-shopping-cart-black-shape"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>';
-		}
 		
 		echo $return;
 	}
@@ -248,9 +160,15 @@ class Category {
 			':s' => '%' . $searchElement . '%',
 		] )->fetchAll( \PDO::FETCH_ASSOC );
 		
+		$return = $this->getProducts( $products );
+		
+		echo $return;
+	}
+	
+	private function getProducts( $productArray ) {
 		$return = '';
 		
-		foreach( $products as $item ) {
+		foreach( $productArray as $item ) {
 			$specs = $item['specs_product'];
 			$stringSpecs = '';
 			
@@ -293,8 +211,13 @@ class Category {
                 </div>
             </div>';
 		}
+		if( $return == '' ) {
+			$return = '<div class="f-category text-center">
+                          <h2>Aucun Produit</h2>
+                        </div>';
+		}
 		
-		echo $return;
+		return $return;
 	}
 	
 	public function displayFilter( $nameCategory ) {
@@ -302,59 +225,7 @@ class Category {
 			'SELECT specs_product FROM products WHERE id_category = :id', [
 			':id' => $this->nameToID( $nameCategory ),
 		] )->fetchAll( \PDO::FETCH_COLUMN );
-		$return = '';
-		if( !empty( $productSpecs ) ) {
-			$allSpecsArray = array();
-			
-			foreach( $productSpecs as $specs ) {
-				if( !empty( $specs ) ) {
-					$specs = explode( ';', $specs );
-					
-					$specsArray = array();
-					
-					foreach( $specs as $spec ) {
-						
-						if( preg_match( '/=/', $spec ) ) {
-							$specArray = explode( '=', $spec );
-							$specsArray[strtolower( $specArray[0] )] = strtolower( $specArray[1] );
-						}
-					}
-					$allSpecsArray = array_merge_recursive( $allSpecsArray, $specsArray );
-				}
-			}
-			foreach( $allSpecsArray as $spec => $values ) {
-				$return .= '<div class="f-category">
-                                    <div class="f-header">
-                                        <h2>' . ucfirst( $spec ) . '</h2>
-                                    </div>
-                                    <div class="f-content check-group" data-filter-group="' . $spec . '">';
-				
-				if( is_array( $values ) ) {
-					foreach( $values as $value ) {
-						$return .= ' <div class="input-group">
-                                            <input type="checkbox" class="check" data-filter=".' . $value . '" name="checkbox"
-                                                   id="' . $value . '">
-                                            <label for="' . $value . '">' . ucfirst( $value ) . '</label>
-                                        </div>';
-					}
-				} else {
-					$return .= ' <div class="input-group">
-                                            <input type="checkbox" class="check" data-filter=".' . $values . '" name="checkbox"
-                                                   id="' . $values . '">
-                                            <label for="' . $values . '">' . ucfirst( $values ) . '</label>
-                                        </div>';
-				}
-				
-				$return .= '</div>
-                                </div>';
-			}
-			
-		}
-		if( $return == '' ) {
-			$return = '<div class="f-category text-center">
-                          <h2>Aucun filtre</h2>
-                        </div>';
-		}
+		$return = $this->getFilters( $productSpecs );
 		
 		echo $return;
 	}
@@ -365,6 +236,12 @@ class Category {
 			':s' => '%' . $searchElement . '%',
 		] )->fetchAll( \PDO::FETCH_COLUMN );
 		
+		$return = $this->getFilters( $productSpecs );
+		
+		echo $return;
+	}
+	
+	private function getFilters( $productSpecs ) {
 		$return = '';
 		if( !empty( $productSpecs ) ) {
 			$allSpecsArray = array();
@@ -419,7 +296,7 @@ class Category {
                         </div>';
 		}
 		
-		echo $return;
+		return $return;
 	}
 	
 	public function isParentCat( $nameCategory ) {

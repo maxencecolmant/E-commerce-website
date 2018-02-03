@@ -90,14 +90,36 @@ if (path.match('/signup') || path.match('/login') || path.match('/contact-us')) 
 }
 
 // store filter for each group
-var filters = [];
+var filters = {};
 
 
 // external js: isotope.pkgd.js
 
 // init Isotope
 var $grid = $('.grid').isotope({
-    itemSelector: '.product'
+    itemSelector: '.product',
+    getSortData: {
+        name: '.title', // text from querySelector
+        price: '.currentPrice parseFloat', // value of attribute
+        rank: '.rank parseInt',
+    }
+});
+
+$('.sort-by').on( 'change', 'select', function() {
+
+    $options = $(this).children();
+    for (var l = 0; l < $options.length; l++) {
+        if ($options[l].value === $(this).val()) {
+            var sortByValue = $($options[l]).attr('data-sort-by');
+            var isAscending = $($options[l]).attr('sort-way');
+            if (isAscending === 'DESC') {
+                isAscending = false;
+            } else {
+                isAscending = true;
+            }
+        }
+    }
+    $grid.isotope({ sortBy: sortByValue, sortAscending: isAscending });
 });
 
 $('.apply-filter').click(function (e) {

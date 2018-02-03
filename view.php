@@ -21,9 +21,9 @@
 									<?php
 									if( $currentCategory != null ) {
 										$category->displayFilter( $currentCategory );
-									} elseif( $search != null) {
-									    $category->displayFilterSearch($search);
-                                    }
+									} elseif( $search != null ) {
+										$category->displayFilterSearch( $search );
+									}
 									?>
                                     <!-- <a href="" class="btn apply-filter">Appliquer les filtres</a> -->
                                     <button type="submit" class="btn apply-filter">Appliquer les filtres</button>
@@ -36,13 +36,29 @@
 				<?php endif; ?>
                 <div class="content">
                     <div class="row">
-                        <h2 class="currentCategory">
-							<?php if( $search != null ): ?> Résultat de la recherche pour :
-								<?php echo $search; ?>
-							<?php else: ?>
-								<?php echo $currentCategory != null ? $currentCategory : 'Toutes les catégories'; ?>
+                        <div class="row">
+                            <h2 class="currentCategory pull-left">
+								<?php if( $search != null ): ?> Résultat de la recherche pour :
+									<?php echo $search; ?>
+								<?php else: ?>
+									<?php echo $currentCategory != null ? $currentCategory : 'Toutes les catégories'; ?>
+								<?php endif; ?>
+                            </h2>
+							<?php if( ($currentCategory != null && !$category->isParentCat( $currentCategory )) || $search != null ) : ?>
+                                <div class="pull-right sort-by">
+                                    <label for="sort-value">Trier par : </label>
+                                    <select class="input-sm" id="sort-value">
+                                        <option data-sort-by="original-order">Ordre Original</option>
+                                        <option data-sort-by="name">Ordre Alphabétique</option>
+                                        <option data-sort-by="name" sort-way="DESC">Ordre Alphabétique Inverse</option>
+                                        <option data-sort-by="price">Prix Croissant</option>
+                                        <option data-sort-by="price" sort-way="DESC">Prix Décroissant</option>
+                                        <option data-sort-by="rank">Rang</option>
+                                        <option data-sort-by="rank" sort-way="DESC">Rang Inverse</option>
+                                    </select>
+                                </div>
 							<?php endif; ?>
-                        </h2>
+                        </div>
                         <div class="grid">
 							<?php if( $currentCategory != null ) : ?>
 								<?php
