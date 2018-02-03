@@ -32,14 +32,12 @@ if( !empty( $_POST ) ) {
 			case 'refresh':
 				if( !$validator->isEmpty( 'id' ) && !$validator->isEmpty( 'q' ) ) {
 					$cart->updateProductQuantity( $id, $q );
-					header( 'Location: /panier.php' );
 				} else {
 					$session->setFlash( 'default', 'danger', 'Une erreur est survenue !' );
 				}
 				break;
 			case 'drop':
 				$cart->removeCart();
-				header( 'Location: /panier.php' );
 				break;
 			default:
 				break;

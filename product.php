@@ -89,18 +89,14 @@
                     Fiche technique :
                     <?php echo $name_product;?>
                 </h2>
-                <table class="table">
+                <table class="table table-responsive-sm table-striped table-bordered text-center">
                     <thead>
                         <tr>
-                            <th></th>
-
+                            <th colspan="2" class="text-center">Spécifications</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-
-                        </tr>
+                        <?php echo $util::getProductSpecs($id_product); ?>
                     </tbody>
                 </table>
             </div>

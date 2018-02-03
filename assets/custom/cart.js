@@ -65,7 +65,7 @@ $('#valid-order').click(function (e) {
         location.reload();
     }
     cartInfo.forEach(function (value, index) {
-        if (value.quantity_product_ordered !== parseInt($('#q_' + index + ']').val())) {
+        if (value.quantity_product_ordered !== parseInt($('#q_' + index).val())) {
             e.preventDefault();
             location.reload();
         }
