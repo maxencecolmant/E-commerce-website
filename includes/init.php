@@ -16,7 +16,7 @@ class Database {
 
 	public static function getDatabase() {
 		if ( ! self::$instance_bdd ) {
-			self::$instance_bdd = new Database( 'db_projet_php', 'password', 'techdeals_db', '81.57.206.30:3307' );
+			self::$instance_bdd = new Database( 'db_projet_php', 'password', 'techdeals_db', 'maxencecolmant.synology.me:3307' );
 		}
 
 		return self::$instance_bdd;
