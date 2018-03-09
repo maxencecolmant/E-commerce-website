@@ -1,6 +1,9 @@
 <?php
 
 namespace techdeals;
+if(file_exists('env.php')) {
+	require('env.php'); 
+}
 
 class Database {
 	public static $instance_bdd = null;
@@ -16,7 +19,7 @@ class Database {
 
 	public static function getDatabase() {
 		if ( ! self::$instance_bdd ) {
-			self::$instance_bdd = new Database( 'db_projet_php', 'password', 'techdeals_db', 'maxencecolmant.synology.me:3307' );
+			self::$instance_bdd = new Database( getenv('DB_LOGIN'), getenv('DB_PASS'), getenv('DB_NAME'), getenv('DB_SERVER') );
 		}
 
 		return self::$instance_bdd;
